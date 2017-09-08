@@ -200,3 +200,34 @@ footer {
    color: #f39c12;
 }
 /*Termina el footer*/
+
+/*Empieza el Historial*/
+#pagina{
+      
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+}
+
+#parrafo{
+    font-size: 2em;  
+}
+
+#imagen{
+    height: 30px;
+    width: 100px;
+}
+#picture{
+    align-items: center;
+    height: 290px;
+    width: 500px;
+}
+
+.titulo{
+    margin-left: 500px;
+    color:black;
+}
+
+
+/*Termina el historial*/
