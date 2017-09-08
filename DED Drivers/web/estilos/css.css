@@ -61,7 +61,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d0c0d', end
     position: relative;
     height: 508px;
     margin-top: 168px;
-   
 }
 .fade-carousel .carousel-inner .item {
     height: 508px;
@@ -247,6 +246,17 @@ p.parrafo{
 img.pequena{
     height:300px; 
 }
-
-
 /*Termina el historial*/
+
+/*Comienza el Cuerpo*/
+.cuerpo{
+    position: relative;
+    margin-top: 168px;
+    font-size: 2.3em;
+}
+/*Termina el Cuerpo*/
+
+/*especificacion de letra*/
+.raleway{
+    font-family: 'Raleway', sans-serif;
+}
