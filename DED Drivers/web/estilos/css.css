@@ -210,8 +210,23 @@ footer {
     font-family: 'Raleway', sans-serif;
 }
 
-#parrafo{
-    font-size: 2em;  
+#posParrafo{
+    margin-left: 625px;
+   border-radius: 10px 10px 10px 10px;
+-moz-border-radius: 10px 10px 10px 10px;
+-webkit-border-radius: 10px 10px 10px 10px;
+    background-color: #f0f0f0;
+    width: 700px;
+    height: 350px;
+}
+#posImagen{
+    margin-top: -400px;
+    margin-left: -750px;
+    width: 600px;
+    height: 350px;
+}
+p.parrafo{
+    font-size: 2.3em;  
 }
 
 #imagen{
@@ -226,7 +241,11 @@ footer {
 
 .titulo{
     margin-left: 500px;
-    color:black;
+    color:#665d66;
+}
+
+img.pequena{
+    height:300px; 
 }
 
 
