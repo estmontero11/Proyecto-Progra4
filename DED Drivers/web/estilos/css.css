@@ -17,42 +17,42 @@ and open the template in the editor.
 
 
 .header {
-  background-size: cover; 
-  padding-top: 100px;
+    background-size: cover; 
+    padding-top: 100px;
 }
 
 
 #todoNegro{
-background: rgba(13,12,13,1);
-background: -moz-linear-gradient(left, rgba(13,12,13,1) 0%, rgba(28,28,31,1) 10%, rgba(43,43,43,1) 27%, rgba(17,17,17,1) 39%, rgba(0,0,0,1) 51%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 65%, rgba(43,43,43,1) 77%, rgba(28,28,28,1) 94%, rgba(19,19,19,1) 100%);
-background: -webkit-gradient(left top, right top, color-stop(0%, rgba(13,12,13,1)), color-stop(10%, rgba(28,28,31,1)), color-stop(27%, rgba(43,43,43,1)), color-stop(39%, rgba(17,17,17,1)), color-stop(51%, rgba(0,0,0,1)), color-stop(51%, rgba(0,0,0,1)), color-stop(65%, rgba(17,17,17,1)), color-stop(77%, rgba(43,43,43,1)), color-stop(94%, rgba(28,28,28,1)), color-stop(100%, rgba(19,19,19,1)));
-background: -webkit-linear-gradient(left, rgba(13,12,13,1) 0%, rgba(28,28,31,1) 10%, rgba(43,43,43,1) 27%, rgba(17,17,17,1) 39%, rgba(0,0,0,1) 51%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 65%, rgba(43,43,43,1) 77%, rgba(28,28,28,1) 94%, rgba(19,19,19,1) 100%);
-background: -o-linear-gradient(left, rgba(13,12,13,1) 0%, rgba(28,28,31,1) 10%, rgba(43,43,43,1) 27%, rgba(17,17,17,1) 39%, rgba(0,0,0,1) 51%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 65%, rgba(43,43,43,1) 77%, rgba(28,28,28,1) 94%, rgba(19,19,19,1) 100%);
-background: -ms-linear-gradient(left, rgba(13,12,13,1) 0%, rgba(28,28,31,1) 10%, rgba(43,43,43,1) 27%, rgba(17,17,17,1) 39%, rgba(0,0,0,1) 51%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 65%, rgba(43,43,43,1) 77%, rgba(28,28,28,1) 94%, rgba(19,19,19,1) 100%);
-background: linear-gradient(to right, rgba(13,12,13,1) 0%, rgba(28,28,31,1) 10%, rgba(43,43,43,1) 27%, rgba(17,17,17,1) 39%, rgba(0,0,0,1) 51%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 65%, rgba(43,43,43,1) 77%, rgba(28,28,28,1) 94%, rgba(19,19,19,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d0c0d', endColorstr='#131313', GradientType=1 );
+    background: rgba(13,12,13,1);
+    background: -moz-linear-gradient(left, rgba(13,12,13,1) 0%, rgba(28,28,31,1) 10%, rgba(43,43,43,1) 27%, rgba(17,17,17,1) 39%, rgba(0,0,0,1) 51%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 65%, rgba(43,43,43,1) 77%, rgba(28,28,28,1) 94%, rgba(19,19,19,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(13,12,13,1)), color-stop(10%, rgba(28,28,31,1)), color-stop(27%, rgba(43,43,43,1)), color-stop(39%, rgba(17,17,17,1)), color-stop(51%, rgba(0,0,0,1)), color-stop(51%, rgba(0,0,0,1)), color-stop(65%, rgba(17,17,17,1)), color-stop(77%, rgba(43,43,43,1)), color-stop(94%, rgba(28,28,28,1)), color-stop(100%, rgba(19,19,19,1)));
+    background: -webkit-linear-gradient(left, rgba(13,12,13,1) 0%, rgba(28,28,31,1) 10%, rgba(43,43,43,1) 27%, rgba(17,17,17,1) 39%, rgba(0,0,0,1) 51%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 65%, rgba(43,43,43,1) 77%, rgba(28,28,28,1) 94%, rgba(19,19,19,1) 100%);
+    background: -o-linear-gradient(left, rgba(13,12,13,1) 0%, rgba(28,28,31,1) 10%, rgba(43,43,43,1) 27%, rgba(17,17,17,1) 39%, rgba(0,0,0,1) 51%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 65%, rgba(43,43,43,1) 77%, rgba(28,28,28,1) 94%, rgba(19,19,19,1) 100%);
+    background: -ms-linear-gradient(left, rgba(13,12,13,1) 0%, rgba(28,28,31,1) 10%, rgba(43,43,43,1) 27%, rgba(17,17,17,1) 39%, rgba(0,0,0,1) 51%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 65%, rgba(43,43,43,1) 77%, rgba(28,28,28,1) 94%, rgba(19,19,19,1) 100%);
+    background: linear-gradient(to right, rgba(13,12,13,1) 0%, rgba(28,28,31,1) 10%, rgba(43,43,43,1) 27%, rgba(17,17,17,1) 39%, rgba(0,0,0,1) 51%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 65%, rgba(43,43,43,1) 77%, rgba(28,28,28,1) 94%, rgba(19,19,19,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d0c0d', endColorstr='#131313', GradientType=1 );
 }
 
 .header-top {
-  background-size: cover; 
-  padding-top: 30px;
-  
+    background-size: cover; 
+    padding-top: 30px;
+
 
 }
 
 .header-bottom{
-  background-size: cover; 
-  padding-top: 100px;
-  margin-bottom: 30px;
- 
+    background-size: cover; 
+    padding-top: 100px;
+    margin-bottom: 30px;
+
 
 }
 
 .header-text {
-  font-family: 'Orbitron', sans-serif;
-  margin-bottom: 0px;
-  color:  #f39c12; 
-  font-size: 43px;
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 0px;
+    color:  #f39c12; 
+    font-size: 43px;
 }
 /*Termina header*/
 
@@ -64,7 +64,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d0c0d', end
 }
 .fade-carousel .carousel-inner .item {
     height: 508px;
-    
+
 }
 .fade-carousel .carousel-indicators > li {
     margin: 0 2px;
@@ -73,9 +73,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d0c0d', end
     opacity: .7;
 }
 .fade-carousel .carousel-indicators > li.active {
-  width: 10px;
-  height: 10px;
-  opacity: 1;
+    width: 10px;
+    height: 10px;
+    opacity: 1;
 }
 
 /********************************/
@@ -90,11 +90,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d0c0d', end
     text-align: center;
     text-transform: uppercase;
     text-shadow: 1px 1px 0 rgba(0,0,0,.75);
-      -webkit-transform: translate3d(-50%,-50%,0);
-         -moz-transform: translate3d(-50%,-50%,0);
-          -ms-transform: translate3d(-50%,-50%,0);
-           -o-transform: translate3d(-50%,-50%,0);
-              transform: translate3d(-50%,-50%,0);
+    -webkit-transform: translate3d(-50%,-50%,0);
+    -moz-transform: translate3d(-50%,-50%,0);
+    -ms-transform: translate3d(-50%,-50%,0);
+    -o-transform: translate3d(-50%,-50%,0);
+    transform: translate3d(-50%,-50%,0);
 }
 .hero h1 {
     font-size: 6em;    
@@ -106,18 +106,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d0c0d', end
 .fade-carousel .carousel-inner .item .hero {
     opacity: 0;
     -webkit-transition: 2s all ease-in-out .1s;
-       -moz-transition: 2s all ease-in-out .1s; 
-        -ms-transition: 2s all ease-in-out .1s; 
-         -o-transition: 2s all ease-in-out .1s; 
-            transition: 2s all ease-in-out .1s; 
+    -moz-transition: 2s all ease-in-out .1s; 
+    -ms-transition: 2s all ease-in-out .1s; 
+    -o-transition: 2s all ease-in-out .1s; 
+    transition: 2s all ease-in-out .1s; 
 }
 .fade-carousel .carousel-inner .item.active .hero {
     opacity: 1;
     -webkit-transition: 2s all ease-in-out .1s;
-       -moz-transition: 2s all ease-in-out .1s; 
-        -ms-transition: 2s all ease-in-out .1s; 
-         -o-transition: 2s all ease-in-out .1s; 
-            transition: 2s all ease-in-out .1s;    
+    -moz-transition: 2s all ease-in-out .1s; 
+    -ms-transition: 2s all ease-in-out .1s; 
+    -o-transition: 2s all ease-in-out .1s; 
+    transition: 2s all ease-in-out .1s;    
 }
 
 /********************************/
@@ -152,20 +152,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d0c0d', end
 .fade-carousel .slides .slide-1, 
 .fade-carousel .slides .slide-2,
 .fade-carousel .slides .slide-3 {
-  height: 508px;;
-  background-size:cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  
+    height: 508px;;
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
 }
 .fade-carousel .slides .slide-1 {
-  background-image: url(https://www.splend.com.au/wp-content/uploads/2017/06/Uber-Green-Light-Hub-Splend.jpg); 
+    background-image: url(https://www.splend.com.au/wp-content/uploads/2017/06/Uber-Green-Light-Hub-Splend.jpg); 
 }
 .fade-carousel .slides .slide-2 {
-  background-image: url(http://s.libertaddigital.com/fotos/noticias/mytaxi.jpg);
+    background-image: url(http://s.libertaddigital.com/fotos/noticias/mytaxi.jpg);
 }
 .fade-carousel .slides .slide-3 {
-  background-image: url(https://pbs.twimg.com/media/DG5QPt9XYAAM_Hk.jpg);
+    background-image: url(https://pbs.twimg.com/media/DG5QPt9XYAAM_Hk.jpg);
 }
 
 /********************************/
@@ -196,56 +196,45 @@ footer {
 }
 
 #amarillo{
-   color: #f39c12;
+    color: #f39c12;
 }
 /*Termina el footer*/
 
 /*Empieza el Historial*/
-#pagina{
-      
-    margin-left: auto;
-    margin-right: auto;
+
+
+p.parrafo{
+    font-size: 1.5em;
     text-align: center;
     font-family: 'Raleway', sans-serif;
+    color:#6e6b6e;
+}
+p.parrafoH{
+    font-size: 1.5em;
+    font-family: 'Raleway', sans-serif;
+    color:#6e6b6e;
+}
+li.listas{
+    font-size: 1.5em;
+    font-family: 'Raleway', sans-serif;
+    color:#6e6b6e;
 }
 
-#posParrafo{
-    margin-left: 625px;
-   border-radius: 10px 10px 10px 10px;
--moz-border-radius: 10px 10px 10px 10px;
--webkit-border-radius: 10px 10px 10px 10px;
-    background-color: #f0f0f0;
-    width: 700px;
-    height: 350px;
+h3.title{
+    font-family: 'Bitter', serif;
+    font-family: 'Anton', sans-serif;
+    color:black;
 }
-#posImagen{
-    margin-top: -400px;
-    margin-left: -750px;
-    width: 600px;
-    height: 350px;
-}
-p.parrafo{
-    font-size: 2.3em;  
+#imagen1{
+    height: 250px;
+    width: 380px;
 }
 
-#imagen{
-    height: 30px;
-    width: 100px;
-}
-#picture{
-    align-items: center;
-    height: 290px;
-    width: 500px;
+#imagen2{
+    height: 250px;
+    width: 380px;
 }
 
-.titulo{
-    margin-left: 500px;
-    color:#665d66;
-}
-
-img.pequena{
-    height:300px; 
-}
 /*Termina el historial*/
 
 /*Comienza el Cuerpo*/
