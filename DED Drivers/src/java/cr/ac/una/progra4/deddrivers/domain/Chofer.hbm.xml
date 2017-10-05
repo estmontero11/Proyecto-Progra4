@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 5, 2017 12:50:01 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cr.ac.una.progra4.deddrivers.domain.Chofer" table="chofer" catalog="basetransporte" optimistic-lock="version">
+        <id name="idChofer" type="int">
+            <column name="idChofer" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="apellidos" length="45" />
+        </property>
+        <property name="fechaNacimiento" type="date">
+            <column name="fechaNacimiento" length="10" />
+        </property>
+        <property name="fechaVencimiento" type="date">
+            <column name="fechaVencimiento" length="10" />
+        </property>
+        <property name="tipoLicencia" type="string">
+            <column name="tipoLicencia" length="45" />
+        </property>
+        <property name="estado" type="java.lang.Byte">
+            <column name="estado" />
+        </property>
+        <property name="esClienteTransportista" type="java.lang.Byte">
+            <column name="esClienteTransportista" />
+        </property>
+        <property name="ultimoUsuario" type="string">
+            <column name="ultimoUsuario" length="45" />
+        </property>
+        <property name="ultimaFecha" type="timestamp">
+            <column name="ultimaFecha" length="19" />
+        </property>
+        <set name="vehiculos" table="vehiculo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idChofer" not-null="true" />
+            </key>
+            <one-to-many class="cr.ac.una.progra4.deddrivers.domain.Vehiculo" />
+        </set>
+    </class>
+</hibernate-mapping>
