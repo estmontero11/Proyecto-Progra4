@@ -9,8 +9,14 @@ import cr.ac.una.progra4.deddrivers.bl.ChoferBL;
 import cr.ac.una.progra4.deddrivers.dao.ChoferDAO;
 import cr.ac.una.progra4.deddrivers.domain.Chofer;
 import cr.ac.una.progra4.deddrivers.bl.ServicioBL;
+import cr.ac.una.progra4.deddrivers.bl.UsuarioBL;
+import cr.ac.una.progra4.deddrivers.bl.VehiculoBL;
 import cr.ac.una.progra4.deddrivers.dao.ServicioDAO;
+import cr.ac.una.progra4.deddrivers.dao.UsuarioDAO;
+import cr.ac.una.progra4.deddrivers.dao.VehiculoDAO;
 import cr.ac.una.progra4.deddrivers.domain.Servicio;
+import cr.ac.una.progra4.deddrivers.domain.Usuario;
+import cr.ac.una.progra4.deddrivers.domain.Vehiculo;
 import java.util.Date;
 
 /**
@@ -27,6 +33,14 @@ public class Test {
         Servicio s1 = new Servicio();
         sdao.merge(s1);
         
+        UsuarioDAO udao = new UsuarioDAO();
+        Usuario u1 = new Usuario();
+        udao.merge(u1);
+        
+        VehiculoDAO vdao = new VehiculoDAO();
+        Vehiculo v1 = new Vehiculo();
+        vdao.merge(v1);
+        
         ChoferBL cbl = new ChoferBL();
         Chofer c2 = new Chofer();
         cbl.merge(c2);
@@ -34,6 +48,14 @@ public class Test {
         ServicioBL sbl = new ServicioBL();
         Servicio s2 = new Servicio();
         sbl.merge(s2);
+        
+        UsuarioBL ubl = new UsuarioBL();
+        Usuario u2 = new Usuario();
+        ubl.merge(u2);
+        
+        VehiculoBL vbl = new VehiculoBL();
+        Vehiculo v2 = new Vehiculo();
+        vbl.merge(v2);
     }
 }
 
