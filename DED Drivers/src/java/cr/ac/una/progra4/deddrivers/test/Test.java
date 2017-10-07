@@ -60,10 +60,10 @@ public class Test {
 //    ServicioDAO sdao = new ServicioDAO();
         
 ////////////////////////////// BLs //////////////////////////////
-    ChoferBL cbl = new ChoferBL();
-    UsuarioBL ubl = new UsuarioBL();
-    VehiculoBL vbl = new VehiculoBL();      
-    ServicioBL sbl = new ServicioBL();
+//    ChoferBL cbl = new ChoferBL();
+//    UsuarioBL ubl = new UsuarioBL();
+//    VehiculoBL vbl = new VehiculoBL();      
+//    ServicioBL sbl = new ServicioBL();
     
 ////////////////////////////// Save DAOs //////////////////////////////
 //    cdao.save(c);
