@@ -5,21 +5,18 @@
  */
 package cr.ac.una.progra4.deddrivers.dao;
 
-import cr.ac.una.progra4.deddrivers.domain.Chofer;
+import cr.ac.una.progra4.deddrivers.domain.Usuario;
 import cr.ac.una.progra4.deddrivers.utils.HibernateUtil;
-import java.util.Date;
 import java.util.List;
-import java.util.Set;
 import org.hibernate.HibernateException;
 
 /**
  *
  * @author Daniel
  */
-public class ChoferDAO extends HibernateUtil implements cr.ac.una.progra4.deddrivers.dao.IBaseDAO<Chofer, Integer>{
-
+public class UsuarioDAO extends HibernateUtil implements cr.ac.una.progra4.deddrivers.dao.IBaseDAO<Usuario, Integer>{
     @Override
-    public void save(Chofer o) {
+    public void save(Usuario o) {
            try {
             iniciaOperacion();
             getSesion().save(o);
@@ -33,10 +30,10 @@ public class ChoferDAO extends HibernateUtil implements cr.ac.una.progra4.deddri
     }
 
     @Override
-    public Chofer merge(Chofer o) throws HibernateException {
+    public Usuario merge(Usuario o) {
         try {
             iniciaOperacion();
-            o = (Chofer) getSesion().merge(o);
+            o = (Usuario) getSesion().merge(o);
             getTransac().commit();
         } catch (HibernateException he) {
             manejaExcepcion(he);
@@ -48,7 +45,7 @@ public class ChoferDAO extends HibernateUtil implements cr.ac.una.progra4.deddri
     }
 
     @Override
-    public void delete(Chofer o) {
+    public void delete(Usuario o) {
         try {
             iniciaOperacion();
             getSesion().delete(o);
@@ -62,12 +59,12 @@ public class ChoferDAO extends HibernateUtil implements cr.ac.una.progra4.deddri
     }
 
     @Override
-    public Chofer findById(Integer id) {
-        Chofer chofer = null;
+    public Usuario findById(Integer id) {
+        Usuario chofer = null;
 
         try {
             iniciaOperacion();
-            chofer = (Chofer) getSesion().get(Chofer.class, id);
+            chofer = (Usuario) getSesion().get(Usuario.class, id);
         } finally {
             getSesion().close();
         }
@@ -75,15 +72,15 @@ public class ChoferDAO extends HibernateUtil implements cr.ac.una.progra4.deddri
     }
 
     @Override
-    public List<Chofer> findAll() {
-        List<Chofer> listaChofer;
+    public List<Usuario> findAll() {
+        List<Usuario> listaUsuario;
         try {
             iniciaOperacion();//HQL
-            listaChofer = getSesion().createQuery("from Chofer").list();
+            listaUsuario = getSesion().createQuery("from Usuario").list();
         } finally {
             getSesion().close();
         }
 
-        return listaChofer;
+        return listaUsuario;
     }
 }

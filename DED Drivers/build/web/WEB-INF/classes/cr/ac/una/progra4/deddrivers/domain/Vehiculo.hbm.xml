@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 5, 2017 12:50:01 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cr.ac.una.progra4.deddrivers.domain.Vehiculo" table="vehiculo" catalog="basetransporte" optimistic-lock="version">
+        <id name="idVehiculo" type="int">
+            <column name="idVehiculo" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="chofer" class="cr.ac.una.progra4.deddrivers.domain.Chofer" fetch="select">
+            <column name="idChofer" not-null="true" />
+        </many-to-one>
+        <property name="anno" type="int">
+            <column name="anno" not-null="true" />
+        </property>
+        <property name="modelo" type="string">
+            <column name="modelo" length="45" />
+        </property>
+        <property name="placa" type="string">
+            <column name="placa" length="45" />
+        </property>
+        <property name="color" type="string">
+            <column name="color" length="45" />
+        </property>
+        <property name="puntuacion" type="int">
+            <column name="puntuacion" not-null="true" />
+        </property>
+        <property name="estado" type="java.lang.Byte">
+            <column name="estado" />
+        </property>
+        <property name="ubicacionActual" type="string">
+            <column name="ubicacionActual" length="45" />
+        </property>
+        <property name="ultimoUsuario" type="string">
+            <column name="ultimoUsuario" length="45" />
+        </property>
+        <property name="ultimaFecha" type="timestamp">
+            <column name="ultimaFecha" length="19" />
+        </property>
+        <set name="servicios" table="servicio" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idVehiculo" not-null="true" />
+            </key>
+            <one-to-many class="cr.ac.una.progra4.deddrivers.domain.Servicio" />
+        </set>
+    </class>
+</hibernate-mapping>

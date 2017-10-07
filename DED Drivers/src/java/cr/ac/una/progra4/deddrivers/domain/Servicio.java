@@ -19,10 +19,10 @@ public class Servicio  implements java.io.Serializable {
      private Date horaLlegada;
      private Date horaSalida;
      private int duracion;
-     private Float costo;
+     private float costo;
      private int idRetroalimentacion;
      private Date fechaRealizado;
-     private Integer puntuacion;
+     private int puntuacion;
      private String comentario;
      private String ultimoUsuario;
      private Date ultimaFecha;
@@ -38,7 +38,7 @@ public class Servicio  implements java.io.Serializable {
         this.duracion = duracion;
         this.idRetroalimentacion = idRetroalimentacion;
     }
-    public Servicio(int idServicio, Usuario usuario, Vehiculo vehiculo, Serializable puntoLlegada, Serializable puntoSalida, Date horaLlegada, Date horaSalida, int duracion, Float costo, int idRetroalimentacion, Date fechaRealizado, Integer puntuacion, String comentario, String ultimoUsuario, Date ultimaFecha) {
+    public Servicio(int idServicio, Usuario usuario, Vehiculo vehiculo, Serializable puntoLlegada, Serializable puntoSalida, Date horaLlegada, Date horaSalida, int duracion, float costo, int idRetroalimentacion, Date fechaRealizado, int puntuacion, String comentario, String ultimoUsuario, Date ultimaFecha) {
        this.idServicio = idServicio;
        this.usuario = usuario;
        this.vehiculo = vehiculo;
@@ -112,11 +112,11 @@ public class Servicio  implements java.io.Serializable {
     public void setDuracion(int duracion) {
         this.duracion = duracion;
     }
-    public Float getCosto() {
+    public float getCosto() {
         return this.costo;
     }
     
-    public void setCosto(Float costo) {
+    public void setCosto(float costo) {
         this.costo = costo;
     }
     public int getIdRetroalimentacion() {
@@ -133,11 +133,11 @@ public class Servicio  implements java.io.Serializable {
     public void setFechaRealizado(Date fechaRealizado) {
         this.fechaRealizado = fechaRealizado;
     }
-    public Integer getPuntuacion() {
+    public int getPuntuacion() {
         return this.puntuacion;
     }
     
-    public void setPuntuacion(Integer puntuacion) {
+    public void setPuntuacion(int puntuacion) {
         this.puntuacion = puntuacion;
     }
     public String getComentario() {
