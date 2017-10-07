@@ -7,6 +7,7 @@ package cr.ac.una.progra4.deddrivers.test;
 
 ////////////////////////////// Clases //////////////////////////////
 import cr.ac.una.progra4.deddrivers.domain.Chofer;
+<<<<<<< HEAD
 import cr.ac.una.progra4.deddrivers.domain.Servicio;
 import cr.ac.una.progra4.deddrivers.domain.Usuario;
 import cr.ac.una.progra4.deddrivers.domain.Vehiculo;
@@ -24,6 +25,17 @@ import cr.ac.una.progra4.deddrivers.bl.UsuarioBL;
 import cr.ac.una.progra4.deddrivers.bl.VehiculoBL;
 
 import java.io.Serializable;
+=======
+import cr.ac.una.progra4.deddrivers.bl.ServicioBL;
+import cr.ac.una.progra4.deddrivers.bl.UsuarioBL;
+import cr.ac.una.progra4.deddrivers.bl.VehiculoBL;
+import cr.ac.una.progra4.deddrivers.dao.ServicioDAO;
+import cr.ac.una.progra4.deddrivers.dao.UsuarioDAO;
+import cr.ac.una.progra4.deddrivers.dao.VehiculoDAO;
+import cr.ac.una.progra4.deddrivers.domain.Servicio;
+import cr.ac.una.progra4.deddrivers.domain.Usuario;
+import cr.ac.una.progra4.deddrivers.domain.Vehiculo;
+>>>>>>> 1408d49c7b344e8a113f9f86d6bf331768fbed59
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -59,6 +71,7 @@ public class Test {
 //    VehiculoDAO vdao = new VehiculoDAO();
 //    ServicioDAO sdao = new ServicioDAO();
         
+<<<<<<< HEAD
 ////////////////////////////// BLs //////////////////////////////
 //    ChoferBL cbl = new ChoferBL();
 //    UsuarioBL ubl = new UsuarioBL();
@@ -111,6 +124,35 @@ public class Test {
 //    cbl.delete(c);
 //    ubl.delete(u);
 
+=======
+        ServicioDAO sdao = new ServicioDAO();
+        Servicio s1 = new Servicio();
+        sdao.merge(s1);
+        
+        UsuarioDAO udao = new UsuarioDAO();
+        Usuario u1 = new Usuario();
+        udao.merge(u1);
+        
+        VehiculoDAO vdao = new VehiculoDAO();
+        Vehiculo v1 = new Vehiculo();
+        vdao.merge(v1);
+        
+        ChoferBL cbl = new ChoferBL();
+        Chofer c2 = new Chofer();
+        cbl.merge(c2);
+        
+        ServicioBL sbl = new ServicioBL();
+        Servicio s2 = new Servicio();
+        sbl.merge(s2);
+        
+        UsuarioBL ubl = new UsuarioBL();
+        Usuario u2 = new Usuario();
+        ubl.merge(u2);
+        
+        VehiculoBL vbl = new VehiculoBL();
+        Vehiculo v2 = new Vehiculo();
+        vbl.merge(v2);
+>>>>>>> 1408d49c7b344e8a113f9f86d6bf331768fbed59
     }
 }
 
