@@ -35,11 +35,16 @@ public class ChoferBL extends BaseBL implements IBaseBL<Chofer, Integer>{
 
     @Override
     public Chofer findById(Integer o) {
-        return (Chofer) this.getDao(o.getClass().getName()).findById(o);
+        return (Chofer) this.getDao(Chofer.class.getName()).findById(o);
     }
 
     @Override
     public List<Chofer> findAll(String className) {
         return this.getDao(className).findAll();
+    }
+    
+    public List<Chofer> findByName(String name) {
+        ChoferDAO pdao = new ChoferDAO();
+        return pdao.findByName(name);
     }
 }

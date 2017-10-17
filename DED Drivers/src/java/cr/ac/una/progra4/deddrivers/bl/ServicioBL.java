@@ -35,7 +35,7 @@ public class ServicioBL extends BaseBL implements IBaseBL<Servicio, Integer>{
 
     @Override
     public Servicio findById(Integer o) {
-        return (Servicio) this.getDao(o.getClass().getName()).findById(o);
+        return (Servicio) this.getDao(Servicio.class.getName()).findById(o);
     }
 
     @Override

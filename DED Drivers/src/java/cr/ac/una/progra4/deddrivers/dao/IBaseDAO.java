@@ -7,10 +7,6 @@ package cr.ac.una.progra4.deddrivers.dao;
 
 import java.util.List;
 
-/**
- *
- * @author chgari
- */
 public interface IBaseDAO <T,K> {
     public abstract void save (T o);
     public abstract T merge (T o);

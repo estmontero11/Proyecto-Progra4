@@ -35,7 +35,7 @@ public class VehiculoBL extends BaseBL implements IBaseBL<Vehiculo, Integer>{
 
     @Override
     public Vehiculo findById(Integer o) {
-        return (Vehiculo) this.getDao(o.getClass().getName()).findById(o);
+        return (Vehiculo) this.getDao(Vehiculo.class.getName()).findById(o);
     }
 
     @Override

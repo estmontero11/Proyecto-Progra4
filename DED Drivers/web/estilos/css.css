@@ -193,6 +193,7 @@ footer {
 
     color: white;
     font-size: 15px;
+    height: 100px;
 }
 
 #amarillo{
@@ -244,7 +245,7 @@ footer {
 /*Comienza el Cuerpo*/
 .cuerpo{
     position: relative;
-    margin-top: 202px;
+    margin-top: 200px;
     font-size: 15px;
 }
 /*Termina el Cuerpo*/
@@ -252,4 +253,34 @@ footer {
 /*especificacion de letra*/
 .raleway{
     font-family: 'Orbitron', sans-serif;
+}
+
+.height25{
+    height: 25px;
+}
+
+.hiddenDiv{
+    display: none;
+}
+
+.modal-body {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+}
+
+.navbar{
+    height: 180px;
+}
+
+.footer{
+    height: 100px;
+}
+
+nav.navbar.footer{
+    border-bottom: 0px;
+    margin-bottom: 0px; 
+}
+
+#accordion{
+    margin-bottom: 25px;
 }

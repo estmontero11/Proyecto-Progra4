@@ -26,6 +26,7 @@ import cr.ac.una.progra4.deddrivers.bl.VehiculoBL;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -54,16 +55,16 @@ public class Test {
     v.setServicios(servicios);
     
 ////////////////////////////// DAOs //////////////////////////////
-//    ChoferDAO cdao = new ChoferDAO();
-//    UsuarioDAO udao = new UsuarioDAO();
-//    VehiculoDAO vdao = new VehiculoDAO();
-//    ServicioDAO sdao = new ServicioDAO();
+    ChoferDAO cdao = new ChoferDAO();
+    UsuarioDAO udao = new UsuarioDAO();
+    VehiculoDAO vdao = new VehiculoDAO();
+    ServicioDAO sdao = new ServicioDAO();
         
 ////////////////////////////// BLs //////////////////////////////
-//    ChoferBL cbl = new ChoferBL();
-//    UsuarioBL ubl = new UsuarioBL();
-//    VehiculoBL vbl = new VehiculoBL();      
-//    ServicioBL sbl = new ServicioBL();
+    ChoferBL cbl = new ChoferBL();
+    UsuarioBL ubl = new UsuarioBL();
+    VehiculoBL vbl = new VehiculoBL();      
+    ServicioBL sbl = new ServicioBL();
     
 ////////////////////////////// Save DAOs //////////////////////////////
 //    cdao.save(c);
@@ -81,12 +82,24 @@ public class Test {
 //    udao.merge(u);
 //    vdao.merge(v);
 //    sdao.merge(s);
-    
+
 ////////////////////////////// Delete Daos//////////////////////////////
 //    sdao.delete(s);
 //    vdao.delete(v);
 //    cdao.delete(c);
 //    udao.delete(u);
+
+////////////////////////////// FindById DAOs //////////////////////////////
+//    Vehiculo vid = vdao.findById(123);
+//    Servicio sid = sdao.findById(123);
+//    Chofer cid = cdao.findById(123);
+//    Usuario uid = udao.findById(123);
+
+////////////////////////////// FindAll DAOs //////////////////////////////
+//    List <Vehiculo> vall = vdao.findAll();
+//    List <Servicio> sall = sdao.findAll();
+//    List <Chofer> call = cdao.findAll();
+//    List <Usuario> uall = udao.findAll();
 
 ////////////////////////////// Save BLs //////////////////////////////
 //    cbl.save(c);
@@ -110,6 +123,18 @@ public class Test {
 //    sbl.delete(s);
 //    cbl.delete(c);
 //    ubl.delete(u);
+
+////////////////////////////// FindById BLs //////////////////////////////
+//    Vehiculo vid = vbl.findById(123);
+//    Servicio sid = sbl.findById(123);
+//    Chofer cid = cbl.findById(123);
+//    Usuario uid = ubl.findById(123);
+
+////////////////////////////// FindAll BLs //////////////////////////////
+//    List <Vehiculo> vall = vbl.findAll("cr.ac.una.progra4.deddrivers.domain.Vehiculo");
+//    List <Servicio> sall = sbl.findAll("cr.ac.una.progra4.deddrivers.domain.Servicio");
+//    List <Chofer> call = cbl.findAll("cr.ac.una.progra4.deddrivers.domain.Chofer");
+//    List <Usuario> uall = ubl.findAll("cr.ac.una.progra4.deddrivers.domain.Usuario");
     }
 }
 

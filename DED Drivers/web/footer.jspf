@@ -1,0 +1,33 @@
+<%-- 
+    Document   : footer
+    Created on : Oct 16, 2017, 5:12:45 PM
+    Author     : Daniel
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<footer class="footer p-t-1">
+    <div class="container footer">
+        <div class="pull-right footer">
+            <nav class="navbar footer">
+                <br>
+                <nav class="nav navbar-nav pull-xs-left">
+                    <a id="amarillo" class="nav-item nav-link" href="index.html">Home / </a>
+                    <a id="amarillo" class="nav-item nav-link" href="aboutUs.html">About Us / </a>
+                    <a id="amarillo" class="nav-item nav-link" href="contact.html">Contact Us</a>
+                </nav>
+            </nav>
+        </div>
+
+        <br>
+        <a id="amarillo" ><i class="fa fa-facebook-official fa-2x"></i></a>
+        <a id="amarillo" ><i class="fa fa-pinterest-p fa-2x"></i></a>
+        <a id="amarillo" ><i class="fa fa-twitter fa-2x"></i></a>
+        <a id="amarillo" ><i class="fa fa-flickr fa-2x"></i></a>
+        <a id="amarillo" ><i class="fa fa-linkedin fa-2x"></i></a>
+
+        <p class="h6">
+            © 2017 - Derechos reservados. Diseño Web: Daniel Zamora García, Esteban Montero Fonseca y Daniel Gutierrez Gutierrez.
+        </p>
+    </div>
+</footer> 

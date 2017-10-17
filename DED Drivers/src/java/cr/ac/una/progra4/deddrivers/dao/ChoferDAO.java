@@ -86,4 +86,16 @@ public class ChoferDAO extends HibernateUtil implements cr.ac.una.progra4.deddri
 
         return listaChofer;
     }
+    
+    public List<Chofer> findByName(String name) {
+        List<Chofer> listaChoferes;
+        
+        try {
+            iniciaOperacion();
+            listaChoferes = getSesion().createQuery("from Chofer where nombre like '%%%"+ name +"%%'").list();
+        } finally {
+            getSesion().close();
+        }
+        return listaChoferes;
+    }
 }

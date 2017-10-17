@@ -34,43 +34,18 @@ and open the template in the editor.
         
         
     </head>
+    <!--Titulo y Barra de navegacion-->
+    <header>
+        <%@include file="navbar.jspf" %>
+    </header>
+    <!--Termina titulo y barra de navegacion-->
     <body>
         <div>
-            <!--Titulo y Barra de navegacion-->
-
-            <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="todoNegro">
-                <div class="header-top">
-                    <div class="container">
-                        <h1 class="header-text">DED DRIVERS.</h1>
-                    </div>
-                </div>
-                <br>
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="index.html">DED Drivers</a>
-                    </div>
-                    <div class="collapse navbar-collapse">
-                        <ul class="nav navbar-nav">
-                            <li><a href="index.html"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                            <li><a href="aboutUs.html"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
-                            <li class="active"><a href="contact.html"><span class="glyphicon glyphicon-envelope"></span> Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!--Termina titulo y barra de navegacion-->
-            
             <!-- Comienza el Texto -->
             <div class="container cuerpo">
                 Para cualquier consulta, disconformidad o sugerencia se puede contactar con nosotros por los siguientes medios: <br>
                 <ul>
-                    <li>Linea atención al cliente al (506)800-23452345</li>
+                    <li>Linea atenci�n al cliente al (506)800-23452345</li>
                     <li>Via correo electronico llenando el siguiente formulario:</li>
                 </ul>
             </div>
@@ -104,36 +79,9 @@ and open the template in the editor.
                     </div>
                 </form>
             </div>
-            <br>
-            <!-- Termina el Formulario -->
-            <!--Empieza el footer-->
-            <footer class="footer p-t-1">
-                <div class="container">
-                    <div class="pull-right">
-                        <nav class="navbar">
-                            <br>
-                            <nav class="nav navbar-nav pull-xs-left">
-                                <a id="amarillo" class="nav-item nav-link" href="index.html">Home / </a>
-                                <a id="amarillo" class="nav-item nav-link" href="aboutUs.html">About Us / </a>
-                                <a id="amarillo" class="nav-item nav-link" href="contact.html">Contact Us</a>
-                            </nav>
-                        </nav>
-                    </div>
-
-                    <br>
-                    <a id="amarillo" ><i class="fa fa-facebook-official fa-2x"></i></a>
-                    <a id="amarillo" ><i class="fa fa-pinterest-p fa-2x"></i></a>
-                    <a id="amarillo" ><i class="fa fa-twitter fa-2x"></i></a>
-                    <a id="amarillo" ><i class="fa fa-flickr fa-2x"></i></a>
-                    <a id="amarillo" ><i class="fa fa-linkedin fa-2x"></i></a>
-
-                    <p class="h6">
-                        © 2017 - Derechos reservados. Diseño Web: Daniel Zamora García, Esteban Montero Fonseca y Daniel Gutierrez Gutierrez.
-                    </p>
-                </div>
-            </footer> 
-           
-            <!--Termina el footer-->
         </div>
     </body>
+    <footer>
+        <%@include file="footer.jspf" %>
+    </footer>
 </html>
