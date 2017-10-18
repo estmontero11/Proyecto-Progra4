@@ -78,7 +78,8 @@ public class VehiculoServlet extends HttpServlet{
                     
                 case "consultarVehiculoByName":
                     //se consulta las personas por Name
-                    json = new Gson().toJson(cBL.findByName((request.getParameter("nameVehiculo"))));
+                    //revisar
+                    json = new Gson().toJson(cBL.findByName(Integer.parseInt(request.getParameter("nameVehiculo"))));
                     out.print(json);
                     break;
                     
