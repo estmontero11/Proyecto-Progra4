@@ -43,9 +43,9 @@ public class VehiculoBL extends BaseBL implements IBaseBL<Vehiculo, Integer>{
         return this.getDao(className).findAll();
     }
     
-    public List<Vehiculo> findByName(int placa)
+    public List<Vehiculo> findByName(int id)
     {
     VehiculoDAO pdao = new VehiculoDAO();
-    return pdao.findByName(placa);
+    return pdao.findByName(id);
     }
 }

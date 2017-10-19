@@ -124,10 +124,10 @@
                                 <input type="text" class="form-control" id="ubicacionActual" placeholder="ubicacionActual">
                             </div>
                             
-                            <div class="form-group" id="groupIdChofer">
+                            <!--<div class="form-group" id="groupIdChofer">
                                 <label for="idChofer">Id Chofer:</label>
                                 <input type="text" class="form-control" id="idChofer" placeholder="idChofer">
-                            </div>
+                            </div>-->
                             
                             <div class="form-group">
                                 <input type="hidden" value="agregarVehiculo" id="vehiculoAction"/>

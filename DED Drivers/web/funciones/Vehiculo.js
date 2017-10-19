@@ -71,7 +71,7 @@ function dibujarTabla(dataJson) {
     row.append($("<th><b>PUNTUACION</b></th>"));
     row.append($("<th><b>ESTADO</th>"));
     row.append($("<th><b>UBICACION ACTUAL</th>"));
-    row.append($("<th><b>ID CHOFER</th>"));
+    //row.append($("<th><b>ID CHOFER</th>"));
     
     //carga la tabla con el json devuelto
     for (var i = 0; i < dataJson.length; i++) {
@@ -93,8 +93,7 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.puntuacion + "</td>"));
     row.append($("<td>" + rowData.estado + "</td>"));
     row.append($("<td>" + rowData.ubicacionActual + "</td>"));
-    row.append($("<td>" + rowData.idChofer + "</td>"));
-    row.append($("<td>" + rowData.estado + "</td>"));
+    //row.append($("<td>" + rowData.idChofer + "</td>"));
     row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="consultarVehiculoById('+rowData.idVehiculo+');">'+
                         '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'+
                     '</button>'+
@@ -123,8 +122,8 @@ function enviar() {
                 color: $("#color").val(),
                 puntuacion: $("#puntuacion").val(),
                 estado: $("#estado").val(),
-                ubicacionActual: $("#ubicacionActual").val(),
-                idChofer: $("#idChofer").val()
+                ubicacionActual: $("#ubicacionActual").val()
+               //idChofer: $("#idChofer").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
@@ -165,12 +164,12 @@ function validar() {
     $("#groupPuntuacion").removeClass("has-error");
     $("#groupEstado").removeClass("has-error");
     $("#groupUbicacionActual").removeClass("has-error");
-    $("#groupIdChofer").removeClass("has-error");
+   // $("#groupIdChofer").removeClass("has-error");
 
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitados
     if ($("#idVehiculo").val() === "") {
-        $("#groupId").addClass("has-error");
+        $("#groupIdVehiculo").addClass("has-error");
         validacion = false;
     }
     if ($("#anno").val() === "") {
@@ -201,10 +200,10 @@ function validar() {
         $("#groupUbicacionActual").addClass("has-error");
         validacion = false;
     }
-    if ($("#idChofer").val() === "") {
+    /*if ($("#idChofer").val() === "") {
         $("#groupIdChofer").addClass("has-error");
         validacion = false;
-    }
+    }*/
 
     return validacion;
 }
@@ -285,7 +284,7 @@ function consultarVehiculoById(idVehiculo) {
             $("#puntuacion").val(data.puntuacion);
             $("#estado").val(data.estado);
             $("ubicacionActual").val(data.ubicacionActual);
-            $("#idChofer").val(data.idChofer);
+            //$("#idChofer").val(data.idChofer);
            
         },
         type: 'POST',

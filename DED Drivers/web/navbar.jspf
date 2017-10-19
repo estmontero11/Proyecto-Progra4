@@ -23,6 +23,7 @@
                 <li><a href="aboutUs.jsp"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
                 <li><a href="contact.jsp"><span class="glyphicon glyphicon-envelope"></span> Contact</a></li>
                 <li><a href="mantChoferes.jsp"><span class="glyphicon glyphicon-info-sign"></span> Mantener Choferes</a></li>
+                <li><a href="mantVehiculos.jsp"><span class="glyphicon glyphicon-info-sign"></span> Mantener Vehiculos</a></li>
             </ul>
         </div>
     </div>

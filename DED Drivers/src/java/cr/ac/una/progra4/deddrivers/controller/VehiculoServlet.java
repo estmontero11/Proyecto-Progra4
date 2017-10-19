@@ -51,12 +51,12 @@ public class VehiculoServlet extends HttpServlet{
             //**********************************************************************
             String accion = request.getParameter("accion");
             switch (accion) {
-                case "consultarChoferes":
+                case "consultarVehiculos":
                     json = new Gson().toJson(cBL.findAll(Vehiculo.class.getName()));
                     out.print(json);
                     break;
                     
-                case "eliminarChofer":
+                case "eliminarVehiculo":
                         c.setIdVehiculo(Integer.parseInt(request.getParameter("idVehiculo")));
                     
                         //Se elimina el objeto
@@ -94,7 +94,7 @@ public class VehiculoServlet extends HttpServlet{
                     c.setPuntuacion(Integer.parseInt(request.getParameter("puntuacion")));
                     c.setEstado(Byte.parseByte(request.getParameter("estado")));
                     c.setUbicacionActual(request.getParameter("ubicacionActual"));
-                    c.setIdChofer((request.getParameter("idChofer")));
+                    //c.setChofer((request.getParameter("idChofer")));
                     
                     if(accion.equals("agregarVehiculo")){ //es insertar personas
                         //Se guarda el objeto

@@ -8,11 +8,25 @@
     <servlet>
         <servlet-name>ChoferServlet</servlet-name>
         <servlet-class>cr.ac.una.progra4.deddrivers.controller.ChoferServlet</servlet-class>
+        
     </servlet>
+    
+    <servlet>
+        <servlet-name>VehiculoServlet</servlet-name>
+        <servlet-class>cr.ac.una.progra4.deddrivers.controller.VehiculoServlet</servlet-class>
+    </servlet>
+    
+    
     
     <servlet-mapping>
         <servlet-name>ChoferServlet</servlet-name>
         <url-pattern>/ChoferServlet</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet-mapping>
+        <servlet-name>VehiculoServlet</servlet-name>
+        <url-pattern>/VehiculoServlet</url-pattern>
     </servlet-mapping>
     
     <session-config>

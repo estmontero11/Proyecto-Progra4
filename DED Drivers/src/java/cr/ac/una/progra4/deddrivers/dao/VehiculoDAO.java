@@ -84,11 +84,11 @@ public class VehiculoDAO extends HibernateUtil implements cr.ac.una.progra4.dedd
         return listaVehiculo;
     }
     
-    public List <Vehiculo> findByName(int placa){
+    public List<Vehiculo> findByName(int id){
     List<Vehiculo> listaVehiculos;
     try {
     iniciaOperacion();
-    listaVehiculos = getSesion().createQuery("from Vehiculo where placa like '%%%'"+ placa + "%%'").list();
+    listaVehiculos = getSesion().createQuery("from Vehiculo where id like '%%%"+ id +"%%'").list();
     } finally{
     getSesion().close();
     }
