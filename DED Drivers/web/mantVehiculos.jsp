@@ -32,7 +32,7 @@
         !-- ********************************************************** -->
         <!-- Script's de Vehiculos -->
         <!-- ********************************************************** -->
-        <script src="funciones/Vehiculo.js" type="text/javascript"></script>
+        <script src="funciones/VehiculoJS.js" type="text/javascript"></script>
 
         <!--Estilo de la fuente-->
         <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet"> 
@@ -152,16 +152,15 @@
 
         <div class="container cuerpo">
             <div class="page-header">
-                <h1>Agenda <small>Sistema para la administración de contáctos</small></h1>
+                <h1><center>Modulo de mantenimiento de vehiculos</center></h1>
             </div>
             
             <!-- PANEL DEL MANTENIMIENTO DE Vehiculo -->
             
             <div class="panel panel-primary">
-                <div class="panel-heading"><h3>Mantenimiento de Vehiculos</h3></div>
                 <div class="panel-body">
                     <center>
-                        <button type="button" class="btn btn-primary centered" data-toggle="modal" data-target="#myModalFormulario" id="btMostarForm">Insertar Vehiculo</button>
+                        <button type="button" class="btn btn-primary boton" data-toggle="modal" data-target="#myModalFormulario" id="btMostarForm">Insertar Vehiculo</button>
                     </center><br>
                     <!-- ********************************************************** -->
                     <div class="col-sm-12">
@@ -174,7 +173,7 @@
                                     <input type="text" class="form-control" id="textoBuscar" placeholder="Digite el id del Vehiculo">
                                 </div>
                                 <div class="col-sm-4">
-                                    <button type="button" class="btn btn-info centered" id="buscar">
+                                    <button type="button" class="btn btn-primary boton" id="buscar">
                                         Buscar <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                 </div>
@@ -188,6 +187,7 @@
             </div> 
         </div>
     </body>
+    <div class="height38"></div>
     <footer>
         <%@include file="footer.jspf" %>
     </footer>
