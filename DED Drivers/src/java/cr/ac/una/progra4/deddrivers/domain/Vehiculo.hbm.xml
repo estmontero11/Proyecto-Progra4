@@ -8,9 +8,6 @@
             <column name="idVehiculo" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="chofer" class="cr.ac.una.progra4.deddrivers.domain.Chofer" fetch="select">
-            <column name="idChofer" not-null="true" />
-        </many-to-one>
         <property name="anno" type="int">
             <column name="anno" not-null="true" />
         </property>
@@ -32,17 +29,14 @@
         <property name="ubicacionActual" type="string">
             <column name="ubicacionActual" length="45" />
         </property>
+        <property name="idChofer" type="int">
+            <column name="idChofer" not-null="true" />
+        </property>
         <property name="ultimoUsuario" type="string">
             <column name="ultimoUsuario" length="45" />
         </property>
         <property name="ultimaFecha" type="timestamp">
             <column name="ultimaFecha" length="19" />
         </property>
-        <set name="servicios" table="servicio" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="idVehiculo" not-null="true" />
-            </key>
-            <one-to-many class="cr.ac.una.progra4.deddrivers.domain.Servicio" />
-        </set>
     </class>
 </hibernate-mapping>

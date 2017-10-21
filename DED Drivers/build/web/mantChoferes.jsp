@@ -164,7 +164,7 @@
 
         <div class="container cuerpo">
             <div class="page-header">
-                <h1><center>Sistema de mantenimiento de choferes</center></h1>
+                <h1><center>Modulo de mantenimiento de choferes</center></h1>
             </div>
             <!-- PANEL DEL MANTENIMIENTO DE Choferes -->
             

@@ -14,7 +14,7 @@ public class Vehiculo  implements java.io.Serializable {
 
 
      private int idVehiculo;
-     private Chofer chofer;
+     private int idChofer;
      private int anno;
      private String modelo;
      private String placa;
@@ -30,15 +30,15 @@ public class Vehiculo  implements java.io.Serializable {
     }
 
 	
-    public Vehiculo(int idVehiculo, Chofer chofer, int anno, int puntuacion) {
+    public Vehiculo(int idVehiculo, int idChofer, int anno, int puntuacion) {
         this.idVehiculo = idVehiculo;
-        this.chofer = chofer;
+        this.idChofer = idChofer;
         this.anno = anno;
         this.puntuacion = puntuacion;
     }
-    public Vehiculo(int idVehiculo, Chofer chofer, int anno, String modelo, String placa, String color, int puntuacion, Byte estado, String ubicacionActual, String ultimoUsuario, Date ultimaFecha, Set servicios) {
+    public Vehiculo(int idVehiculo, int idChofer, int anno, String modelo, String placa, String color, int puntuacion, Byte estado, String ubicacionActual, String ultimoUsuario, Date ultimaFecha, Set servicios) {
        this.idVehiculo = idVehiculo;
-       this.chofer = chofer;
+       this.idChofer = idChofer;
        this.anno = anno;
        this.modelo = modelo;
        this.placa = placa;
@@ -58,12 +58,12 @@ public class Vehiculo  implements java.io.Serializable {
     public void setIdVehiculo(int idVehiculo) {
         this.idVehiculo = idVehiculo;
     }
-    public Chofer getChofer() {
-        return this.chofer;
+    public int getIdChofer() {
+        return this.idChofer;
     }
     
-    public void setChofer(Chofer chofer) {
-        this.chofer = chofer;
+    public void setIdChofer(int idChofer) {
+        this.idChofer = idChofer;
     }
     public int getAnno() {
         return this.anno;
@@ -135,10 +135,4 @@ public class Vehiculo  implements java.io.Serializable {
     public void setServicios(Set servicios) {
         this.servicios = servicios;
     }
-
-
-
-
 }
-
-

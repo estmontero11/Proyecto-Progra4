@@ -94,7 +94,7 @@ public class VehiculoServlet extends HttpServlet{
                     c.setPuntuacion(Integer.parseInt(request.getParameter("puntuacion")));
                     c.setEstado(Byte.parseByte(request.getParameter("estado")));
                     c.setUbicacionActual(request.getParameter("ubicacionActual"));
-                    //c.setChofer((request.getParameter("idChofer")));
+                    c.setIdChofer(Integer.parseInt(request.getParameter("idChofer")));
                     
                     if(accion.equals("agregarVehiculo")){ //es insertar personas
                         //Se guarda el objeto
@@ -160,7 +160,5 @@ public class VehiculoServlet extends HttpServlet{
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
-
-  
+    }// </editor-fold> 
 }
