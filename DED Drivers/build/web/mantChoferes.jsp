@@ -164,29 +164,27 @@
 
         <div class="container cuerpo">
             <div class="page-header">
-                <h1>Agenda <small>Sistema para la administración de contáctos</small></h1>
+                <h1><center>Sistema de mantenimiento de choferes</center></h1>
             </div>
-            
             <!-- PANEL DEL MANTENIMIENTO DE Choferes -->
             
             <div class="panel panel-primary">
-                <div class="panel-heading"><h3>Mantenimiento de Choferes</h3></div>
                 <div class="panel-body">
                     <center>
-                        <button type="button" class="btn btn-primary centered" data-toggle="modal" data-target="#myModalFormulario" id="btMostarForm">Insertar Chofer</button>
+                        <button type="button" class="btn btn-centered boton" data-toggle="modal" data-target="#myModalFormulario" id="btMostarForm">Insertar Chofer</button>
                     </center><br>
                     <!-- ********************************************************** -->
                     <div class="col-sm-12">
                         <form role="form" onsubmit="return false;" id="formChofer" class="form-horizontal centered">
                             <div class="form-group" id="groupBuscarCedula">
                                 <div class="col-sm-4" style="text-align: right; vertical-align: middle;">
-                                    <p><b>Buscar por nombre del chofer</b></p>
+                                    <p><b>Buscar por nombre del chofer:</b></p>
                                 </div>
                                 <div class="col-sm-4">
                                     <input type="text" class="form-control" id="textoBuscar" placeholder="Digite el nombre del chofer">
                                 </div>
                                 <div class="col-sm-4">
-                                    <button type="button" class="btn btn-info centered" id="buscar">
+                                    <button type="button" class="btn btn-centered boton" id="buscar">
                                         Buscar <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                 </div>
@@ -200,6 +198,7 @@
             </div> 
         </div>
     </body>
+    <div class="height38"></div>
     <footer>
         <%@include file="footer.jspf" %>
     </footer>

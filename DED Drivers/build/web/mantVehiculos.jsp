@@ -1,9 +1,14 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%-- 
+    Document   : mantVehiculos
+    Created on : 17/10/2017, 02:45:35 AM
+    Author     : esteban
+--%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Mantenimiento de choferes</title>
+        <title>Mantenimiento de Vehiculos</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <link href="estilos/bootstrap.min.css" rel="stylesheet" type="text/css"/>        
@@ -23,11 +28,11 @@
         <!-- Script's de UTILERIAS -->
         <!-- ********************************************************** -->
         <script src="funciones/utils.js" type="text/javascript"></script>
-
+        
+        !-- ********************************************************** -->
+        <!-- Script's de Vehiculos -->
         <!-- ********************************************************** -->
-        <!-- Script's de Choferes -->
-        <!-- ********************************************************** -->
-        <script src="funciones/ChoferJS.js" type="text/javascript"></script>
+        <script src="funciones/Vehiculo.js" type="text/javascript"></script>
 
         <!--Estilo de la fuente-->
         <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet"> 
@@ -37,14 +42,10 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     
     </head>
-    <!--Titulo y Barra de navegacion-->
     <header>
         <%@include file="navbar.jspf" %>
     </header>
-    <!--Termina titulo y barra de navegacion-->
     <body>
-            
-
         <!-- ********************************************************** -->
         <!-- ********************************************************** -->
         <!-- Modal del BootsTrap para mostrar mensajes                  -->
@@ -76,55 +77,40 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" id="myModalTitle">Insertar / Modificar Choferes
+                        <h4 class="modal-title" id="myModalTitle">Insertar / Modificar Vehiculos
                     </div>
                     <div class="modal-body" id="myModalMessage">
-                        <form role="form" onsubmit="return false;" id="formChofer">
-                            <div class="form-group" id="groupId">
-                                <label for="cedula">Id:</label>
-                                <input type="text" class="form-control" id="id" autofocus="true" placeholder="Id">
+                        <form role="form" onsubmit="return false;" id="formVehiculo">
+                            <div class="form-group" id="groupIdVehiculo">
+                                <label for="idVehiculo">IdVehiculo:</label>
+                                <input type="text" class="form-control" id="idVehiculo" autofocus="true" placeholder="IdVehiculo">
                             </div>
 
-                            <div class="form-group" id="groupNombre">
-                                <label for="nombre">Nombre:</label>
-                                <input type="text" class="form-control" id="nombre" placeholder="Nombre" >
+                            <div class="form-group" id="groupAnno">
+                                <label for="anno">Anno:</label>
+                                <input type="text" class="form-control" id="anno" placeholder="anno" >
                             </div>
 
-                            <div class="form-group" id="groupApellidos">
-                                <label for="apellidos">Apellidos:</label>
-                                <input type="text" class="form-control" id="apellidos" placeholder="Apellidos">
-                            </div>
-
-                            <div class="form-group" id="groupFechaNacimiento">
-                                <label for="dpFechaNacimiento">Fecha Nacimiento:</label>
-                                <div id="dpFechaNacimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
-                                    <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="dpFechaNacimientoText">
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
+                            <div class="form-group" id="groupModelo">
+                                <label for="modelo">Modelo:</label>
+                                <input type="text" class="form-control" id="modelo" placeholder="modelo">
                             </div>
                             
-                            <div class="form-group" id="groupFechaVencimiento">
-                                <label for="dpFechaVencimiento">Fecha Vencimiento:</label>
-                                <div id="dpFechaVencimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
-                                    <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="dpFechaVencimientoText">
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
+                            <div class="form-group" id="groupPlaca">
+                                <label for="placa">Placa:</label>
+                                <input type="text" class="form-control" id="placa" placeholder="placa">
                             </div>
-
-                            <div class="form-group" id="groupTipoLicencia">
-                                <label for="tipoLicencia">Tipo Licencia:</label>
-                                <select class="form-control" id="tipoLicencia">
-                                        <option value="B1" selected="selected">B1</option>
-                                        <option value="B2">B2</option>
-                                        <option value="B3">B3</option>
-                                        <option value="B4">B4</option>
-                                </select>
+                            
+                            <div class="form-group" id="groupColor">
+                                <label for="color">Color:</label>
+                                <input type="text" class="form-control" id="color" placeholder="color">
                             </div>
-
+                            
+                            <div class="form-group" id="groupPuntuacion">
+                                <label for="puntuacion">Puntuacion:</label>
+                                <input type="text" class="form-control" id="puntuacion" placeholder="puntuacion">
+                            </div>
+                            
                             <div class="form-group" id="groupEstado">
                                 <label for="estado">Estado (es el chofer del vehiculo):</label>
                                 <select class="form-control" id="estado">
@@ -133,16 +119,18 @@
                                 </select>
                             </div>
                             
-                            <div class="form-group" id="groupEsClienteTransportista">
-                                <label for="esClienteTransportista">Es Cliente Transportista:</label>
-                                <select class="form-control" id="esClienteTransportista">
-                                        <option value="0" selected="selected">No</option>
-                                        <option value="1">Si</option>
-                                </select>
+                            <div class="form-group" id="groupUbicacionActual">
+                                <label for="ubicacionActual">Ubicacion Actual:</label>
+                                <input type="text" class="form-control" id="ubicacionActual" placeholder="ubicacionActual">
                             </div>
                             
+                            <!--<div class="form-group" id="groupIdChofer">
+                                <label for="idChofer">Id Chofer:</label>
+                                <input type="text" class="form-control" id="idChofer" placeholder="idChofer">
+                            </div>-->
+                            
                             <div class="form-group">
-                                <input type="hidden" value="agregarChofer" id="choferAction"/>
+                                <input type="hidden" value="agregarVehiculo" id="vehiculoAction"/>
                                 <button type="submit" class="btn btn-primary" id="enviar">Guardar</button>
                                 <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>
                             </div>
@@ -164,27 +152,29 @@
 
         <div class="container cuerpo">
             <div class="page-header">
-                <h1><center>Sistema de mantenimiento de choferes</center></h1>
+                <h1>Agenda <small>Sistema para la administración de contáctos</small></h1>
             </div>
-            <!-- PANEL DEL MANTENIMIENTO DE Choferes -->
+            
+            <!-- PANEL DEL MANTENIMIENTO DE Vehiculo -->
             
             <div class="panel panel-primary">
+                <div class="panel-heading"><h3>Mantenimiento de Vehiculos</h3></div>
                 <div class="panel-body">
                     <center>
-                        <button type="button" class="btn btn-centered boton" data-toggle="modal" data-target="#myModalFormulario" id="btMostarForm">Insertar Chofer</button>
+                        <button type="button" class="btn btn-primary centered" data-toggle="modal" data-target="#myModalFormulario" id="btMostarForm">Insertar Vehiculo</button>
                     </center><br>
                     <!-- ********************************************************** -->
                     <div class="col-sm-12">
-                        <form role="form" onsubmit="return false;" id="formChofer" class="form-horizontal centered">
-                            <div class="form-group" id="groupBuscarCedula">
+                        <form role="form" onsubmit="return false;" id="formVehiculo" class="form-horizontal centered">
+                            <div class="form-group" id="groupBuscarIdVehiculo">
                                 <div class="col-sm-4" style="text-align: right; vertical-align: middle;">
-                                    <p><b>Buscar por nombre del chofer:</b></p>
+                                    <p><b>Buscar por id del Vehiculo</b></p>
                                 </div>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="textoBuscar" placeholder="Digite el nombre del chofer">
+                                    <input type="text" class="form-control" id="textoBuscar" placeholder="Digite el id del Vehiculo">
                                 </div>
                                 <div class="col-sm-4">
-                                    <button type="button" class="btn btn-centered boton" id="buscar">
+                                    <button type="button" class="btn btn-info centered" id="buscar">
                                         Buscar <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                 </div>
@@ -193,12 +183,11 @@
                     </div>
                     <!-- ********************************************************** -->
 
-                    <table class="table table-hover table-condensed" id="tablaChoferes"></table>
+                    <table class="table table-hover table-condensed" id="tablaVehiculos"></table>
                 </div>
             </div> 
         </div>
     </body>
-    <div class="height38"></div>
     <footer>
         <%@include file="footer.jspf" %>
     </footer>
