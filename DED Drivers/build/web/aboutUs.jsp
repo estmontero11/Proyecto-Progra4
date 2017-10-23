@@ -1,46 +1,31 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>About Us</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
         <!--CSS LOCAL-->
         <link href="estilos/css.css" rel="stylesheet" type="text/css"/>
 
         <!--Estilo de Bootstrap-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+        <link href="estilos/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="estilos/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
 
         <!--Estilo de la fuente-->
         <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet"> 
-
         <link href="https://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
-
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
         <!--Estilo de JQueryUI-->
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="/resources/demos/style.css">
-
-
-        <!--JS LOCAL-->
-        <script src="funciones/js.js" type="text/javascript"></script>
-
-
-        <!--JS de Boostrap-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="estilos/jquery-ui.css" rel="stylesheet" type="text/css"/>
         
-        <!--JS de JQueryUI-->
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <!--JS de JQueryUI--> 
+        <script src="funciones/jquery-3.2.1.min.js" type="text/javascript"></script>
+        <script src="funciones/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <!--JS de Boostrap-->
+        <script src="funciones/bootstrap.min.js" type="text/javascript"></script>
         
         <script>
             $(function () {
@@ -79,7 +64,7 @@ and open the template in the editor.
                 </div>
                     <br>
                 <div id="accordion">
-                    <h3 class="title">Historia</h3>
+                    <h3 class="title acordion">Historia</h3>
                     <div>
                         <p class="parrafoH" >DED Driver nació en 2017, como proyecto del curso Programacion 4, de la Escuela de Informatica de la UNA en Costa Rica a cargo de sus creadores: Esteban Montero, Daniel Zamora y Daniel Gutierrez</p>
                         <p class="parrafoH">Nuestro sueño siempre fue ofrecer una opcion distina, segura y de calidad a todas esas personas que diariamente usan servicios de transporte publico</p>

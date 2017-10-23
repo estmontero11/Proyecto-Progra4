@@ -6,36 +6,44 @@
         <title>Mantenimiento de choferes</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <link href="estilos/bootstrap.min.css" rel="stylesheet" type="text/css"/>        
-        <script src="funciones/jquery-3.2.1.min.js" type="text/javascript"></script>
-        <script src="funciones/bootstrap.min.js" type="text/javascript"></script>
-        <!-- ********************************************************** -->
-        <!-- Includes para el datapicker -->
-        <!-- ********************************************************** -->
-        <link href="estilos/datetimepicker.min.css" rel="stylesheet" type="text/css"/>
-        <script src="funciones/datetimepicker.js" type="text/javascript"></script>
-        <!-- ********************************************************** -->
-        <!-- Estilos de la página -->
-        <!-- ********************************************************** -->
+        <!--CSS LOCAL-->
         <link href="estilos/css.css" rel="stylesheet" type="text/css"/>
 
-        <!-- ********************************************************** -->
-        <!-- Script's de UTILERIAS -->
-        <!-- ********************************************************** -->
-        <script src="funciones/utils.js" type="text/javascript"></script>
-
-        <!-- ********************************************************** -->
-        <!-- Script's de Choferes -->
-        <!-- ********************************************************** -->
-        <script src="funciones/ChoferJS.js" type="text/javascript"></script>
+        <!--Estilo de Bootstrap-->
+        <link href="estilos/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="estilos/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
 
         <!--Estilo de la fuente-->
         <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet"> 
-        
         <link href="https://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
-        
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-    
+
+        <!--Estilo de JQueryUI-->
+        <link href="estilos/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        
+        <!--JS de JQueryUI--> 
+        <script src="funciones/jquery-3.2.1.min.js" type="text/javascript"></script>
+        <script src="funciones/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <!--JS de Boostrap-->
+        <script src="funciones/bootstrap.min.js" type="text/javascript"></script>
+        
+        <!-- Includes para el datapicker -->
+        <link href="estilos/datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+        <script src="funciones/datetimepicker.js" type="text/javascript"></script>
+
+        <!-- Script's de UTILERIAS -->
+        <script src="funciones/utils.js" type="text/javascript"></script>
+
+        <!-- Script's de Choferes -->
+        <script src="funciones/ChoferJS.js" type="text/javascript"></script>
+        
+        <!-- JS Sweetalert -->
+        <script src="funciones/sweetalert2.js" type="text/javascript"></script>
+        
+        <!-- CSS Sweetalert -->
+        <link href="estilos/sweetalert2.css" rel="stylesheet" type="text/css"/>
+            
     </head>
     <!--Titulo y Barra de navegacion-->
     <header>
@@ -171,7 +179,7 @@
             <div class="panel panel-primary">
                 <div class="panel-body">
                     <center>
-                        <button type="button" class="btn btn-centered boton" data-toggle="modal" data-target="#myModalFormulario" id="btMostarForm">Insertar Chofer</button>
+                        <button type="button" class="boton" data-toggle="modal" data-target="#myModalFormulario" id="btMostarForm">Insertar Chofer</button>
                     </center><br>
                     <!-- ********************************************************** -->
                     <div class="col-sm-12">
@@ -184,7 +192,7 @@
                                     <input type="text" class="form-control" id="textoBuscar" placeholder="Digite el nombre del chofer">
                                 </div>
                                 <div class="col-sm-4">
-                                    <button type="button" class="btn btn-centered boton" id="buscar">
+                                    <button type="button" class="boton" id="buscar">
                                         Buscar <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                 </div>

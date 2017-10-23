@@ -1,0 +1,134 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+$(function () {
+    //Genera el datepicker
+    $('#fechaNacimiento').datetimepicker({
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+    });
+    
+    $("#enviar").click(function () {
+        enviar();
+    });
+});
+
+function validar() {
+    var validacion = true;
+
+    //Elimina estilo de error en los css
+    //notese que es sobre el grupo que contienen el input
+
+    
+    $("#groupNombre").removeClass("has-error");
+    $("#groupApellidos").removeClass("has-error");
+    $("#groupFechaNacimiento").removeClass("has-error");
+    $("#groupDireccion").removeClass("has-error");
+    $("#groupTelefono").removeClass("has-error");
+    $("#groupCorreo").removeClass("has-error"); 
+    $("#groupIdUsuario").removeClass("has-error");
+    $("#groupContrasena").removeClass("has-error");
+
+    //valida cada uno de los campos del formulario
+    //Nota: Solo si fueron digitados
+    
+    
+    if ($("#nombre").val() === "") {
+        $("#groupNombre").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#apellidos").val() === "") {
+        $("#groupApellidos").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#fechaNacimiento").data('date') === "") {
+        $("#groupFechaNacimiento").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#direccion").val() === "") {
+        $("#groupDireccion").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#telefono").val() === "") {
+        $("#groupTelefono").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#correo").val() === "") {
+        $("#groupCorreo").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#idUsuario").val() === "") {
+        $("#groupIdUsuario").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#contrasena").val() === "") {
+        $("#groupContrasena").addClass("has-error");
+        validacion = false;
+    }
+
+    return validacion;
+}
+
+
+function enviar() {
+    if (validar()) {
+        //Se envia la información por ajax
+        $.ajax({
+            url: 'UsuarioServlet',
+            data: {
+                accion: $("#usuarioAction").val(),
+                nombre: $("#nombre").val(),
+                apellidos: $("#apellidos").val(),
+                fechaNacimiento: $("#fechaNacimiento").data('date'),
+                direccion: $("#direccion").val(),
+                telefono: $("#telefono").val(),
+                correo: $("#correo").val(),
+                idUsuario: $("#idUsuario").val(),
+                contrasena: $("#contrasena").val()
+            },
+            error: function () { //si existe un error en la respuesta del ajax
+                swal('Error', 'Se genero un error, contacte al administrador (Error del ajax)', 'error');
+            },
+            success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+                var respuestaTxt = data.substring(2);
+                var tipoRespuesta = data.substring(0, 2);
+                if (tipoRespuesta === "C~") {
+                    swal('Correcto', respuestaTxt, 'success');
+                } else {
+                    if (tipoRespuesta === "E~") {
+                        swal('Error', respuestaTxt, 'error');
+                    } else {
+                        swal('Error', 'Se genero un error, contacte al administrador', 'error');
+                    }
+                }
+
+            },
+            type: 'POST'
+        });
+    } else {
+        mostrarMensaje("alert alert-danger", "Debe digitar los campos del formulario", "Error!");
+    }
+}
+
+function mostrarMensaje(classCss, msg, neg) {
+    //se le eliminan los estilos al mensaje
+    $("#mesajeResult").removeClass();
+
+    //se setean los estilos
+    $("#mesajeResult").addClass(classCss);
+
+    //se muestra la capa del mensaje con los parametros del metodo
+    $("#mesajeResult").fadeIn("slow");
+    $("#mesajeResultNeg").html(neg);
+    $("#mesajeResultText").html(msg);
+    $("#mesajeResultText").html(msg);
+}

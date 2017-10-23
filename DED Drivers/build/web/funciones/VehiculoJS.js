@@ -43,7 +43,7 @@ function consultarVehiculos() {
             accion: "consultarVehiculos"
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de los vehiculos en la base de datos");
+            swal('Error', 'Se presento un error a la hora de cargar la información de los vehiculos en la base de datos', 'error');
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             dibujarTabla(data);
@@ -126,20 +126,20 @@ function enviar() {
                 idChofer: $("#idChofer").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
-                mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
+                swal('Error', 'Se genero un error, contacte al administrador (Error del ajax)', 'error');
             },
             success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
                 var respuestaTxt = data.substring(2);
                 var tipoRespuesta = data.substring(0, 2);
                 if (tipoRespuesta === "C~") { //correcto
-                    mostrarMensaje("alert alert-success", respuestaTxt, "Correcto!");
+                    swal('Correcto', respuestaTxt, 'success');
                     $("#myModalFormulario").modal("hide");
                     consultarVehiculos();
                 } else {
                     if (tipoRespuesta === "E~") { //error
-                        mostrarMensaje("alert alert-danger", respuestaTxt, "Error!");
+                        swal('Error', respuestaTxt, 'error');
                     } else {
-                        mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador", "Error!");
+                        swal('Error', 'Se genero un error, contacte al administrador', 'error');
                     }
                 }
 
@@ -215,35 +215,55 @@ function validar() {
 //******************************************************************************
 
 function eliminarVehiculo(idVehiculo) {
-    mostrarModal("myModal", "Espere por favor..", "Se esta eliminando al Vehiculo seleccionada");
-    //Se envia la información por ajax
-    $.ajax({
-        url: 'VehiculoServlet',
-        data: {
-            accion: "eliminarVehiculo",
-            idVehiculo: idVehiculo
-        },
-        error: function () { //si existe un error en la respuesta del ajax
-            cambiarMensajeModal("myModal","Resultado acción","Se presento un error, contactar al administador");
-        },
-        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            // se cambia el mensaje del modal por la respuesta del ajax
-            var respuestaTxt = data.substring(2);
-            var tipoRespuesta = data.substring(0, 2);
-            if (tipoRespuesta === "E~") {
-                cambiarMensajeModal("myModal","Resultado acción",respuestaTxt);
-            }else{
-                setTimeout(consultarVehiculos, 3000);// hace una pausa y consulta la información de la base de datos
-            }
-        },
-        type: 'POST',
-        dataType: "text"
+    swal({
+        title: 'Alerta',
+        text: "¿Está seguro que quiere eliminar esta chofer?",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, eliminar',
+        cancelButtonText: 'No, cancelar',
+        confirmButtonClass: 'btn btn-success',
+        cancelButtonClass: 'btn btn-danger',
+        buttonsStyling: false
+    }).then(function () {
+        mostrarModal("myModal", "Espere por favor..", "Se esta eliminando al vehiculo seleccionado");
+        //Se envia la información por ajax
+        $.ajax({
+            url: 'VehiculoServlet',
+            data: {
+                accion: "eliminarVehiculo",
+                idVehiculo: idVehiculo
+            },
+            error: function () { //si existe un error en la respuesta del ajax
+                ocultarModal("myModal");
+                swal('Error', 'Se presento un error, contactar al administrador', 'error');
+            },
+            success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+                // se cambia el mensaje del modal por la respuesta del ajax
+                var respuestaTxt = data.substring(2);
+                var tipoRespuesta = data.substring(0, 2);
+                if (tipoRespuesta === "E~") {
+                    cambiarMensajeModal("myModal","Resultado acción",respuestaTxt);
+                }else{
+                    setTimeout(consultarVehiculos, 3000);// hace una pausa y consulta la información de la base de datos
+                    swal('Correcto', 'El vehiculo se ha eliminado correctamente', 'success');
+                }
+            },
+            type: 'POST',
+            dataType: "text"
+        });
+    }, function (dismiss) {
+        if (dismiss === 'cancel') {
+          swal('Cancelado','No se ha eliminado el vehiculo','error');
+        }
     });
 }
 
 //******************************************************************************
 //******************************************************************************
-//metodos para eliminar personas
+//metodos para eliminar vehiculos
 //******************************************************************************
 //******************************************************************************
 
@@ -257,7 +277,9 @@ function consultarVehiculoById(idVehiculo) {
             idVehiculo: idVehiculo
         },
         error: function () { //si existe un error en la respuesta del ajax
-            cambiarMensajeModal("myModal","Resultado acción","Se presento un error, contactar al administador");
+            ocultarModal("myModal");
+            swal('Error','Se presento un error, contactar al administrador','error');
+            cambiarMensajeModal("myModal","Resultado acción","Se presento un error, contactar al administrador");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             // se oculta el mensaje de espera
@@ -336,7 +358,7 @@ function buscar(){
 }
 
 function consultarVehiculoByName(nameVehiculo) {
-    mostrarModal("myModal", "Espere por favor..", "Consultando el vehiculo seleccionada");
+    mostrarModal("myModal", "Espere por favor..", "Consultando el vehiculo seleccionado");
     //Se envia la información por ajax
     mostrarModal("myModal", "Espere por favor..", "Consultando la información de los Vehiculos en la base de datos");
     //Se envia la información por ajax
@@ -347,7 +369,7 @@ function consultarVehiculoByName(nameVehiculo) {
             nameVehiculo: nameVehiculo
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de los Vehiculos en la base de datos");
+            swal('Error', 'Se presento un error a la hora de cargar la información de los vehiculos en la base de datos', 'error');
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             dibujarTabla(data);

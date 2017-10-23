@@ -12,26 +12,25 @@ and open the template in the editor.
         
         <!--CSS LOCAL-->
         <link href="estilos/css.css" rel="stylesheet" type="text/css"/>
-        
+
         <!--Estilo de Bootstrap-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        
+        <link href="estilos/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="estilos/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+
         <!--Estilo de la fuente-->
         <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet"> 
-        
         <link href="https://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
-        
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
+        <!--Estilo de JQueryUI-->
+        <link href="estilos/jquery-ui.css" rel="stylesheet" type="text/css"/>
         
-        <!--JS LOCAL-->
-        <script src="funciones/js.js" type="text/javascript"></script>
-        
+        <!--JS de JQueryUI--> 
+        <script src="funciones/jquery-3.2.1.min.js" type="text/javascript"></script>
+        <script src="funciones/jquery-ui.min.js" type="text/javascript"></script>
         
         <!--JS de Boostrap-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        
+        <script src="funciones/bootstrap.min.js" type="text/javascript"></script>
         
     </head>
     <!--Titulo y Barra de navegacion-->

@@ -54,7 +54,7 @@ $(document).ready(function () {
 
 //******************************************************************************
 //******************************************************************************
-//metodos para consultas el listado de las personas
+//metodos para consultas el listado de las chofers
 //******************************************************************************
 //******************************************************************************
 
@@ -67,7 +67,7 @@ function consultarChoferes() {
             accion: "consultarChoferes"
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de los choferes en la base de datos");
+            swal('Error', 'Se presento un error a la hora de cargar la información de los choferes en la base de datos', 'error');
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             dibujarTabla(data);
@@ -94,7 +94,7 @@ function dibujarTabla(dataJson) {
     row.append($("<th><b>FEC. NACIMIENTO</b></th>"));
     row.append($("<th><b>FEC. VENCIMIENTO</b></th>"));
     row.append($("<th><b>TIPO LICENCIA</th>"));
-    row.append($("<th><b>ESTADO</th>"));
+    row.append($("<th><b>ES CHOFER DEL VEHICULO</th>"));
     row.append($("<th><b>ES CLIENTE TRANSPORTISTA</th>"));
     
     //carga la tabla con el json devuelto
@@ -105,7 +105,7 @@ function dibujarTabla(dataJson) {
 
 function dibujarFila(rowData) {
     //Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
-    //de una persona
+    //de una chofer
     
     var row = $("<tr />");
     $("#tablaChoferes").append(row); 
@@ -115,8 +115,17 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.fechaNacimiento + "</td>"));
     row.append($("<td>" + rowData.fechaVencimiento + "</td>"));
     row.append($("<td>" + rowData.tipoLicencia + "</td>"));
-    row.append($("<td>" + rowData.estado + "</td>"));
-    row.append($("<td>" + rowData.esClienteTransportista + "</td>"));
+    if(rowData.estado === 0){
+        row.append($("<td>No</td>"));
+    }else{
+        row.append($("<td>Sí</td>"));
+    }
+    if(rowData.esClienteTransportista === 0){
+        row.append($("<td>No</td>"));
+    }else{
+        row.append($("<td>Sí</td>"));
+    }
+    
     row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="consultarChoferById('+rowData.idChofer+');">'+
                         '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'+
                     '</button>'+
@@ -148,23 +157,22 @@ function enviar() {
                 esClienteTransportista: $("#esClienteTransportista").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
-                mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
+                swal('Error', 'Se genero un error, contacte al administrador (Error del ajax)', 'error');
             },
             success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
                 var respuestaTxt = data.substring(2);
                 var tipoRespuesta = data.substring(0, 2);
                 if (tipoRespuesta === "C~") { //correcto
-                    mostrarMensaje("alert alert-success", respuestaTxt, "Correcto!");
+                    swal('Correcto', respuestaTxt, 'success');
                     $("#myModalFormulario").modal("hide");
                     consultarChoferes();
                 } else {
                     if (tipoRespuesta === "E~") { //error
-                        mostrarMensaje("alert alert-danger", respuestaTxt, "Error!");
+                        swal('Error', respuestaTxt, 'error');
                     } else {
-                        mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador", "Error!");
+                        swal('Error', 'Se genero un error, contacte al administrador', 'error');
                     }
                 }
-
             },
             type: 'POST'
         });
@@ -215,45 +223,66 @@ function validar() {
 
 //******************************************************************************
 //******************************************************************************
-//metodos para eliminar personas
+//metodos para eliminar chofers
 //******************************************************************************
 //******************************************************************************
 
 function eliminarChofer(idChofer) {
-    mostrarModal("myModal", "Espere por favor..", "Se esta eliminando a la persona seleccionada");
-    //Se envia la información por ajax
-    $.ajax({
-        url: 'ChoferServlet',
-        data: {
-            accion: "eliminarChofer",
-            idChofer: idChofer
-        },
-        error: function () { //si existe un error en la respuesta del ajax
-            cambiarMensajeModal("myModal","Resultado acción","Se presento un error, contactar al administador");
-        },
-        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            // se cambia el mensaje del modal por la respuesta del ajax
-            var respuestaTxt = data.substring(2);
-            var tipoRespuesta = data.substring(0, 2);
-            if (tipoRespuesta === "E~") {
-                cambiarMensajeModal("myModal","Resultado acción",respuestaTxt);
-            }else{
-                setTimeout(consultarChoferes, 3000);// hace una pausa y consulta la información de la base de datos
-            }
-        },
-        type: 'POST',
-        dataType: "text"
+    swal({
+        title: 'Alerta',
+        text: "¿Está seguro que quiere eliminar esta chofer?",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, eliminar',
+        cancelButtonText: 'No, cancelar',
+        confirmButtonClass: 'btn btn-success',
+        cancelButtonClass: 'btn btn-danger',
+        buttonsStyling: false
+    }).then(function () {
+        mostrarModal("myModal", "Espere por favor..", "Se esta eliminando a la chofer seleccionada");  
+        //Se envia la información por ajax
+        $.ajax({
+            url: 'ChoferServlet',
+            data: {
+                accion: "eliminarChofer",
+                idChofer: idChofer
+            },
+            error: function () { //si existe un error en la respuesta del ajax
+                ocultarModal("myModal");
+                swal('Error', 'Se presento un error, contactar al administrador', 'error');
+            },
+            success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+                // se cambia el mensaje del modal por la respuesta del ajax
+                var respuestaTxt = data.substring(2);
+                var tipoRespuesta = data.substring(0, 2);
+                ocultarModal("myModal");
+                if (tipoRespuesta === "E~") {
+                    cambiarMensajeModal("myModal","Resultado acción",respuestaTxt);
+                }else{            
+                    setTimeout(consultarChoferes, 1000);// hace una pausa y consulta la información de la base de datos   
+                    swal('Correcto', 'El chofer se ha eliminado correctamente', 'success');
+                }
+            },
+            type: 'POST',
+            dataType: "text"
+        });
+    }, function (dismiss) {
+        if (dismiss === 'cancel') {
+          swal('Cancelado','No se ha eliminado el chofer','error');
+        }
     });
 }
 
 //******************************************************************************
 //******************************************************************************
-//metodos para eliminar personas
+//metodos para eliminar choferes
 //******************************************************************************
 //******************************************************************************
 
 function consultarChoferById(idChofer) {
-    mostrarModal("myModal", "Espere por favor..", "Consultando la persona seleccionada");
+    mostrarModal("myModal", "Espere por favor..", "Consultando el chofer seleccionado");
     //Se envia la información por ajax
     $.ajax({
         url: 'ChoferServlet',
@@ -262,7 +291,9 @@ function consultarChoferById(idChofer) {
             idChofer: idChofer
         },
         error: function () { //si existe un error en la respuesta del ajax
-            cambiarMensajeModal("myModal","Resultado acción","Se presento un error, contactar al administador");
+            ocultarModal("myModal");
+            swal('Error','Se presento un error, contactar al administrador','error');
+            cambiarMensajeModal("myModal","Resultado acción","Se presento un error, contactar al administrador");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             // se oculta el mensaje de espera
@@ -272,7 +303,7 @@ function consultarChoferById(idChofer) {
             $("#myModalFormulario").modal();
             
             //************************************************************************
-            //carga información de la persona en el formulario
+            //carga información de la chofer en el formulario
             //************************************************************************
             //se indicar que la cédula es solo readOnly
             $("#id").attr('readonly', 'readonly');
@@ -330,7 +361,7 @@ function limpiarForm() {
     $('#id').focus();
     $("#id").removeAttr("readonly"); //elimina el atributo de solo lectura
     
-    //se cambia la accion por agregarPersona
+    //se cambia la accion por agregarChofer
     $("#choferAction").val("agregarChofer"); 
 
     //esconde el div del mensaje
@@ -345,11 +376,11 @@ function limpiarForm() {
 //******************************************************************************
 function buscar(){
     var name = document.getElementById("textoBuscar").value;
-    consultarPersonaByName(name);
+    consultarChoferByName(name);
 }
 
-function consultarPersonaByName(nameChofer) {
-    mostrarModal("myModal", "Espere por favor..", "Consultando el chofer seleccionada");
+function consultarChoferByName(nameChofer) {
+    mostrarModal("myModal", "Espere por favor..", "Consultando el chofer seleccionado");
     //Se envia la información por ajax
     mostrarModal("myModal", "Espere por favor..", "Consultando la información de los choferes en la base de datos");
     //Se envia la información por ajax
@@ -360,7 +391,7 @@ function consultarPersonaByName(nameChofer) {
             nameChofer: nameChofer
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de los choferes en la base de datos");
+            swal('Error', 'Se presento un error a la hora de cargar la información de los choferes en la base de datos', 'error');
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             dibujarTabla(data);
