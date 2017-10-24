@@ -68,6 +68,7 @@ function dibujarTabla(dataJson) {
     row.append($("<th><b>AÑO</b></th>"));
     row.append($("<th><b>MODELO</b></th>"));
     row.append($("<th><b>PLACA</b></th>"));
+    row.append($("<th><b>Color</b></th>"));
     row.append($("<th><b>PUNTUACION</b></th>"));
     row.append($("<th><b>ESTADO</th>"));
     row.append($("<th><b>UBICACION ACTUAL</th>"));

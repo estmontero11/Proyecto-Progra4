@@ -87,72 +87,94 @@
                         <h4 class="modal-title" id="myModalTitle">Insertar / Modificar Choferes
                     </div>
                     <div class="modal-body" id="myModalMessage">
-                        <form role="form" onsubmit="return false;" id="formChofer">
-                            <div class="form-group" id="groupId">
-                                <label for="cedula">Id:</label>
-                                <input type="text" class="form-control" id="id" autofocus="true" placeholder="Id">
-                            </div>
+                  <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group" id="groupId">
+                                        <label for="cedula">Cédula del chofer:</label>
+                                        <input type="text" class="form-control" id="id" autofocus="true" placeholder="Ingrese aquí la cédula del chofer">
+                                    </div>
+                                </div>
 
-                            <div class="form-group" id="groupNombre">
-                                <label for="nombre">Nombre:</label>
-                                <input type="text" class="form-control" id="nombre" placeholder="Nombre" >
-                            </div>
-
-                            <div class="form-group" id="groupApellidos">
-                                <label for="apellidos">Apellidos:</label>
-                                <input type="text" class="form-control" id="apellidos" placeholder="Apellidos">
-                            </div>
-
-                            <div class="form-group" id="groupFechaNacimiento">
-                                <label for="dpFechaNacimiento">Fecha Nacimiento:</label>
-                                <div id="dpFechaNacimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
-                                    <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="dpFechaNacimientoText">
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
+                                <div class="col-md-4">
+                                    <div class="form-group" id="groupNombre">
+                                        <label for="nombre">Nombre:</label>
+                                        <input type="text" class="form-control" id="nombre" placeholder="Ingrese aquí el nombre del chofer" >
+                                    </div>
+                                </div >
+                                <div class="col-md-4">
+                                    <div class="form-group" id="groupApellidos">
+                                        <label for="apellidos">Apellidos:</label>
+                                        <input type="text" class="form-control" id="apellidos" placeholder="Ingrese aquí los apellidos del chofer">
+                                    </div>
                                 </div>
                             </div>
-                            
-                            <div class="form-group" id="groupFechaVencimiento">
-                                <label for="dpFechaVencimiento">Fecha Vencimiento:</label>
-                                <div id="dpFechaVencimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
-                                    <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="dpFechaVencimientoText">
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-4"> 
+                                    <div class="form-group" id="groupFechaNacimiento">
+                                        <label for="dpFechaNacimiento">Fecha Nacimiento:</label>
+                                        <div id="dpFechaNacimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
+                                            <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="dpFechaNacimientoText">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group" id="groupFechaVencimiento">
+                                        <label for="dpFechaVencimiento">Fecha Vencimiento:</label>
+                                        <div id="dpFechaVencimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
+                                            <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="dpFechaVencimientoText">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group" id="groupTipoLicencia">
+                                        <label for="tipoLicencia">Tipo Licencia:</label>
+                                        <select class="form-control" id="tipoLicencia">
+                                            <option value="B1" selected="selected">B1</option>
+                                            <option value="B2">B2</option>
+                                            <option value="B3">B3</option>
+                                            <option value="B4">B4</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="form-group" id="groupTipoLicencia">
-                                <label for="tipoLicencia">Tipo Licencia:</label>
-                                <select class="form-control" id="tipoLicencia">
-                                        <option value="B1" selected="selected">B1</option>
-                                        <option value="B2">B2</option>
-                                        <option value="B3">B3</option>
-                                        <option value="B4">B4</option>
-                                </select>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group" id="groupEstado">
+                                        <label for="estado">Estado (es el chofer del vehiculo):</label>
+                                        <select class="form-control" id="estado">
+                                            <option value="0" selected="selected">No</option>
+                                            <option value="1">Si</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group" id="groupEsClienteTransportista">
+                                        <label for="esClienteTransportista">Es Cliente Transportista:</label>
+                                        <select class="form-control" id="esClienteTransportista">
+                                            <option value="NO" selected="selected">No</option>
+                                            <option value="SI">Si</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
-
-                            <div class="form-group" id="groupEstado">
-                                <label for="estado">Estado (es el chofer del vehiculo):</label>
-                                <select class="form-control" id="estado">
-                                        <option value="0" selected="selected">No</option>
-                                        <option value="1">Si</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group" id="groupEsClienteTransportista">
-                                <label for="esClienteTransportista">Es Cliente Transportista:</label>
-                                <select class="form-control" id="esClienteTransportista">
-                                        <option value="0" selected="selected">No</option>
-                                        <option value="1">Si</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <input type="hidden" value="agregarChofer" id="choferAction"/>
-                                <button type="submit" class="btn btn-primary" id="enviar">Guardar</button>
-                                <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>
+                            <br>
+                            <div class="row"> 
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="hidden" value="agregarChofer" id="choferAction"/>
+                                        <button type="submit" class=" btn btn-success" id="enviar">Guardar</button>
+                                        <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-group height25" >
@@ -172,7 +194,7 @@
 
         <div class="container cuerpo">
             <div class="page-header">
-                <h1><center>Modulo de mantenimiento de choferes</center></h1>
+                <h1><center>Módulo de mantenimiento de choferes</center></h1>
             </div>
             <!-- PANEL DEL MANTENIMIENTO DE Choferes -->
             

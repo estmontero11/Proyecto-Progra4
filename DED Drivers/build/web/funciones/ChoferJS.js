@@ -88,13 +88,13 @@ function dibujarTabla(dataJson) {
     var row = $("<tr />");
     head.append(row);
     $("#tablaChoferes").append(head); 
-    row.append($("<th><b>ID</b></th>"));
+    row.append($("<th><b>CÉDULA</b></th>"));
     row.append($("<th><b>NOMBRE</b></th>"));
     row.append($("<th><b>APELLIDOS</b></th>"));
     row.append($("<th><b>FEC. NACIMIENTO</b></th>"));
     row.append($("<th><b>FEC. VENCIMIENTO</b></th>"));
     row.append($("<th><b>TIPO LICENCIA</th>"));
-    row.append($("<th><b>ES CHOFER DEL VEHICULO</th>"));
+    row.append($("<th><b>ES CHOFER DEL VEHÍCULO</th>"));
     row.append($("<th><b>ES CLIENTE TRANSPORTISTA</th>"));
     
     //carga la tabla con el json devuelto

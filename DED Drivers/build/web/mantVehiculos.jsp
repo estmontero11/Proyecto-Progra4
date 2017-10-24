@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Mantenimiento de Vehiculos</title>
+        <title>Mantenimiento de Vehículos</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <!--CSS LOCAL-->
@@ -85,62 +85,81 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" id="myModalTitle">Insertar / Modificar Vehiculos
+                        <h4 class="modal-title" id="myModalTitle">Insertar / Modificar Vehículos
                     </div>
                     <div class="modal-body" id="myModalMessage">
                         <form role="form" onsubmit="return false;" id="formVehiculo">
-                            <div class="form-group" id="groupIdVehiculo">
-                                <label for="idVehiculo">IdVehiculo:</label>
-                                <input type="text" class="form-control" id="idVehiculo" autofocus="true" placeholder="IdVehiculo">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group" id="groupIdVehiculo">
+                                        <label for="idVehiculo">Identificador del Vehículo:</label>
+                                        <input type="text" class="form-control" id="idVehiculo" autofocus="true" placeholder="Ingrese aquí el identificador del vehiculo">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group" id="groupAnno">
+                                        <label for="anno">Año:</label>
+                                        <input type="text" class="form-control" id="anno" placeholder="Ingrese aquí el año del vehículo" >
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group" id="groupModelo">
+                                        <label for="modelo">Modelo:</label>
+                                        <input type="text" class="form-control" id="modelo" placeholder="Ingrese aquí el modelo del vehículo">
+                                    </div>
+                                </div>
                             </div>
-
-                            <div class="form-group" id="groupAnno">
-                                <label for="anno">Anno:</label>
-                                <input type="text" class="form-control" id="anno" placeholder="anno" >
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group" id="groupPlaca">
+                                        <label for="placa">Placa:</label>
+                                        <input type="text" class="form-control" id="placa" placeholder="Ingrese aquí la placa del vehículo">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group" id="groupColor">
+                                        <label for="color">Color:</label>
+                                        <input type="text" class="form-control" id="color" placeholder="Ingrese aquí el color del vehículo">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group" id="groupPuntuacion">
+                                        <label for="puntuacion">Puntuación:</label>
+                                        <input type="text" value="0" class="form-control" id="puntuacion" readonly="">
+                                    </div>
+                                </div>
                             </div>
-
-                            <div class="form-group" id="groupModelo">
-                                <label for="modelo">Modelo:</label>
-                                <input type="text" class="form-control" id="modelo" placeholder="modelo">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group" id="groupEstado">
+                                        <label for="estado">Estado del vehículo en este momento:</label>
+                                        <select class="form-control" id="estado">
+                                            <option value="1" selected="selected">No Activo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group" id="groupUbicacionActual">
+                                        <label for="ubicacionActual">Ubicación actual:</label>
+                                        <input type="text" value="0" class="form-control" id="ubicacionActual" readonly="">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group" id="groupIdChofer">
+                                        <label for="idChofer">Cédula chofer asignado al vehículo:</label>
+                                        <input type="text" class="form-control" id="idChofer" placeholder="Ingrese aquí la cedula del chofer asignado al vehiculo">
+                                    </div>
+                                </div>
                             </div>
-                            
-                            <div class="form-group" id="groupPlaca">
-                                <label for="placa">Placa:</label>
-                                <input type="text" class="form-control" id="placa" placeholder="placa">
-                            </div>
-                            
-                            <div class="form-group" id="groupColor">
-                                <label for="color">Color:</label>
-                                <input type="text" class="form-control" id="color" placeholder="color">
-                            </div>
-                            
-                            <div class="form-group" id="groupPuntuacion">
-                                <label for="puntuacion">Puntuacion:</label>
-                                <input type="text" class="form-control" id="puntuacion" placeholder="puntuacion">
-                            </div>
-                            
-                            <div class="form-group" id="groupEstado">
-                                <label for="estado">Estado (es el chofer del vehiculo):</label>
-                                <select class="form-control" id="estado">
-                                        <option value="0" selected="selected">No</option>
-                                        <option value="1">Si</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group" id="groupUbicacionActual">
-                                <label for="ubicacionActual">Ubicacion Actual:</label>
-                                <input type="text" class="form-control" id="ubicacionActual" placeholder="ubicacionActual">
-                            </div>
-                            
-                            <div class="form-group" id="groupIdChofer">
-                                <label for="idChofer">Id Chofer:</label>
-                                <input type="text" class="form-control" id="idChofer" placeholder="idChofer">
-                            </div>
-                            
-                            <div class="form-group">
-                                <input type="hidden" value="agregarVehiculo" id="vehiculoAction"/>
-                                <button type="submit" class="btn btn-primary" id="enviar">Guardar</button>
-                                <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>
+                            <div class="row">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="hidden" value="agregarVehiculo" id="vehiculoAction"/>
+                                        <button type="submit" class="btn btn-success" id="enviar">Guardar</button>
+                                        <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-group height25" >
@@ -160,7 +179,7 @@
 
         <div class="container cuerpo">
             <div class="page-header">
-                <h1><center>Modulo de mantenimiento de vehiculos</center></h1>
+                <h1><center>Módulo de mantenimiento de vehículos</center></h1>
             </div>
             
             <!-- PANEL DEL MANTENIMIENTO DE Vehiculo -->
@@ -175,10 +194,10 @@
                         <form role="form" onsubmit="return false;" id="formVehiculo" class="form-horizontal centered">
                             <div class="form-group" id="groupBuscarIdVehiculo">
                                 <div class="col-sm-4" style="text-align: right; vertical-align: middle;">
-                                    <p><b>Buscar por id del Vehiculo</b></p>
+                                    <p><b>Buscar por id del vehículo</b></p>
                                 </div>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="textoBuscar" placeholder="Digite el id del Vehiculo">
+                                    <input type="text" class="form-control" id="textoBuscar" placeholder="Digite el id del vehículo">
                                 </div>
                                 <div class="col-sm-4">
                                     <button type="button" class="boton" id="buscar">
