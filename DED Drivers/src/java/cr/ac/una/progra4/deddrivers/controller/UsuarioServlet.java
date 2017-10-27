@@ -5,6 +5,7 @@
  */
 package cr.ac.una.progra4.deddrivers.controller;
 
+import com.google.gson.Gson;
 import cr.ac.una.progra4.deddrivers.bl.UsuarioBL;
 import cr.ac.una.progra4.deddrivers.domain.Usuario;
 import java.io.IOException;
@@ -53,6 +54,11 @@ public class UsuarioServlet extends HttpServlet {
             String accion = request.getParameter("accion");
             
             switch(accion){
+                case "consultarUsuario":
+                    json = new Gson().toJson(uBL.findAll(Usuario.class.getName()));
+                    out.print(json);
+                    break;
+                
                 case "agregarUsuarios":
                     
                     usuario.setIdUsuario(request.getParameter("idUsuario"));
@@ -75,8 +81,43 @@ public class UsuarioServlet extends HttpServlet {
                         uBL.save(usuario);
 
                         //Se imprime la respuesta con el response
-                        out.print("C~La persona fue ingresada correctamente");
+                        out.print("C~El usuario fue ingresada correctamente");
                         
+                    }
+                    case "agregarUsuarios2": case "modificarUsuarios":
+                    
+                    usuario.setIdUsuario(request.getParameter("idUsuario"));
+                    usuario.setContrasena(request.getParameter("contrasena"));
+                    
+                    usuario.setNombre(request.getParameter("nombre"));
+                    usuario.setApellidos(request.getParameter("apellidos"));
+                    usuario.setCorreoElectronico(request.getParameter("correo"));
+                    
+                    String fechatxt2 = request.getParameter("fechaNacimiento");
+                    DateFormat format2 = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+                    Date date2 = format2.parse(fechatxt2);
+                    
+                    usuario.setFechaNacimiento(date2);
+                    usuario.setDireccion(request.getParameter("direccion"));
+                    usuario.setTelefonoTrabajo(request.getParameter("telefono"));
+                    usuario.setUltimoUsuario(request.getParameter("ultimoUsuario"));
+                    
+                    String fechatxt3 = request.getParameter("ultimaFecha");
+                    DateFormat format3 = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+                    Date date3 = format3.parse(fechatxt3);
+                    usuario.setUltimaFecha(date3);
+                    
+                    if(accion.equals("agregarUsuarios2")){ //es insertar personas
+                        //Se guarda el objeto
+                        uBL.save(usuario);
+
+                        //Se imprime la respuesta con el response
+                        out.print("C~El usuario fue ingresado correctamente");
+                        
+                    }else{
+                        uBL.merge(usuario);
+                        
+                        out.print("C~El usuario fue modificado correctamente");
                     }
                 default:
                     out.print("E~No se indico la acción que se desea realizare");

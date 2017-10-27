@@ -5,6 +5,7 @@
  */
 
 
+var swal;
 $(function () {
     //Genera el datepicker
     $('#fechaNacimiento').datetimepicker({
@@ -19,6 +20,7 @@ $(function () {
     
     $("#enviar").click(function () {
         enviar();
+        limpiarForm();
     });
 });
 
@@ -80,6 +82,7 @@ function validar() {
 
 
 function enviar() {
+    
     if (validar()) {
         //Se envia la información por ajax
         $.ajax({
@@ -96,16 +99,16 @@ function enviar() {
                 contrasena: $("#contrasena").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
-                swal('Error', 'Se genero un error, contacte al administrador (Error del ajax)', 'error');
+                swal ('Error', 'Se genero un error, contacte al administrador (Error del ajax)', 'error');
             },
             success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
                 var respuestaTxt = data.substring(2);
                 var tipoRespuesta = data.substring(0, 2);
                 if (tipoRespuesta === "C~") {
-                    swal('Correcto', respuestaTxt, 'success');
+                    swal('Correcto', "El usuario se creó correctamente", 'success');
                 } else {
                     if (tipoRespuesta === "E~") {
-                        swal('Error', respuestaTxt, 'error');
+                        swal('Error', "Ocurrió un error al crear el usuario", 'error');
                     } else {
                         swal('Error', 'Se genero un error, contacte al administrador', 'error');
                     }
@@ -115,7 +118,7 @@ function enviar() {
             type: 'POST'
         });
     } else {
-        mostrarMensaje("alert alert-danger", "Debe digitar los campos del formulario", "Error!");
+        swal('Error', "Debe digitar los campos del formulario", "error");
     }
 }
 
@@ -131,4 +134,19 @@ function mostrarMensaje(classCss, msg, neg) {
     $("#mesajeResultNeg").html(neg);
     $("#mesajeResultText").html(msg);
     $("#mesajeResultText").html(msg);
+}
+
+function limpiarForm() {
+    //setea el focus del formulario
+    $('#idUsuario').focus();
+    $("#idUsuario").removeAttr("readonly"); //elimina el atributo de solo lectura
+    
+    //se cambia la accion por agregarPersona
+    $("#usuarioAction").val("agregarUsuarios"); 
+
+    //esconde el div del mensaje
+    mostrarMensaje("hiddenDiv", "", "");
+
+    //Resetear el formulario
+    $('#formUsuario').trigger("reset");
 }

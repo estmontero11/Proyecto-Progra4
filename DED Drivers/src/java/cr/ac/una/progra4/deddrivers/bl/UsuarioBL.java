@@ -37,6 +37,11 @@ public class UsuarioBL extends BaseBL implements IBaseBL<Usuario, Integer>{
     public Usuario findById(Integer o) {
         return (Usuario) this.getDao(Usuario.class.getName()).findById(o);
     }
+    
+    public List<Usuario> findByName(String name) {
+        UsuarioDAO pdao = new UsuarioDAO();
+        return pdao.findByName(name);
+    }
 
     @Override
     public List<Usuario> findAll(String className) {

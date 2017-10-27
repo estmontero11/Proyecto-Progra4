@@ -24,7 +24,8 @@
                 <li><a href="contact.jsp"><span class="glyphicon glyphicon-envelope"></span> Contact</a></li>
                 <li><a href="mantChoferes.jsp"><span class="glyphicon glyphicon-list-alt"></span> Mantener Choferes</a></li>
                 <li><a href="mantVehiculos.jsp"><span class="glyphicon glyphicon-list-alt"></span> Mantener Vehiculos</a></li>
-                <li><a href="registroUsuarios.jsp"><span class="glyphicon glyphicon-list-alt"></span> Registro Usuarios</a></li>
+                <li><a href="mantUsuarios.jsp"><span class="glyphicon glyphicon-list-alt"></span> Mantener Usuarios</a></li>
+                <li><a href="registroUsuarios.jsp"><span class="glyphicon glyphicon-log-in"></span> Registrese</a></li>
             </ul>
         </div>
     </div>

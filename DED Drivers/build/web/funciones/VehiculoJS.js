@@ -1,5 +1,35 @@
+
+var info = [];
+var max;
+var min;
+var inicio;
+
 $(function () {
 
+    $("#tablaVehiculos").html(""); 
+    
+    //muestra el enzabezado de la tabla
+    var head = $("<thead/>");
+    var row = $("<tr/>");
+    head.append(row);
+    $("#tablaVehiculos").append(head); 
+    row.append($("<th><b>ID</b></th>"));
+    row.append($("<th><b>AÑO</b></th>"));
+    row.append($("<th><b>MODELO</b></th>"));
+    row.append($("<th><b>PLACA</b></th>"));
+    row.append($("<th><b>COLOR</b></th>"));
+    row.append($("<th><b>PUNTUACION</b></th>"));
+    row.append($("<th><b>ESTADO</b></th>"));
+    row.append($("<th><b>UBICACION ACTUAL</b></th>"));
+    row.append($("<th><b>CÉDULA CHOFER</b></th>"));
+    row.append($("<th><b>ACCIÓN</b></th>"));
+    
+    for (var i = 1; i < 11; i++) {
+        var row = $("<tr />");
+        row.addClass("page" + i);
+        $("#tablaVehiculos").append(row);
+    }
+    
     //agrega los eventos las capas necesarias
     $("#enviar").click(function () {
         enviar();
@@ -20,6 +50,10 @@ $(function () {
     });
 });
 
+
+function calcularTamaño() {
+    return Math.ceil(info.length / 10);
+};
 //******************************************************************************
 //Se ejecuta cuando la página esta completamente cargada
 //******************************************************************************
@@ -46,9 +80,30 @@ function consultarVehiculos() {
             swal('Error', 'Se presento un error a la hora de cargar la información de los vehiculos en la base de datos', 'error');
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            dibujarTabla(data);
-            // se oculta el modal esta funcion se encuentra en el utils.js
             ocultarModal("myModal");
+            info = data;
+            $('#mio').html("<ul class='pagination' id='pagination'></ul>");
+            $('#pagination').twbsPagination({
+                totalPages: calcularTamaño(),
+                visiblePages: 5,
+                onPageClick: function (event, page) {
+                    max = page * 10;
+                    min = max - 10;
+                    inicio = 1;
+                    for (var i = 1; i < 11; i++) {
+                        $('.page' + inicio).html("");
+                        inicio++;
+                    }
+                    inicio = 1;
+                    for (var j = min; j < max; j++) {
+                        if (info[j] == null) {
+                            break;
+                        }
+                        dibujarFila('.page' + inicio, info[j]);
+                        inicio++;
+                    }
+                }
+            });
         },
         type: 'POST',
         dataType: "json"
@@ -60,19 +115,20 @@ function dibujarTabla(dataJson) {
     $("#tablaVehiculos").html(""); 
     
     //muestra el enzabezado de la tabla
-    var head = $("<thead />");
-    var row = $("<tr />");
+    var head = $("<thead/>");
+    var row = $("<tr/>");
     head.append(row);
     $("#tablaVehiculos").append(head); 
     row.append($("<th><b>ID</b></th>"));
     row.append($("<th><b>AÑO</b></th>"));
     row.append($("<th><b>MODELO</b></th>"));
     row.append($("<th><b>PLACA</b></th>"));
-    row.append($("<th><b>Color</b></th>"));
+    row.append($("<th><b>COLOR</b></th>"));
     row.append($("<th><b>PUNTUACION</b></th>"));
-    row.append($("<th><b>ESTADO</th>"));
-    row.append($("<th><b>UBICACION ACTUAL</th>"));
-    row.append($("<th><b>ID CHOFER</th>"));
+    row.append($("<th><b>ESTADO</b></th>"));
+    row.append($("<th><b>UBICACION ACTUAL</b></th>"));
+    row.append($("<th><b>CÉDULA CHOFER</b></th>"));
+    row.append($("<th><b>ACCIÓN</b></th>"));
     
     //carga la tabla con el json devuelto
     for (var i = 0; i < dataJson.length; i++) {
@@ -80,11 +136,11 @@ function dibujarTabla(dataJson) {
     }
 }
 
-function dibujarFila(rowData) {
+function dibujarFila(page, rowData) {
     //Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
     //de una persona
     
-    var row = $("<tr />");
+    var row = $(page);
     $("#tablaVehiculos").append(row); 
     row.append($("<td>" + rowData.idVehiculo + "</td>"));
     row.append($("<td>" + rowData.anno + "</td>"));
@@ -92,7 +148,13 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.placa + "</td>"));
     row.append($("<td>" + rowData.color + "</td>"));
     row.append($("<td>" + rowData.puntuacion + "</td>"));
-    row.append($("<td>" + rowData.estado + "</td>"));
+     if(rowData.estado === 0){
+        row.append($("<td>No activo</td>"));
+    }else{
+        if(rowData.estado===1){
+            row.append($("<td>Activo</td>"));
+        }
+    }
     row.append($("<td>" + rowData.ubicacionActual + "</td>"));
     row.append($("<td>" + rowData.idChofer + "</td>"));
     row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="consultarVehiculoById('+rowData.idVehiculo+');">'+
@@ -119,7 +181,7 @@ function enviar() {
                 idVehiculo: $("#idVehiculo").val(),
                 anno: $("#anno").val(),
                 modelo: $("#modelo").val(),
-                placa: $("placa").val(),
+                placa: $("#placa").val(),
                 color: $("#color").val(),
                 puntuacion: $("#puntuacion").val(),
                 estado: $("#estado").val(),

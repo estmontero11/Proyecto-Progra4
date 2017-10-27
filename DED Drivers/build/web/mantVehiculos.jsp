@@ -39,6 +39,9 @@
 
         <!-- Script's de UTILERIAS -->
         <script src="funciones/utils.js" type="text/javascript"></script>
+        
+        <!--Script de paginacion-->
+        <script src="funciones/jquery.twbsPagination.js" type="text/javascript"></script>
 
         <!-- Script's de Vehiculos -->
         <script src="funciones/VehiculoJS.js" type="text/javascript"></script>
@@ -93,13 +96,13 @@
                                 <div class="col-md-4">
                                     <div class="form-group" id="groupIdVehiculo">
                                         <label for="idVehiculo">Identificador del Vehículo:</label>
-                                        <input type="text" class="form-control" id="idVehiculo" autofocus="true" placeholder="Ingrese aquí el identificador del vehiculo">
+                                        <input type="number" min="1" class="form-control" id="idVehiculo" autofocus="true" placeholder="Ingrese aquí el identificador del vehiculo">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group" id="groupAnno">
                                         <label for="anno">Año:</label>
-                                        <input type="text" class="form-control" id="anno" placeholder="Ingrese aquí el año del vehículo" >
+                                        <input type="number" min="1986" class="form-control" id="anno" placeholder="Ingrese aquí el año del vehículo" >
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -134,20 +137,21 @@
                                     <div class="form-group" id="groupEstado">
                                         <label for="estado">Estado del vehículo en este momento:</label>
                                         <select class="form-control" id="estado">
-                                            <option value="1" selected="selected">No Activo</option>
+                                            <option value="0" >No Activo</option>
+                                            <option value="1" >Activo</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group" id="groupUbicacionActual">
                                         <label for="ubicacionActual">Ubicación actual:</label>
-                                        <input type="text" value="0" class="form-control" id="ubicacionActual" readonly="">
+                                        <input type="text" class="form-control" id="ubicacionActual">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group" id="groupIdChofer">
                                         <label for="idChofer">Cédula chofer asignado al vehículo:</label>
-                                        <input type="text" class="form-control" id="idChofer" placeholder="Ingrese aquí la cedula del chofer asignado al vehiculo">
+                                        <input type="number" min="1" class="form-control" id="idChofer" placeholder="Ingrese aquí la cedula del chofer">
                                     </div>
                                 </div>
                             </div>
@@ -179,7 +183,7 @@
 
         <div class="container cuerpo">
             <div class="page-header">
-                <h1><center>Módulo de mantenimiento de vehículos</center></h1>
+                <h1><center>Mantenimiento de vehículos</center></h1>
             </div>
             
             <!-- PANEL DEL MANTENIMIENTO DE Vehiculo -->
@@ -210,11 +214,15 @@
                     <!-- ********************************************************** -->
 
                     <table class="table table-hover table-condensed" id="tablaVehiculos"></table>
+                    
+                    <nav aria-label="Page navigation" id="mio">
+                        <ul class="pagination" id="pagination"></ul>
+                    </nav>
                 </div>
             </div> 
         </div>
     </body>
-    <div class="height38"></div>
+    <div class="height20"></div>
     <footer>
         <%@include file="footer.jspf" %>
     </footer>

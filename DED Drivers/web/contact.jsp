@@ -42,7 +42,8 @@ and open the template in the editor.
         <div>
             <!-- Comienza el Texto -->
             <div class="container cuerpo">
-                Para cualquier consulta, disconformidad o sugerencia se puede contactar con nosotros por los siguientes medios: <br>
+                <p>Para cualquier consulta, disconformidad o sugerencia se puede contactar con nosotros por los siguientes medios:</p> 
+                
                 <ul>
                     <li>Linea atención al cliente al (506)800-23452345</li>
                     <li>Via correo electronico llenando el siguiente formulario:</li>

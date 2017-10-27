@@ -34,6 +34,9 @@
 
         <!-- Script's de UTILERIAS -->
         <script src="funciones/utils.js" type="text/javascript"></script>
+        
+        <!--Script de paginacion-->
+        <script src="funciones/jquery.twbsPagination.js" type="text/javascript"></script>
 
         <!-- Script's de Choferes -->
         <script src="funciones/ChoferJS.js" type="text/javascript"></script>
@@ -194,7 +197,7 @@
 
         <div class="container cuerpo">
             <div class="page-header">
-                <h1><center>Módulo de mantenimiento de choferes</center></h1>
+                <h1><center>Mantenimiento de choferes</center></h1>
             </div>
             <!-- PANEL DEL MANTENIMIENTO DE Choferes -->
             
@@ -224,11 +227,17 @@
                     <!-- ********************************************************** -->
 
                     <table class="table table-hover table-condensed" id="tablaChoferes"></table>
+                    
+                    <nav aria-label="Page navigation" id="mio">
+                        <ul class="pagination" id="pagination"></ul>
+                    </nav>
+
                 </div>
             </div> 
         </div>
     </body>
-    <div class="height38"></div>
+    
+    <div class="height20"></div>
     <footer>
         <%@include file="footer.jspf" %>
     </footer>

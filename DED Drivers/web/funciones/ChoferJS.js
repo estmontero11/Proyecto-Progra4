@@ -2,7 +2,38 @@
 // // Funcion para generar el datetimepicker
 // Además de agregar los eventos a las respectivas etiquetas
 //******************************************************************************
+
+var info = [];
+var max;
+var min;
+var inicio;
+
 $(function () {
+    
+    $("#tablaChoferes").html(""); 
+    
+    //muestra el enzabezado de la tabla
+    var head = $("<thead />");
+    var row = $("<tr />");
+    head.append(row);
+    $("#tablaChoferes").append(head); 
+    row.append($("<th><b>CÉDULA</b></th>"));
+    row.append($("<th><b>NOMBRE</b></th>"));
+    row.append($("<th><b>APELLIDOS</b></th>"));
+    row.append($("<th><b>FEC.NACIMIENTO</b></th>"));
+    row.append($("<th><b>FEC.VENCIMIENTO</b></th>"));
+    row.append($("<th><b>T.LICENCIA</b></th>"));
+    row.append($("<th><b>CHOFER DEL VEHÍCULO</b></th>"));
+    row.append($("<th><b>CLIENTE TRANSPORTISTA</b></th>"));
+    row.append($("<th><b>ACCIÓN</b></th>"));
+    
+    for (var i = 1; i < 11; i++) {
+        var row = $("<tr />");
+        row.addClass("page" + i);
+        $("#tablaChoferes").append(row);
+    }
+    
+    
     //Genera el datapicker
     $('#dpFechaNacimiento').datetimepicker({
         weekStart: 1,
@@ -44,6 +75,10 @@ $(function () {
     });
 });
 
+
+function calcularTamaño() {
+    return Math.ceil(info.length / 10);
+};
 //******************************************************************************
 //Se ejecuta cuando la página esta completamente cargada
 //******************************************************************************
@@ -70,9 +105,30 @@ function consultarChoferes() {
             swal('Error', 'Se presento un error a la hora de cargar la información de los choferes en la base de datos', 'error');
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            dibujarTabla(data);
-            // se oculta el modal esta funcion se encuentra en el utils.js
             ocultarModal("myModal");
+            info = data;
+            $('#mio').html("<ul class='pagination' id='pagination'></ul>");
+            $('#pagination').twbsPagination({
+                totalPages: calcularTamaño(),
+                visiblePages: 5,
+                onPageClick: function (event, page) {
+                    max = page * 10;
+                    min = max - 10;
+                    inicio = 1;
+                    for (var i = 1; i < 11; i++) {
+                        $('.page' + inicio).html("");
+                        inicio++;
+                    }
+                    inicio = 1;
+                    for (var j = min; j < max; j++) {
+                        if (info[j] == null) {
+                            break;
+                        }
+                        dibujarFila('.page' + inicio, info[j]);
+                        inicio++;
+                    }
+                }
+            });
         },
         type: 'POST',
         dataType: "json"
@@ -91,11 +147,12 @@ function dibujarTabla(dataJson) {
     row.append($("<th><b>CÉDULA</b></th>"));
     row.append($("<th><b>NOMBRE</b></th>"));
     row.append($("<th><b>APELLIDOS</b></th>"));
-    row.append($("<th><b>FEC. NACIMIENTO</b></th>"));
-    row.append($("<th><b>FEC. VENCIMIENTO</b></th>"));
-    row.append($("<th><b>TIPO LICENCIA</th>"));
-    row.append($("<th><b>ES CHOFER DEL VEHÍCULO</th>"));
-    row.append($("<th><b>ES CLIENTE TRANSPORTISTA</th>"));
+    row.append($("<th><b>FEC.NACIMIENTO</b></th>"));
+    row.append($("<th><b>FEC.VENCIMIENTO</b></th>"));
+    row.append($("<th><b>T.LICENCIA</b></th>"));
+    row.append($("<th><b>CHOFER DEL VEHÍCULO</b></th>"));
+    row.append($("<th><b>CLIENTE TRANSPORTISTA</b></th>"));
+    row.append($("<th><b>ACCIÓN</b></th>"));
     
     //carga la tabla con el json devuelto
     for (var i = 0; i < dataJson.length; i++) {
@@ -103,11 +160,11 @@ function dibujarTabla(dataJson) {
     }
 }
 
-function dibujarFila(rowData) {
+function dibujarFila(page, rowData) {
     //Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
     //de una chofer
     
-    var row = $("<tr />");
+    var row = $(page);
     $("#tablaChoferes").append(row); 
     row.append($("<td>" + rowData.idChofer + "</td>"));
     row.append($("<td>" + rowData.nombre + "</td>"));

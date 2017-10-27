@@ -61,15 +61,15 @@ public class UsuarioDAO extends HibernateUtil implements cr.ac.una.progra4.deddr
 
     @Override
     public Usuario findById(Integer id) {
-        Usuario chofer = null;
+        Usuario usuario = null;
 
         try {
             iniciaOperacion();
-            chofer = (Usuario) getSesion().get(Usuario.class, id);
+            usuario = (Usuario) getSesion().get(Usuario.class, id);
         } finally {
             getSesion().close();
         }
-        return chofer;
+        return usuario;
     }
 
     @Override
@@ -77,11 +77,23 @@ public class UsuarioDAO extends HibernateUtil implements cr.ac.una.progra4.deddr
         List<Usuario> listaUsuario;
         try {
             iniciaOperacion();//HQL
-            listaUsuario = getSesion().createQuery("from Usuario").list();
+            listaUsuario = getSesion().createQuery("from usuario").list();
         } finally {
             getSesion().close();
         }
 
         return listaUsuario;
+    }
+    
+    public List<Usuario> findByName(String name) {
+        List<Usuario> listaUsuarios;
+
+        try {
+            iniciaOperacion();
+            listaUsuarios = getSesion().createQuery("from Usuario where nombre like '%%%" + name + "%%'").list();
+        } finally {
+            getSesion().close();
+        }
+        return listaUsuarios;
     }
 }
