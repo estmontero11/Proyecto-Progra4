@@ -47,7 +47,7 @@ public class UsuarioServlet extends HttpServlet {
             
             UsuarioBL uBL= new UsuarioBL();
             
-            Thread.sleep(1000);
+           // Thread.sleep(1000);
             
             HttpSession session = request.getSession();
             
@@ -56,6 +56,25 @@ public class UsuarioServlet extends HttpServlet {
             switch(accion){
                 case "consultarUsuario":
                     json = new Gson().toJson(uBL.findAll(Usuario.class.getName()));
+                    out.print(json);
+                    break;
+                    
+                case "eliminarUsuario":
+                        usuario.setIdUsuario(request.getParameter("idUsuario"));
+                    
+                        //Se elimina el objeto
+                        uBL.delete(usuario);
+
+                        //Se imprime la respuesta con el response
+                        out.print("El usuario fue eliminado correctamente");
+                 
+                    break;
+                case "consultarUsuarioById":
+                    //se consulta la persona por ID
+                    usuario = uBL.findByIdUser((request.getParameter("idUsuario")));
+                    
+                    //se pasa la informacion del objeto a formato JSON
+                    json = new Gson().toJson(usuario);
                     out.print(json);
                     break;
                 
@@ -84,7 +103,7 @@ public class UsuarioServlet extends HttpServlet {
                         out.print("C~El usuario fue ingresada correctamente");
                         
                     }
-                    case "agregarUsuarios2": case "modificarUsuarios":
+                    case "agregarUsuarios2": case "modificarUsuario":
                     
                     usuario.setIdUsuario(request.getParameter("idUsuario"));
                     usuario.setContrasena(request.getParameter("contrasena"));

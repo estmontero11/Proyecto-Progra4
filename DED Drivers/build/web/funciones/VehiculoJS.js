@@ -368,7 +368,7 @@ function consultarVehiculoById(idVehiculo) {
             $("#color").val(data.color);
             $("#puntuacion").val(data.puntuacion);
             $("#estado").val(data.estado);
-            $("ubicacionActual").val(data.ubicacionActual);
+            $("#ubicacionActual").val(data.ubicacionActual);
             $("#idChofer").val(data.idChofer);
            
         },

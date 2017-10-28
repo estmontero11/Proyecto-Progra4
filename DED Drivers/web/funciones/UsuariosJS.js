@@ -32,6 +32,12 @@ $(function () {
         enviar();
     });    
     
+    //agrega los eventos las capas necesarias
+    $("#cancelar").click(function () {
+        limpiarForm();
+        $("#myModalFormulario").modal("hide");
+    });
+    
     $("#btMostarForm").click(function () {
         limpiarForm();
     });
@@ -55,7 +61,7 @@ function consultarUsuarios() {
             accion: "consultarUsuario"
         },
         error: function () { //si existe un error en la respuesta del ajax
-            swal ('Error', 'Se presento un error a la hora de cargar la información de los usuarios en la base de datos', 'error');
+            swal ('Error','Se presento un error a la hora de cargar la información de los usuarios en la base de datos', 'error');
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             dibujarTabla(data);
@@ -111,10 +117,10 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.ultimoUsuario + "</td>"));
     row.append($("<td>" + rowData.ultimaFecha + "</td>"));
     
-    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="consultarChoferById('+rowData.idChofer+');">'+
+    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="consultarUsuarioById(\''+rowData.idUsuario+'\');">'+
                         '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'+
                     '</button>'+
-                    '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="eliminarChofer('+rowData.idChofer+');">'+
+                    '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="eliminarUsuario(\''+rowData.idUsuario+'\');">'+
                         '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>'+
                     '</button></td>'));
 }
@@ -210,7 +216,7 @@ function enviar() {
                 var respuestaTxt = data.substring(2);
                 var tipoRespuesta = data.substring(0, 2);
                 if (tipoRespuesta === "C~") { //correcto
-                    swal('Correcto', respuestaTxt, 'success');
+                    swal('Correcto',"Se agregó correctamente el usuario", 'success');
                     $("#myModalFormulario").modal("hide");
                     consultarUsuarios();
                 } else {
@@ -241,4 +247,137 @@ function mostrarMensaje(classCss, msg, neg) {
     $("#mesajeResultNeg").html(neg);
     $("#mesajeResultText").html(msg);
     $("#mesajeResultText").html(msg);
+}
+
+//******************************************************************************
+//******************************************************************************
+//metodos para eliminar chofers
+//******************************************************************************
+//******************************************************************************
+
+function eliminarUsuario(idUsuario) {
+    swal({
+        title: 'Alerta',
+        text: "¿Está seguro que quiere eliminar este chofer?",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, eliminar',
+        cancelButtonText: 'No, cancelar',
+        confirmButtonClass: 'btn btn-success',
+        cancelButtonClass: 'btn btn-danger',
+        buttonsStyling: false
+    }).then(function () {
+        mostrarModal("myModal", "Espere por favor..", "Se esta eliminando a el usuario seleccionada");  
+        //Se envia la información por ajax
+        $.ajax({
+            url: 'UsuarioServlet',
+            data: {
+                accion: "eliminarUsuario",
+                idUsuario: idUsuario
+            },
+            error: function () { //si existe un error en la respuesta del ajax
+                ocultarModal("myModal");
+                swal('Error', 'Se presento un error, contactar al administrador', 'error');
+            },
+            success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+                // se cambia el mensaje del modal por la respuesta del ajax
+                var respuestaTxt = data.substring(2);
+                var tipoRespuesta = data.substring(0, 2);
+                ocultarModal("myModal");
+                if (tipoRespuesta === "E~") {
+                    cambiarMensajeModal("myModal","Resultado acción",respuestaTxt);
+                }else{            
+                    setTimeout(consultarUsuarios, 1000);// hace una pausa y consulta la información de la base de datos   
+                    swal('Correcto', 'El usuario se ha eliminado correctamente', 'success');
+                }
+            },
+            type: 'POST',
+            dataType: "text"
+        });
+    }, function (dismiss) {
+        if (dismiss === 'cancel') {
+          swal('Cancelado','No se ha eliminado el usuario','error');
+        }
+    });
+}
+
+//******************************************************************************
+//******************************************************************************
+//metodos para eliminar choferes
+//******************************************************************************
+//******************************************************************************
+
+function consultarUsuarioById(idUsuario) {
+    mostrarModal("myModal", "Espere por favor..", "Consultando el usuario seleccionado");
+    //Se envia la información por ajax
+    $.ajax({
+        url: 'UsuarioServlet',
+        data: {
+            accion: "consultarUsuarioById",
+            idUsuario: idUsuario
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            ocultarModal("myModal");
+            swal('Error','Se presento un error, contactar al administrador','error');
+            cambiarMensajeModal("myModal","Resultado acción","Se presento un error, contactar al administrador");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            // se oculta el mensaje de espera
+            ocultarModal("myModal");
+            limpiarForm();
+            //se muestra el formulario
+            $("#myModalFormulario").modal();
+            
+            //************************************************************************
+            //carga información del usuario en el formulario
+            //************************************************************************
+            //se indicar que la cédula es solo readOnly
+            $("#idUsuario").attr('readonly', 'readonly');
+            
+            //se modificar el hidden que indicar el tipo de accion que se esta realizando
+            $("#usuarioAction").val("modificarUsuario"); 
+            
+            //se carga la información en el formulario
+            $("#nombre").val(data.nombre);
+            $("#apellidos").val(data.apellidos);
+            
+       
+            //carga de fecha
+            var fechaNac = new Date(data.fechaNacimiento);
+            var fechaTxtNac = fechaNac.getDate() +"/" +(fechaNac.getMonth()+1) + "/" + fechaNac.getFullYear();
+            $("#fechaNacimiento").data({date: fechaTxtNac});
+            $("#fechaNacimientoTxt").val(fechaTxtNac);
+            
+            $("#direccion").val(data.direccion);
+            $("#telefono").val(data.telefonoTrabajo);
+            $("#correo").val(data.correoElectronico);
+            $("#idUsuario").val(data.idUsuario);
+            $("#contrasena").val(data.contrasena);
+            $("#idUltUsuario").val(data.ultimoUsuario);
+            
+            var fechaNac2 = new Date(data.ultimaFecha);
+            var fechaTxtNac2 = fechaNac2.getDate() +"/" +(fechaNac2.getMonth()+1) + "/" + fechaNac2.getFullYear();
+            $("#ultFechModif").data({date: fechaTxtNac2});
+            $("#ultFechModifTxt").val(fechaTxtNac2);
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+
+function limpiarForm() {
+    //setea el focus del formulario
+    $('#idUsuario').focus();
+    $("#idUsuario").removeAttr("readonly"); //elimina el atributo de solo lectura
+    
+    //se cambia la accion por agregarChofer
+    $("#usuarioAction").val("agregarUsuarios2"); 
+
+    //esconde el div del mensaje
+    mostrarMensaje("hiddenDiv", "", "");
+
+    //Resetear el formulario
+    $('#formUsuario').trigger("reset");
 }

@@ -74,8 +74,6 @@
                 </div>
             </div>
         </div>
-        
-
         <!-- ********************************************************** -->
         <!-- ********************************************************** -->
         <!-- Modal del BootsTrap para mostrar el formulario de insertar -->
@@ -162,8 +160,8 @@
                                     <div class="form-group" id="groupEsClienteTransportista">
                                         <label for="esClienteTransportista">Es Cliente Transportista:</label>
                                         <select class="form-control" id="esClienteTransportista">
-                                            <option value="NO" selected="selected">No</option>
-                                            <option value="SI">Si</option>
+                                            <option value="0" selected="selected">No</option>
+                                            <option value="1">Si</option>
                                         </select>
                                     </div>
                                 </div>
@@ -225,8 +223,8 @@
                         </form>
                     </div>
                     <!-- ********************************************************** -->
-
-                    <table class="table table-hover table-condensed" id="tablaChoferes"></table>
+                    
+                    <table class="table table-hover table-condensed table-responsive" id="tablaChoferes"></table>
                     
                     <nav aria-label="Page navigation" id="mio">
                         <ul class="pagination" id="pagination"></ul>

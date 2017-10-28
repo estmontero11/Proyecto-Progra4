@@ -194,6 +194,7 @@ footer {
     color: white;
     font-size: 15px;
     height: 100px;
+    width:  100%;
 }
 
 #amarillo{
@@ -324,3 +325,4 @@ nav.navbar.footer{
     padding-top: 164px;
     font-family: 'Orbitron', sans-serif;
 }
+

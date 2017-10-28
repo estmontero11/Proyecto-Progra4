@@ -10,7 +10,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Mantenimiento de Usuarios</title>
-        
          <!--CSS LOCAL-->
         <link href="estilos/css.css" rel="stylesheet" type="text/css"/>
 
@@ -45,6 +44,7 @@
         
         <!-- JS Sweetalert -->
         <script src="funciones/sweetalert2.js" type="text/javascript"></script>
+       
         
         <!-- CSS Sweetalert -->
         <link href="estilos/sweetalert2.css" rel="stylesheet" type="text/css"/>
