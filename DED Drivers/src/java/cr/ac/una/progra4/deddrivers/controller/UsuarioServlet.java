@@ -78,6 +78,11 @@ public class UsuarioServlet extends HttpServlet {
                     out.print(json);
                     break;
                 
+                case "consultarUsuarioByName":
+                    json = new Gson().toJson(uBL.findByName((request.getParameter("nameUsuario"))));
+                    out.print(json);
+                    break;
+                
                 case "agregarUsuarios":
                     
                     usuario.setIdUsuario(request.getParameter("idUsuario"));

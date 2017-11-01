@@ -42,6 +42,10 @@
         
         <!--Script de paginacion-->
         <script src="funciones/jquery.twbsPagination.js" type="text/javascript"></script>
+        
+        <!--Script de mapa-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDomGs0dCkbZbNVwNybUTcmtwAtDcNlm-A&callback=initMap" async defer></script>
+
 
         <!-- Script's de Vehiculos -->
         <script src="funciones/VehiculoJS.js" type="text/javascript"></script>
@@ -145,7 +149,13 @@
                                 <div class="col-md-4">
                                     <div class="form-group" id="groupUbicacionActual">
                                         <label for="ubicacionActual">Ubicación actual:</label>
-                                        <input type="text" class="form-control" id="ubicacionActual">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="ubicacionActual" placeholder="Ubicación física actual" readonly>
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-map-marker" id="mapita"></span>
+                                            </span>
+                                        </div>
+                                        <div class="form-control " id="map" action="javascript::initMap();"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -212,9 +222,9 @@
                         </form>
                     </div>
                     <!-- ********************************************************** -->
-
-                    <table class="table table-hover table-condensed" id="tablaVehiculos"></table>
-                    
+                    <div class="container-fluid table-responsive" style="overflow-x: auto;">
+                        <table border="1" class="table table-hover table-condensed" id="tablaVehiculos"></table>
+                    </div>
                     <nav aria-label="Page navigation" id="mio">
                         <ul class="pagination" id="pagination"></ul>
                     </nav>

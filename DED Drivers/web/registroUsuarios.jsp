@@ -39,6 +39,8 @@
         <!-- Script's de UTILERIAS -->
         <script src="funciones/utils.js" type="text/javascript"></script>
         
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDomGs0dCkbZbNVwNybUTcmtwAtDcNlm-A&callback=initMap" async defer></script>
+
         <!-- Script's de Usuarios -->
         <script src="funciones/UsuarioJS.js" type="text/javascript"></script>
  
@@ -79,7 +81,7 @@
         
         <h1 id="tituloRegistro" align="center">Ingrese sus datos.</h1>
         <br>
-        <div class="container center_div">
+        <div class="container center_div" id="contenedorRegistro">
         <div class="row">      
             <form id="formUsuario" class="form-group" onsubmit="return false;">
                 <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4" id="groupNombre">
@@ -100,15 +102,6 @@
                     </div>
                 </div>
                 <div class="clearfix"></div>
-                <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4" id="groupDireccion">
-                    <label for="direccion">Dirección</label>
-                    <div class="input-group">
-                    <input type="text" class="form-control" id="direccion" placeholder="Ingrese su dirección física exacta">
-                    <span class="input-group-addon">
-                         <span class="glyphicon glyphicon-map-marker"></span>
-                    </span>
-                    </div>
-                </div>
                 <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4" id="groupTelefono">
                     <label for="telefono">Télefono/Celular</label>
                     <div class="input-group">
@@ -126,6 +119,16 @@
                          <span class="glyphicon glyphicon-envelope"></span>
                     </span>
                     </div>
+                </div>
+                <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4" id="groupDireccion">
+                    <label for="direccion">Dirección</label>
+                    <div class="input-group">
+                    <input type="text" class="form-control" id="direccion" placeholder="Ingrese su dirección física exacta" readonly>
+                    <span class="input-group-addon" >
+                         <span class="glyphicon glyphicon-map-marker" id="mapita" ></span>
+                    </span>
+                    </div>
+                    <div class="form-control " id="map" action="javascript::initMap();"></div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4" id="groupIdUsuario">

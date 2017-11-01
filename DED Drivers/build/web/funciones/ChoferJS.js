@@ -23,8 +23,8 @@ $(function () {
     row.append($("<th><b>FEC.NACIMIENTO</b></th>"));
     row.append($("<th><b>FEC.VENCIMIENTO</b></th>"));
     row.append($("<th><b>T.LICENCIA</b></th>"));
-    row.append($("<th><b>CHOFER DEL VEHÍCULO</b></th>"));
-    row.append($("<th><b>CLIENTE TRANSPORTISTA</b></th>"));
+    row.append($("<th><b>CHO. DEL VEHÍCULO</b></th>"));
+    row.append($("<th><b>CLI.TRANSPORTISTA</b></th>"));;
     row.append($("<th><b>ACCIÓN</b></th>"));
     
     for (var i = 1; i < 11; i++) {
@@ -150,8 +150,8 @@ function dibujarTabla(dataJson) {
     row.append($("<th><b>FEC.NACIMIENTO</b></th>"));
     row.append($("<th><b>FEC.VENCIMIENTO</b></th>"));
     row.append($("<th><b>T.LICENCIA</b></th>"));
-    row.append($("<th><b>CHOFER DEL VEHÍCULO</b></th>"));
-    row.append($("<th><b>CLIENTE TRANSPORTISTA</b></th>"));
+    row.append($("<th><b>CHO. DEL VEHÍCULO</b></th>"));
+    row.append($("<th><b>CLI.TRANSPORTISTA</b></th>"));
     row.append($("<th><b>ACCIÓN</b></th>"));
     
     //carga la tabla con el json devuelto

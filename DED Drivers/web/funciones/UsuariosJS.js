@@ -4,8 +4,42 @@
  * and open the template in the editor.
  */
 
+var info = [];
+var max;
+var min;
+var inicio;
+
+
 
 $(function () {
+    
+    $("#tablaUsuarios").html(""); 
+    
+    //muestra el enzabezado de la tabla
+    var head = $("<thead />");
+    var row = $("<tr />");
+    head.append(row);
+    $("#tablaUsuarios").append(head); 
+    row.append($("<th><b>NOMBRE</b></th>"));
+    row.append($("<th><b>APELLIDOS</b></th>"));
+    row.append($("<th><b>FEC.NACIMIENTO</b></th>"));
+    row.append($("<th><b>DIRECCIÓN</b></th>"));
+    row.append($("<th><b>TÉLEFONO</b></th>"));
+    row.append($("<th><b>CORREO</b></th>"));
+    row.append($("<th><b>USUARIO</b></th>"));
+    row.append($("<th><b>CONTRASEÑA</b></th>"));
+    row.append($("<th><b>ULT.USU.MODIF</b></th>"));
+    row.append($("<th><b>ULT.FEC.MODIF</b></th>"));
+    row.append($("<th><b>ACCIÓN</b></th>"));
+    
+    for (var i = 1; i < 11; i++) {
+        var row = $("<tr />");
+        row.addClass("page" + i);
+        $("#tablaUsuarios").append(row);
+    }
+    
+    
+    
     //Genera el datapicker
     $('#fechaNacimiento').datetimepicker({
         weekStart: 1,
@@ -25,6 +59,17 @@ $(function () {
         startView: 2,
         minView: 2,
         forceParse: 0
+    });
+
+    $(document).on("click", function (e) {
+        if ($(e.target).is("#direccion")){
+            $("#map").show();
+            initMap();        
+        }else {
+            if ($(e.target).is("#mapita")){
+                $("#map").hide();
+            }
+        }
     });
 
     //agrega los eventos las capas necesarias
@@ -48,6 +93,10 @@ $(function () {
 });
 
 
+function calcularTamaño() {
+    return Math.ceil(info.length / 10);
+};
+
 $(document).ready(function () {
     consultarUsuarios();
 });
@@ -64,9 +113,30 @@ function consultarUsuarios() {
             swal ('Error','Se presento un error a la hora de cargar la información de los usuarios en la base de datos', 'error');
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            dibujarTabla(data);
-            // se oculta el modal esta funcion se encuentra en el utils.js
             ocultarModal("myModal");
+            info = data;
+            $('#mio').html("<ul class='pagination' id='pagination'></ul>");
+            $('#pagination').twbsPagination({
+                totalPages: calcularTamaño(),
+                visiblePages: 5,
+                onPageClick: function (event, page) {
+                    max = page * 10;
+                    min = max - 10;
+                    inicio = 1;
+                    for (var i = 1; i < 11; i++) {
+                        $('.page' + inicio).html("");
+                        inicio++;
+                    }
+                    inicio = 1;
+                    for (var j = min; j < max; j++) {
+                        if (info[j] == null) {
+                            break;
+                        }
+                        dibujarFila('.page' + inicio, info[j]);
+                        inicio++;
+                    }
+                }
+            });
         },
         type: 'POST',
         dataType: "json"
@@ -100,11 +170,11 @@ function dibujarTabla(dataJson) {
     }
 }
 
-function dibujarFila(rowData) {
+function dibujarFila(page, rowData) {
     //Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
     //de una chofer
     
-    var row = $("<tr/>");
+    var row = $(page);
     $("#tablaUsuarios").append(row); 
     row.append($("<td>" + rowData.nombre + "</td>"));
     row.append($("<td>" + rowData.apellidos + "</td>"));
@@ -114,9 +184,20 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.correoElectronico + "</td>"));
     row.append($("<td>" + rowData.idUsuario + "</td>"));
     row.append($("<td>" + rowData.contrasena + "</td>"));
-    row.append($("<td>" + rowData.ultimoUsuario + "</td>"));
-    row.append($("<td>" + rowData.ultimaFecha + "</td>"));
     
+    if(rowData.ultimoUsuario===undefined){
+        row.append($("<td>No asignado</td>"));
+    }
+    else{
+        row.append($("<td>" + rowData.ultimoUsuario + "</td>"));
+    }
+    
+    if(rowData.ultimaFecha===undefined){
+        row.append($("<td>No asignado</td>"));
+    }
+    else{
+        row.append($("<td>" + rowData.ultimaFecha + "</td>"));
+    }
     row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="consultarUsuarioById(\''+rowData.idUsuario+'\');">'+
                         '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'+
                     '</button>'+
@@ -380,4 +461,75 @@ function limpiarForm() {
 
     //Resetear el formulario
     $('#formUsuario').trigger("reset");
+}
+
+function buscar(){
+    var name = document.getElementById("textoBuscar").value;
+    consultarUsuarioByName(name);
+}
+
+function consultarUsuarioByName(nameUsuario) {
+    mostrarModal("myModal", "Espere por favor..", "Consultando el usuario seleccionado");
+    //Se envia la información por ajax
+    mostrarModal("myModal", "Espere por favor..", "Consultando la información de los usuarios en la base de datos");
+    //Se envia la información por ajax
+    $.ajax({
+        url: 'UsuarioServlet',
+        data: {
+            accion: "consultarUsuarioByName",
+            nameUsuario: nameUsuario
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            swal('Error', 'Se presento un error a la hora de cargar la información de los choferes en la base de datos', 'error');
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            dibujarTabla(data);
+            // se oculta el modal esta funcion se encuentra en el utils.js
+            ocultarModal("myModal");
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+
+function initMap() {
+    var uluru = {lat: 10.0000000, lng: -84.0000000};
+    var map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 4,
+        center: uluru
+    });
+    var marker = new google.maps.Marker({position: uluru, map: map, title: 'Click to zoom'});
+    marker.addListener('click', function () {
+        map.setZoom(8);
+        marker.setPosition(uluru);
+        map.setCenter(marker.getPosition());
+    });
+    google.maps.event.addListener(map, 'click', function (e) {
+        placeMarker(e.latLng, map, marker);
+    });
+}
+function placeMarker(position, map, marker) {
+    var geocoder = new google.maps.Geocoder;
+    var infowindow = new google.maps.InfoWindow({
+        content: 'An InfoWindow'
+    });
+    infowindow.close();
+    marker.setPosition(position);
+    geocodeLatLng(geocoder, map, infowindow, position, marker);
+    map.panTo(position);
+}
+function geocodeLatLng(geocoder, map, infowindow, position, marker) {
+    geocoder.geocode({'location': position}, function (results, status) {
+        if (status === 'OK') {
+            if (results[1]) {
+                infowindow.setContent(results[0].formatted_address);
+                infowindow.open(map, marker);
+                document.getElementById("direccion").value = results[0].formatted_address;
+            } else {
+                window.alert('No results found');
+            }
+        } else {
+            window.alert('Geocoder failed due to: ' + status);
+        }
+    });
 }

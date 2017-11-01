@@ -38,6 +38,12 @@
 
         <!-- Script's de UTILERIAS -->
         <script src="funciones/utils.js" type="text/javascript"></script>
+        
+        <!--Script de paginacion-->
+        <script src="funciones/jquery.twbsPagination.js" type="text/javascript"></script>
+        
+        <!--Script de mapa-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDomGs0dCkbZbNVwNybUTcmtwAtDcNlm-A&callback=initMap" async defer></script>
 
         <!-- Script's de Usuarios -->
         <script src="funciones/UsuariosJS.js" type="text/javascript"></script>
@@ -117,19 +123,35 @@
                                 <div class="col-md-4">
                                     <div class="form-group" id="groupDireccion">
                                         <label for="direccion">Dirección:</label>
-                                        <input type="text" class="form-control" id="direccion" placeholder="Ingrese su dirección física exacta">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="direccion" placeholder="Ingrese su dirección física exacta" readonly>
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-map-marker" id="mapita"></span>
+                                            </span>
+                                        </div>
+                                        <div class="form-control " id="map" action="javascript::initMap();"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group" id="groupTelefono">
                                         <label for="telefono">Télefono/Celular:</label>
-                                        <input type="number" min="0" class="form-control" id="telefono" placeholder="99999999">
+                                        <div class="input-group">
+                                            <input type="number" min="0" class="form-control" id="telefono" placeholder="99999999">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-phone-alt"></span>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group" id="groupCorreo">
                                         <label for="correo">Correo electrónico:</label>
-                                        <input type="email" class="form-control" id="correo" placeholder="ejemplo@hotmail.com">
+                                        <div class="input-group">
+                                            <input type="email" class="form-control" id="correo" placeholder="ejemplo@hotmail.com">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-envelope"></span>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -137,19 +159,34 @@
                                 <div class="col-md-4">
                                     <div class="form-group" id="groupIdUsuario">
                                         <label for="idUsuario">Usuario:</label>
-                                        <input type="text" class="form-control" id="idUsuario">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="idUsuario">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-user"></span>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group" id="groupContrasena">
                                         <label for="contrasena">Contraseña:</label>
-                                        <input type="password" class="form-control" id="contrasena">
+                                        <div class="input-group">
+                                            <input  type="password" class="form-control" id="contrasena">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-qrcode"></span>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group" id="groupUltUsuario">
                                         <label for="ultimoUsuario">Último usuario en modificar:</label>
-                                        <input type="text" class="form-control" id="idUltUsuario">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="idUltUsuario">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-user"></span>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -222,8 +259,15 @@
                         </form>
                     </div>
                     <!-- ********************************************************** -->
-
-                    <table class="table table-hover table-condensed" id="tablaUsuarios"></table>
+                    
+                    <div class="container-fluid table-responsive" style="overflow-x: auto;">
+                        <table border="1" class="table table-hover table-condensed" id="tablaUsuarios"></table>
+                    </div>
+                    
+                    <nav aria-label="Page navigation" id="mio">
+                        <ul class="pagination" id="pagination"></ul>
+                    </nav>
+                    
                 </div>
             </div> 
         </div>    

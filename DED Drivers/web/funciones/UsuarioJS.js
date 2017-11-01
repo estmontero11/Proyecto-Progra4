@@ -17,12 +17,27 @@ $(function () {
         minView: 2,
         forceParse: 0
     });
+        
+    $(document).on("click", function (e) {
+        if ($(e.target).is("#direccion")){
+            $("#map").show();
+            initMap();        
+        }else {
+            if ($(e.target).is("#mapita")){
+                $("#map").hide();
+            }
+        }
+    });
+    
+    
     
     $("#enviar").click(function () {
         enviar();
         limpiarForm();
     });
 });
+
+
 
 function validar() {
     var validacion = true;
@@ -149,4 +164,46 @@ function limpiarForm() {
 
     //Resetear el formulario
     $('#formUsuario').trigger("reset");
+}
+
+function initMap() {
+    var uluru = {lat: 10.0000000, lng: -84.0000000};
+    var map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 4,
+        center: uluru
+    });
+    var marker = new google.maps.Marker({position: uluru, map: map, title: 'Click to zoom'});
+    marker.addListener('click', function () {
+        map.setZoom(8);
+        marker.setPosition(uluru);
+        map.setCenter(marker.getPosition());
+    });
+    google.maps.event.addListener(map, 'click', function (e) {
+        placeMarker(e.latLng, map, marker);
+    });
+}
+function placeMarker(position, map, marker) {
+    var geocoder = new google.maps.Geocoder;
+    var infowindow = new google.maps.InfoWindow({
+        content: 'An InfoWindow'
+    });
+    infowindow.close();
+    marker.setPosition(position);
+    geocodeLatLng(geocoder, map, infowindow, position, marker);
+    map.panTo(position);
+}
+function geocodeLatLng(geocoder, map, infowindow, position, marker) {
+    geocoder.geocode({'location': position}, function (results, status) {
+        if (status === 'OK') {
+            if (results[1]) {
+                infowindow.setContent(results[0].formatted_address);
+                infowindow.open(map, marker);
+                document.getElementById("direccion").value = results[0].formatted_address;
+            } else {
+                window.alert('No results found');
+            }
+        } else {
+            window.alert('Geocoder failed due to: ' + status);
+        }
+    });
 }

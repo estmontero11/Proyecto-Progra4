@@ -3,10 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/esteban/Desktop/Progra4/Proyecto/Proyecto-Progra4/DED%20Drivers/web/funciones/VehiculoJS.js</file>
-            <file>file:/C:/Users/esteban/Desktop/Progra4/Proyecto/Proyecto-Progra4/DED%20Drivers/src/java/cr/ac/una/progra4/deddrivers/dao/UsuarioDAO.java</file>
-            <file>file:/C:/Users/esteban/Desktop/Progra4/Proyecto/Proyecto-Progra4/DED%20Drivers/web/funciones/UsuariosJS.js</file>
-            <file>file:/C:/Users/esteban/Desktop/Progra4/Proyecto/Proyecto-Progra4/DED%20Drivers/web/funciones/ChoferJS.js</file>
+            <file>file:/C:/Users/Daniel/Documents/NetBeansProjects/ProyectosGitHub/Proyecto-Progra4/Proyecto-Progra4/DED%20Drivers/web/mantChoferes.jsp</file>
+            <file>file:/C:/Users/Daniel/Documents/NetBeansProjects/ProyectosGitHub/Proyecto-Progra4/Proyecto-Progra4/DED%20Drivers/src/java/cr/ac/una/progra4/deddrivers/controller/ChoferServlet.java</file>
+            <file>file:/C:/Users/Daniel/Documents/NetBeansProjects/ProyectosGitHub/Proyecto-Progra4/Proyecto-Progra4/DED%20Drivers/web/mantVehiculos.jsp</file>
+            <file>file:/C:/Users/Daniel/Documents/NetBeansProjects/ProyectosGitHub/Proyecto-Progra4/Proyecto-Progra4/DED%20Drivers/web/estilos/css.css</file>
+            <file>file:/C:/Users/Daniel/Documents/NetBeansProjects/ProyectosGitHub/Proyecto-Progra4/Proyecto-Progra4/DED%20Drivers/web/funciones/UsuariosJS.js</file>
+            <file>file:/C:/Users/Daniel/Documents/NetBeansProjects/ProyectosGitHub/Proyecto-Progra4/Proyecto-Progra4/DED%20Drivers/web/funciones/UsuarioJS.js</file>
+            <file>file:/C:/Users/Daniel/Documents/NetBeansProjects/ProyectosGitHub/Proyecto-Progra4/Proyecto-Progra4/DED%20Drivers/web/registroUsuarios.jsp</file>
+            <file>file:/C:/Users/Daniel/Documents/NetBeansProjects/ProyectosGitHub/Proyecto-Progra4/Proyecto-Progra4/DED%20Drivers/web/funciones/ChoferJS.js</file>
+            <file>file:/C:/Users/Daniel/Documents/NetBeansProjects/ProyectosGitHub/Proyecto-Progra4/Proyecto-Progra4/DED%20Drivers/src/java/cr/ac/una/progra4/deddrivers/dao/UsuarioDAO.java</file>
+            <file>file:/C:/Users/Daniel/Documents/NetBeansProjects/ProyectosGitHub/Proyecto-Progra4/Proyecto-Progra4/DED%20Drivers/src/java/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/Daniel/Documents/NetBeansProjects/ProyectosGitHub/Proyecto-Progra4/Proyecto-Progra4/DED%20Drivers/web/mantUsuarios.jsp</file>
         </group>
     </open-files>
 </project-private>

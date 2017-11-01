@@ -326,3 +326,12 @@ nav.navbar.footer{
     font-family: 'Orbitron', sans-serif;
 }
 
+table td{
+    padding-left: 10px;
+}
+
+#map{
+    width: 220px;
+    height: 220px;
+    display:none;
+}

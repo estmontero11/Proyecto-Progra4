@@ -223,9 +223,9 @@
                         </form>
                     </div>
                     <!-- ********************************************************** -->
-                    
-                    <table class="table table-hover table-condensed table-responsive" id="tablaChoferes"></table>
-                    
+                    <div class="container-fluid table-responsive" style="overflow-x: auto;">
+                        <table border="1" class="table table-hover table-condensed" id="tablaChoferes"></table>
+                    </div>
                     <nav aria-label="Page navigation" id="mio">
                         <ul class="pagination" id="pagination"></ul>
                     </nav>
