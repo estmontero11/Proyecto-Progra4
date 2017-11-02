@@ -160,8 +160,10 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group" id="groupIdChofer">
-                                        <label for="idChofer">Cédula chofer asignado al vehículo:</label>
-                                        <input type="number" min="1" class="form-control" id="idChofer" placeholder="Ingrese aquí la cedula del chofer">
+                                        <label for="chofer">Chofer asignado al vehículo:</label>
+                                        <select class="form-control" id="chofer">
+                                            <option value="0">Seleccione un Chofer</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

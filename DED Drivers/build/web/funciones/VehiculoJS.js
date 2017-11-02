@@ -1,4 +1,3 @@
-
 var info = [];
 var max;
 var min;
@@ -72,6 +71,7 @@ function calcularTamaño() {
 
 $(document).ready(function () {
     consultarVehiculos();
+    consultarChoferes();
 });
 
 //******************************************************************************
@@ -198,7 +198,7 @@ function enviar() {
                 puntuacion: $("#puntuacion").val(),
                 estado: $("#estado").val(),
                 ubicacionActual: $("#ubicacionActual").val(),
-                idChofer: $("#idChofer").val()
+                idChofer: obtenerCedula()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 swal('Error', 'Se genero un error, contacte al administrador (Error del ajax)', 'error');
@@ -381,7 +381,7 @@ function consultarVehiculoById(idVehiculo) {
             $("#puntuacion").val(data.puntuacion);
             $("#estado").val(data.estado);
             $("#ubicacionActual").val(data.ubicacionActual);
-            $("#idChofer").val(data.idChofer);
+            consultarChoferById(data.idChofer); 
            
         },
         type: 'POST',
@@ -450,6 +450,69 @@ function consultarVehiculoByName(nameVehiculo) {
             dibujarTabla(data);
             // se oculta el modal esta funcion se encuentra en el utils.js
             ocultarModal("myModal");
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+
+function consultarChoferes() {
+    mostrarModal("myModal", "Espere por favor..", "Consultando la información de los choferes en la base de datos");
+    //Se envia la información por ajax
+    $.ajax({
+        url: 'ChoferServlet',
+        data: {
+            accion: "consultarChoferes"
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            swal('Error', 'Se presento un error a la hora de cargar la información de los choferes en la base de datos', 'error');
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            ocultarModal("myModal");
+            info = data;
+            var chofer = document.getElementById("chofer");
+            for (value in info) {
+                var option = document.createElement("option");
+                option.text = info[value].nombre+" "+info[value].apellidos+" "+info[value].idChofer;
+                chofer.add(option);
+            }
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+
+function obtenerCedula(){
+    var espacios = 0;
+    var chofer = $( "#chofer option:selected" ).text();
+    var cedula = "";
+    for (var i=0; i<chofer.length; i++){
+        if(espacios === 2){
+            cedula = cedula + chofer.substr(i,1) ;
+        }
+        if(chofer.substr(i,1)===" "){
+            espacios++;
+        }    
+    }
+    return cedula;
+};
+
+function consultarChoferById(idChofer) {
+    //Se envia la información por ajax
+    $.ajax({
+        url: 'ChoferServlet',
+        data: {
+            accion: "consultarChoferById",
+            idChofer: idChofer
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            ocultarModal("myModal");
+            swal('Error','Se presento un error, contactar al administrador','error');
+            cambiarMensajeModal("myModal","Resultado acción","Se presento un error, contactar al administrador");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data            
+            //se carga la información en el formulario
+            $("#chofer").val(data.nombre+" "+data.apellidos+" "+data.idChofer);
         },
         type: 'POST',
         dataType: "json"
