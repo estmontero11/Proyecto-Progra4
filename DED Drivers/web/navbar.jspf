@@ -26,6 +26,8 @@
                 <li><a href="mantVehiculos.jsp"><span class="glyphicon glyphicon-list-alt"></span> Mantener Vehiculos</a></li>
                 <li><a href="mantUsuarios.jsp"><span class="glyphicon glyphicon-list-alt"></span> Mantener Usuarios</a></li>
                 <li><a href="registroUsuarios.jsp"><span class="glyphicon glyphicon-log-in"></span> Registrese</a></li>
+                <li><a href="servicios.jsp"><span class="glyphicon glyphicon-road"></span> Solicitar Viaje</a></li>
+
             </ul>
         </div>
     </div>

@@ -1,8 +1,7 @@
 package cr.ac.una.progra4.deddrivers.domain;
-// Generated Oct 5, 2017 12:50:00 AM by Hibernate Tools 4.3.1
+// Generated 03/11/2017 06:30:10 PM by Hibernate Tools 4.3.1
 
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -11,18 +10,18 @@ import java.util.Date;
 public class Servicio  implements java.io.Serializable {
 
 
-     private int idServicio;
+     private Integer idServicio;
      private Usuario usuario;
      private Vehiculo vehiculo;
-     private Serializable puntoLlegada;
-     private Serializable puntoSalida;
-     private Date horaLlegada;
-     private Date horaSalida;
+     private String puntoLlegada;
+     private String puntoSalida;
+     private String horaLlegada;
+     private String horaSalida;
      private int duracion;
-     private float costo;
+     private Float costo;
      private int idRetroalimentacion;
      private Date fechaRealizado;
-     private int puntuacion;
+     private Integer puntuacion;
      private String comentario;
      private String ultimoUsuario;
      private Date ultimaFecha;
@@ -31,15 +30,13 @@ public class Servicio  implements java.io.Serializable {
     }
 
 	
-    public Servicio(int idServicio, Usuario usuario, Vehiculo vehiculo, int duracion, int idRetroalimentacion) {
-        this.idServicio = idServicio;
+    public Servicio(Usuario usuario, Vehiculo vehiculo, int duracion, int idRetroalimentacion) {
         this.usuario = usuario;
         this.vehiculo = vehiculo;
         this.duracion = duracion;
         this.idRetroalimentacion = idRetroalimentacion;
     }
-    public Servicio(int idServicio, Usuario usuario, Vehiculo vehiculo, Serializable puntoLlegada, Serializable puntoSalida, Date horaLlegada, Date horaSalida, int duracion, float costo, int idRetroalimentacion, Date fechaRealizado, int puntuacion, String comentario, String ultimoUsuario, Date ultimaFecha) {
-       this.idServicio = idServicio;
+    public Servicio(Usuario usuario, Vehiculo vehiculo, String puntoLlegada, String puntoSalida, String horaLlegada, String horaSalida, int duracion, Float costo, int idRetroalimentacion, Date fechaRealizado, Integer puntuacion, String comentario, String ultimoUsuario, Date ultimaFecha) {
        this.usuario = usuario;
        this.vehiculo = vehiculo;
        this.puntoLlegada = puntoLlegada;
@@ -56,11 +53,11 @@ public class Servicio  implements java.io.Serializable {
        this.ultimaFecha = ultimaFecha;
     }
    
-    public int getIdServicio() {
+    public Integer getIdServicio() {
         return this.idServicio;
     }
     
-    public void setIdServicio(int idServicio) {
+    public void setIdServicio(Integer idServicio) {
         this.idServicio = idServicio;
     }
     public Usuario getUsuario() {
@@ -77,32 +74,32 @@ public class Servicio  implements java.io.Serializable {
     public void setVehiculo(Vehiculo vehiculo) {
         this.vehiculo = vehiculo;
     }
-    public Serializable getPuntoLlegada() {
+    public String getPuntoLlegada() {
         return this.puntoLlegada;
     }
     
-    public void setPuntoLlegada(Serializable puntoLlegada) {
+    public void setPuntoLlegada(String puntoLlegada) {
         this.puntoLlegada = puntoLlegada;
     }
-    public Serializable getPuntoSalida() {
+    public String getPuntoSalida() {
         return this.puntoSalida;
     }
     
-    public void setPuntoSalida(Serializable puntoSalida) {
+    public void setPuntoSalida(String puntoSalida) {
         this.puntoSalida = puntoSalida;
     }
-    public Date getHoraLlegada() {
+    public String getHoraLlegada() {
         return this.horaLlegada;
     }
     
-    public void setHoraLlegada(Date horaLlegada) {
+    public void setHoraLlegada(String horaLlegada) {
         this.horaLlegada = horaLlegada;
     }
-    public Date getHoraSalida() {
+    public String getHoraSalida() {
         return this.horaSalida;
     }
     
-    public void setHoraSalida(Date horaSalida) {
+    public void setHoraSalida(String horaSalida) {
         this.horaSalida = horaSalida;
     }
     public int getDuracion() {
@@ -112,11 +109,11 @@ public class Servicio  implements java.io.Serializable {
     public void setDuracion(int duracion) {
         this.duracion = duracion;
     }
-    public float getCosto() {
+    public Float getCosto() {
         return this.costo;
     }
     
-    public void setCosto(float costo) {
+    public void setCosto(Float costo) {
         this.costo = costo;
     }
     public int getIdRetroalimentacion() {
@@ -133,11 +130,11 @@ public class Servicio  implements java.io.Serializable {
     public void setFechaRealizado(Date fechaRealizado) {
         this.fechaRealizado = fechaRealizado;
     }
-    public int getPuntuacion() {
+    public Integer getPuntuacion() {
         return this.puntuacion;
     }
     
-    public void setPuntuacion(int puntuacion) {
+    public void setPuntuacion(Integer puntuacion) {
         this.puntuacion = puntuacion;
     }
     public String getComentario() {

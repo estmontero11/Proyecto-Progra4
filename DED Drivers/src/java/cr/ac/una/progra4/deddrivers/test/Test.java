@@ -45,10 +45,10 @@ public class Test {
     Chofer c = new Chofer(123, "Daniel", "Gutierrez", date, date, "A3", b1, b0, "daniel", date, vehiculos); 
     Usuario u = new Usuario("User123", "123", "Daniel", "Gutierrez", "prueba@gmail.com", date, "Barva", "8123-4567","daniel", date, servicios);
     Vehiculo v = new Vehiculo(123, 123, 2017, "Toyota Yaris", "ABC-123", "azul", 5, b1, "Lagunilla", "daniel", date, servicios);
-    Servicio s = new Servicio(123, u, v, null, null, date, date, 5, 2000.0f, 1, date, 5, "buen servicio", "daniel", date);
+//    Servicio s = new Servicio(123, u, v, null, null, date, date, 5, 2000.0f, 1, date, 5, "buen servicio", "daniel", date);
 
     vehiculos.add(v);
-    servicios.add(s);
+//    servicios.add(s);
     
     c.setVehiculos(vehiculos);
     u.setServicios(servicios);

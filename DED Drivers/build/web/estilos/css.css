@@ -19,6 +19,7 @@ and open the template in the editor.
 .header {
     background-size: cover; 
     padding-top: 100px;
+ 
 }
 
 
@@ -36,8 +37,6 @@ and open the template in the editor.
 .header-top {
     background-size: cover; 
     padding-top: 30px;
-
-
 }
 
 .header-bottom{
@@ -195,6 +194,9 @@ footer {
     font-size: 15px;
     height: 100px;
     width:  100%;
+    
+   
+
 }
 
 #amarillo{
@@ -334,4 +336,42 @@ table td{
     width: 220px;
     height: 220px;
     display:none;
+}
+
+#tituloTabla{
+    font-family: 'Orbitron', sans-serif;
+}
+
+
+#contenido1{
+    display:none;
+}
+
+#dvMap{
+    width: 500px;
+    height: 400px;
+}
+
+#footerNuevo{
+    background: rgba(13,12,13,1);
+    background: -moz-linear-gradient(left, rgba(13,12,13,1) 0%, rgba(28,28,31,1) 10%, rgba(43,43,43,1) 27%, rgba(17,17,17,1) 39%, rgba(0,0,0,1) 51%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 65%, rgba(43,43,43,1) 77%, rgba(28,28,28,1) 94%, rgba(19,19,19,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(13,12,13,1)), color-stop(10%, rgba(28,28,31,1)), color-stop(27%, rgba(43,43,43,1)), color-stop(39%, rgba(17,17,17,1)), color-stop(51%, rgba(0,0,0,1)), color-stop(51%, rgba(0,0,0,1)), color-stop(65%, rgba(17,17,17,1)), color-stop(77%, rgba(43,43,43,1)), color-stop(94%, rgba(28,28,28,1)), color-stop(100%, rgba(19,19,19,1)));
+    background: -webkit-linear-gradient(left, rgba(13,12,13,1) 0%, rgba(28,28,31,1) 10%, rgba(43,43,43,1) 27%, rgba(17,17,17,1) 39%, rgba(0,0,0,1) 51%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 65%, rgba(43,43,43,1) 77%, rgba(28,28,28,1) 94%, rgba(19,19,19,1) 100%);
+    background: -o-linear-gradient(left, rgba(13,12,13,1) 0%, rgba(28,28,31,1) 10%, rgba(43,43,43,1) 27%, rgba(17,17,17,1) 39%, rgba(0,0,0,1) 51%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 65%, rgba(43,43,43,1) 77%, rgba(28,28,28,1) 94%, rgba(19,19,19,1) 100%);
+    background: -ms-linear-gradient(left, rgba(13,12,13,1) 0%, rgba(28,28,31,1) 10%, rgba(43,43,43,1) 27%, rgba(17,17,17,1) 39%, rgba(0,0,0,1) 51%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 65%, rgba(43,43,43,1) 77%, rgba(28,28,28,1) 94%, rgba(19,19,19,1) 100%);
+    background: linear-gradient(to right, rgba(13,12,13,1) 0%, rgba(28,28,31,1) 10%, rgba(43,43,43,1) 27%, rgba(17,17,17,1) 39%, rgba(0,0,0,1) 51%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 65%, rgba(43,43,43,1) 77%, rgba(28,28,28,1) 94%, rgba(19,19,19,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d0c0d', endColorstr='#131313', GradientType=1 );
+
+    color: white;
+    font-size: 15px;
+    height: 100px;
+    width:  100%;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+}
+
+#height200{
+    height: 120px;
 }

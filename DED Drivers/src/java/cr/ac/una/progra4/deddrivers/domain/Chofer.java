@@ -122,10 +122,5 @@ public class Chofer  implements java.io.Serializable {
     public void setVehiculos(Set vehiculos) {
         this.vehiculos = vehiculos;
     }
-
-
-
-
 }
-
 
