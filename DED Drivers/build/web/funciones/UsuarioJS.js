@@ -27,9 +27,7 @@ $(function () {
                 $("#map").hide();
             }
         }
-    });
-    
-    
+    });    
     
     $("#enviar").click(function () {
         enviar();
@@ -111,7 +109,7 @@ function enviar() {
                 telefono: $("#telefono").val(),
                 correo: $("#correo").val(),
                 idUsuario: $("#idUsuario").val(),
-                contrasena: $("#contrasena").val()
+                contrasena: $("#contrasena").val(),
             },
             error: function () { //si existe un error en la respuesta del ajax
                 swal ('Error', 'Se genero un error, contacte al administrador (Error del ajax)', 'error');

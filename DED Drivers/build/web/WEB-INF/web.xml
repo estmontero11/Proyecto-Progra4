@@ -1,38 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-	 version="3.1">
-    
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>ChoferServlet</servlet-name>
         <servlet-class>cr.ac.una.progra4.deddrivers.controller.ChoferServlet</servlet-class>
     </servlet>
-    
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>cr.ac.una.progra4.deddrivers.controller.LoginServlet</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>VehiculoServlet</servlet-name>
         <servlet-class>cr.ac.una.progra4.deddrivers.controller.VehiculoServlet</servlet-class>
     </servlet>
-    
     <servlet>
         <servlet-name>UsuarioServlet</servlet-name>
         <servlet-class>cr.ac.una.progra4.deddrivers.controller.UsuarioServlet</servlet-class>
     </servlet>
-    
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>cr.ac.una.progra4.deddrivers.controller.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ChoferServlet</servlet-name>
         <url-pattern>/ChoferServlet</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>VehiculoServlet</servlet-name>
         <url-pattern>/VehiculoServlet</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>UsuarioServlet</servlet-name>
         <url-pattern>/UsuarioServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
     </servlet-mapping>
     
     <session-config>

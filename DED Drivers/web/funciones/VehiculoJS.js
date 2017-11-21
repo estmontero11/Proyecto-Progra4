@@ -21,6 +21,8 @@ $(function () {
     row.append($("<th><b>ESTADO</b></th>"));
     row.append($("<th><b>UBICACION ACTUAL</b></th>"));
     row.append($("<th><b>CÉDULA CHOFER</b></th>"));
+    row.append($("<th><b>ULT.USU.MODIF</b></th>"));
+    row.append($("<th><b>ULT.FEC.MODIF</b></th>"));
     row.append($("<th><b>ACCIÓN</b></th>"));
     
     for (var i = 1; i < 11; i++) {
@@ -58,7 +60,6 @@ $(function () {
             }
         }
     });
-    
 });
 
 
@@ -140,6 +141,8 @@ function dibujarTabla(dataJson) {
     row.append($("<th><b>ESTADO</b></th>"));
     row.append($("<th><b>UBICACION ACTUAL</b></th>"));
     row.append($("<th><b>CÉDULA CHOFER</b></th>"));
+    row.append($("<th><b>ULT.USU.MODIF</b></th>"));
+    row.append($("<th><b>ULT.FEC.MODIF</b></th>"));
     row.append($("<th><b>ACCIÓN</b></th>"));
     
     //carga la tabla con el json devuelto
@@ -166,6 +169,19 @@ function dibujarFila(page, rowData) {
         if(rowData.estado===1){
             row.append($("<td>Activo</td>"));
         }
+    }
+    if(rowData.ultimoUsuario===undefined){
+        row.append($("<td>No asignado</td>"));
+    }
+    else{
+        row.append($("<td>" + rowData.ultimoUsuario + "</td>"));
+    }
+    
+    if(rowData.ultimaFecha===undefined){
+        row.append($("<td>No asignado</td>"));
+    }
+    else{
+        row.append($("<td>" + rowData.ultimaFecha + "</td>"));
     }
     row.append($("<td>" + rowData.ubicacionActual + "</td>"));
     row.append($("<td>" + rowData.idChofer + "</td>"));
@@ -198,7 +214,8 @@ function enviar() {
                 puntuacion: $("#puntuacion").val(),
                 estado: $("#estado").val(),
                 ubicacionActual: $("#ubicacionActual").val(),
-                idChofer: obtenerCedula()
+                idChofer: obtenerCedula(),
+                ultimoUsuario: $("#ultimoUsuario").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 swal('Error', 'Se genero un error, contacte al administrador (Error del ajax)', 'error');
@@ -487,7 +504,7 @@ function obtenerCedula(){
     var chofer = $( "#chofer option:selected" ).text();
     var cedula = "";
     for (var i=0; i<chofer.length; i++){
-        if(espacios === 2){
+        if(espacios === 3){
             cedula = cedula + chofer.substr(i,1) ;
         }
         if(chofer.substr(i,1)===" "){

@@ -1,11 +1,21 @@
-<%-- 
-    Document   : RegistoUsuarios
-    Created on : 17/10/2017, 03:48:13 PM
-    Author     : Daniel
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@page import="java.util.*" session="true" %>
+
+<%
+
+    HttpSession sesion = request.getSession(true);
+    String tipoUsuario = "";
+    if(sesion!=null){
+        if (sesion.getAttribute("usuario")  == null) {
+            tipoUsuario = "Invitado";
+        }else{
+            tipoUsuario = (String)sesion.getAttribute("tipo");
+        }
+    }else{
+        tipoUsuario = "Invitado";
+    }
+%>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -53,7 +63,15 @@
     </head> 
      <!--Titulo y Barra de navegacion-->
     <header>
-        <%@include file="navbar.jspf" %>
+        <% if(tipoUsuario.equals("Administrador")) { %>
+            <%@include file="navbarAdm.jspf" %>
+        <% } %>
+        <% if(tipoUsuario.equals("Normal")) { %>
+            <%@include file="navbarNorm.jspf" %>
+        <% } %>
+        <% if(tipoUsuario.equals("Invitado")) { %>
+            <%@include file="navbarInv.jspf" %>
+        <% } %>
     </header>
     <!--Termina titulo y barra de navegacion-->
     <body>
@@ -162,7 +180,6 @@
                         <span id="mesajeResultText">This alert box could indicate a neutral informative change or action.</span>
                     </div>
                 </div>
-                
             </form>
         </div>
         </div>

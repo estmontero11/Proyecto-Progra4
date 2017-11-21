@@ -28,6 +28,7 @@ $(function () {
     row.append($("<th><b>CORREO</b></th>"));
     row.append($("<th><b>USUARIO</b></th>"));
     row.append($("<th><b>CONTRASEÑA</b></th>"));
+    row.append($("<th><b>TIPO USUARIO</b></th>"));
     row.append($("<th><b>ULT.USU.MODIF</b></th>"));
     row.append($("<th><b>ULT.FEC.MODIF</b></th>"));
     row.append($("<th><b>ACCIÓN</b></th>"));
@@ -36,9 +37,7 @@ $(function () {
         var row = $("<tr />");
         row.addClass("page" + i);
         $("#tablaUsuarios").append(row);
-    }
-    
-    
+    }  
     
     //Genera el datapicker
     $('#fechaNacimiento').datetimepicker({
@@ -160,6 +159,7 @@ function dibujarTabla(dataJson) {
     row.append($("<th><b>CORREO</b></th>"));
     row.append($("<th><b>USUARIO</b></th>"));
     row.append($("<th><b>CONTRASEÑA</b></th>"));
+    row.append($("<th><b>TIPO USUARIO</b></th>"));
     row.append($("<th><b>ULT.USU.MODIF</b></th>"));
     row.append($("<th><b>ULT.FEC.MODIF</b></th>"));
     row.append($("<th><b>ACCIÓN</b></th>"));
@@ -184,6 +184,7 @@ function dibujarFila(page, rowData) {
     row.append($("<td>" + rowData.correoElectronico + "</td>"));
     row.append($("<td>" + rowData.idUsuario + "</td>"));
     row.append($("<td>" + rowData.contrasena + "</td>"));
+    row.append($("<td>" + rowData.tipoUsuario + "</td>"));
     
     if(rowData.ultimoUsuario===undefined){
         row.append($("<td>No asignado</td>"));
@@ -212,7 +213,6 @@ function validar() {
     //Elimina estilo de error en los css
     //notese que es sobre el grupo que contienen el input
 
-    
     $("#groupNombre").removeClass("has-error");
     $("#groupApellidos").removeClass("has-error");
     $("#groupFechaNacimiento").removeClass("has-error");
@@ -221,6 +221,7 @@ function validar() {
     $("#groupCorreo").removeClass("has-error"); 
     $("#groupIdUsuario").removeClass("has-error");
     $("#groupContrasena").removeClass("has-error");
+    $("#groupTipoUsuario").removeClass("has-error");
     $("#groupUltUsuario").removeClass("has-error");
     $("#groupUltFechModif").removeClass("has-error");
 
@@ -260,14 +261,6 @@ function validar() {
         $("#groupContrasena").addClass("has-error");
         validacion = false;
     }
-    if ($("#idUltUsuario").val() === "") {
-        $("#groupUltUsuario").addClass("has-error");
-        validacion = false;
-    }
-    if ($("#ultFechModif").data('date') === "") {
-        $("#groupUltFechModif").addClass("has-error");
-        validacion = false;
-    }
 
     return validacion;
 }
@@ -287,8 +280,8 @@ function enviar() {
                 correo: $("#correo").val(),
                 idUsuario: $("#idUsuario").val(),
                 contrasena: $("#contrasena").val(),
-                ultimoUsuario: $("#idUltUsuario").val(),
-                ultimaFecha: $("#ultFechModif").data('date')
+                tipoUsuario: $("#tipoUsuario").val(),
+                ultimoUsuario: $("#ultimoUsuario").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 swal('Error', 'Se genero un error, contacte al administrador (Error del ajax)', 'error');
@@ -436,6 +429,7 @@ function consultarUsuarioById(idUsuario) {
             $("#correo").val(data.correoElectronico);
             $("#idUsuario").val(data.idUsuario);
             $("#contrasena").val(data.contrasena);
+            $("#tipoUsuario").val(data.tipoUsuario);
             $("#idUltUsuario").val(data.ultimoUsuario);
             
             var fechaNac2 = new Date(data.ultimaFecha);

@@ -1,6 +1,26 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.*" session="true" %>
 
-<!DOCTYPE html>
+<%
+    HttpSession sesion = request.getSession(true);
+    String tipoUsuario = "";
+    String usuario ="";
+    if(sesion!=null){
+        if (sesion.getAttribute("usuario")  == null) {
+            response.sendRedirect("LoginJSP.jsp");
+        }else{
+            if(sesion.getAttribute("tipo") != "Administrador"){
+                response.sendRedirect("index.jsp");
+            }else{
+                tipoUsuario = (String)sesion.getAttribute("tipo");
+                usuario = (String)sesion.getAttribute("usuario");
+            }
+        }
+    }else{
+        response.sendRedirect("LoginJSP.jsp");
+    }
+%>
+
 <html>
     <head>
         <title>Mantenimiento de choferes</title>
@@ -46,11 +66,19 @@
         
         <!-- CSS Sweetalert -->
         <link href="estilos/sweetalert2.css" rel="stylesheet" type="text/css"/>
-            
+        
     </head>
     <!--Titulo y Barra de navegacion-->
     <header>
-        <%@include file="navbar.jspf" %>
+        <% if(tipoUsuario.equals("Administrador")) { %>
+            <%@include file="navbarAdm.jspf" %>
+        <% } %>
+        <% if(tipoUsuario.equals("Normal")) { %>
+            <%@include file="navbarNorm.jspf" %>
+        <% } %>
+        <% if(tipoUsuario.equals("Invitado")) { %>
+            <%@include file="navbarInv.jspf" %>
+        <% } %>
     </header>
     <!--Termina titulo y barra de navegacion-->
     <body>
@@ -74,6 +102,7 @@
                 </div>
             </div>
         </div>
+
         <!-- ********************************************************** -->
         <!-- ********************************************************** -->
         <!-- Modal del BootsTrap para mostrar el formulario de insertar -->
@@ -164,6 +193,7 @@
                                             <option value="1">Si</option>
                                         </select>
                                     </div>
+                                    <input type="hidden" type="text" class="form-control" id="ultimoUsuario" value="<%=usuario%>">
                                 </div>
                             </div>
                             <br>
@@ -189,6 +219,7 @@
                 </div>
             </div>
         </div>
+        
         <!-- ********************************************************** -->
         <!-- ********************************************************** -->
         <!-- ********************************************************** -->

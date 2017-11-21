@@ -23,8 +23,10 @@ $(function () {
     row.append($("<th><b>FEC.NACIMIENTO</b></th>"));
     row.append($("<th><b>FEC.VENCIMIENTO</b></th>"));
     row.append($("<th><b>T.LICENCIA</b></th>"));
-    row.append($("<th><b>CHO. DEL VEHÍCULO</b></th>"));
+    row.append($("<th><b>CHOF. DEL VEHÍCULO</b></th>"));
     row.append($("<th><b>CLI.TRANSPORTISTA</b></th>"));;
+    row.append($("<th><b>ULT.USU.MODIF</b></th>"));
+    row.append($("<th><b>ULT.FEC.MODIF</b></th>"));
     row.append($("<th><b>ACCIÓN</b></th>"));
     
     for (var i = 1; i < 11; i++) {
@@ -150,8 +152,10 @@ function dibujarTabla(dataJson) {
     row.append($("<th><b>FEC.NACIMIENTO</b></th>"));
     row.append($("<th><b>FEC.VENCIMIENTO</b></th>"));
     row.append($("<th><b>T.LICENCIA</b></th>"));
-    row.append($("<th><b>CHO. DEL VEHÍCULO</b></th>"));
+    row.append($("<th><b>CHOF. DEL VEHÍCULO</b></th>"));
     row.append($("<th><b>CLI.TRANSPORTISTA</b></th>"));
+    row.append($("<th><b>ULT.USU.MODIF</b></th>"));
+    row.append($("<th><b>ULT.FEC.MODIF</b></th>"));
     row.append($("<th><b>ACCIÓN</b></th>"));
     
     //carga la tabla con el json devuelto
@@ -182,7 +186,19 @@ function dibujarFila(page, rowData) {
     }else{
         row.append($("<td>Sí</td>"));
     }
+    if(rowData.ultimoUsuario===undefined){
+        row.append($("<td>No asignado</td>"));
+    }
+    else{
+        row.append($("<td>" + rowData.ultimoUsuario + "</td>"));
+    }
     
+    if(rowData.ultimaFecha===undefined){
+        row.append($("<td>No asignado</td>"));
+    }
+    else{
+        row.append($("<td>" + rowData.ultimaFecha + "</td>"));
+    }
     row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="consultarChoferById('+rowData.idChofer+');">'+
                         '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'+
                     '</button>'+
@@ -211,7 +227,8 @@ function enviar() {
                 fechaVencimiento: $("#dpFechaVencimiento").data('date'),
                 tipoLicencia: $("#tipoLicencia").val(),
                 estado: $("#estado").val(),
-                esClienteTransportista: $("#esClienteTransportista").val()
+                esClienteTransportista: $("#esClienteTransportista").val(),
+                ultimoUsuario: $("#ultimoUsuario").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 swal('Error', 'Se genero un error, contacte al administrador (Error del ajax)', 'error');

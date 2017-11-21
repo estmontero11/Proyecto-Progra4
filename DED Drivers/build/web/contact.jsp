@@ -1,9 +1,21 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.*" session="true" %>
+
+<%
+
+    HttpSession sesion = request.getSession(true);
+    String tipoUsuario = "";
+    if(sesion!=null){
+        if (sesion.getAttribute("usuario")  == null) {
+            tipoUsuario = "Invitado";
+        }else{
+            tipoUsuario = (String)sesion.getAttribute("tipo");
+        }
+    }else{
+        tipoUsuario = "Invitado";
+    }
+%>
+
 <html>
     <head>
         <title>DED Drivers</title>
@@ -35,17 +47,25 @@ and open the template in the editor.
     </head>
     <!--Titulo y Barra de navegacion-->
     <header>
-        <%@include file="navbar.jspf" %>
+        <% if(tipoUsuario.equals("Administrador")) { %>
+            <%@include file="navbarAdm.jspf" %>
+        <% } %>
+        <% if(tipoUsuario.equals("Normal")) { %>
+            <%@include file="navbarNorm.jspf" %>
+        <% } %>
+        <% if(tipoUsuario.equals("Invitado")) { %>
+            <%@include file="navbarInv.jspf" %>
+        <% } %>
     </header>
     <!--Termina titulo y barra de navegacion-->
     <body>
         <div>
             <!-- Comienza el Texto -->
-            <div class="container cuerpo">
+            <div class="container cuerpo parrafo">
                 <p>Para cualquier consulta, disconformidad o sugerencia se puede contactar con nosotros por los siguientes medios:</p> 
                 
                 <ul>
-                    <li>Linea atención al cliente al (506)800-23452345</li>
+                    <li>Linea atenciÃ³n al cliente al (506)800-23452345</li>
                     <li>Via correo electronico llenando el siguiente formulario:</li>
                 </ul>
             </div>

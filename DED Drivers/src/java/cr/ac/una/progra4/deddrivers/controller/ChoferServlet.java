@@ -112,6 +112,9 @@ public class ChoferServlet extends HttpServlet {
                     c.setEstado(Byte.parseByte(request.getParameter("estado")));
                     c.setEsClienteTransportista(Byte.parseByte(request.getParameter("estado")));
                     
+                    c.setUltimoUsuario(request.getParameter("ultimoUsuario"));  
+                    c.setUltimaFecha(new Date());
+                    
                     if(accion.equals("agregarChofer")){ //es insertar personas
                         //Se guarda el objeto
                         cBL.save(c);

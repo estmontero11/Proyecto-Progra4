@@ -10,6 +10,7 @@ import cr.ac.una.progra4.deddrivers.bl.VehiculoBL;
 import cr.ac.una.progra4.deddrivers.domain.Vehiculo;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -95,6 +96,9 @@ public class VehiculoServlet extends HttpServlet{
                     c.setEstado(Byte.parseByte(request.getParameter("estado")));
                     c.setUbicacionActual(request.getParameter("ubicacionActual"));
                     c.setIdChofer(Integer.parseInt(request.getParameter("idChofer")));
+
+                    c.setUltimoUsuario(request.getParameter("ultimoUsuario"));  
+                    c.setUltimaFecha(new Date());
                     
                     if(accion.equals("agregarVehiculo")){ //es insertar personas
                         //Se guarda el objeto

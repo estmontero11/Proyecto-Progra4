@@ -54,6 +54,7 @@ public class UsuarioServlet extends HttpServlet {
             String accion = request.getParameter("accion");
             
             switch(accion){
+
                 case "consultarUsuario":
                     json = new Gson().toJson(uBL.findAll(Usuario.class.getName()));
                     out.print(json);
@@ -71,7 +72,7 @@ public class UsuarioServlet extends HttpServlet {
                     break;
                 case "consultarUsuarioById":
                     //se consulta la persona por ID
-                    usuario = uBL.findByIdUser((request.getParameter("idUsuario")));
+                    usuario = uBL.findByIdUser(request.getParameter("idUsuario"));
                     
                     //se pasa la informacion del objeto a formato JSON
                     json = new Gson().toJson(usuario);
@@ -99,6 +100,10 @@ public class UsuarioServlet extends HttpServlet {
                     usuario.setFechaNacimiento(date);
                     usuario.setDireccion(request.getParameter("direccion"));
                     usuario.setTelefonoTrabajo(request.getParameter("telefono"));
+                    usuario.setTipoUsuario(1);
+                    
+                    usuario.setUltimoUsuario(request.getParameter("idUsuario"));       
+                    usuario.setUltimaFecha(new Date());
                     
                     if(accion.equals("agregarUsuarios")){ //es insertar personas
                         //Se guarda el objeto
@@ -112,6 +117,7 @@ public class UsuarioServlet extends HttpServlet {
                     
                     usuario.setIdUsuario(request.getParameter("idUsuario"));
                     usuario.setContrasena(request.getParameter("contrasena"));
+                    usuario.setTipoUsuario(Integer.parseInt(request.getParameter("tipoUsuario")));
                     
                     usuario.setNombre(request.getParameter("nombre"));
                     usuario.setApellidos(request.getParameter("apellidos"));
@@ -124,12 +130,9 @@ public class UsuarioServlet extends HttpServlet {
                     usuario.setFechaNacimiento(date2);
                     usuario.setDireccion(request.getParameter("direccion"));
                     usuario.setTelefonoTrabajo(request.getParameter("telefono"));
-                    usuario.setUltimoUsuario(request.getParameter("ultimoUsuario"));
                     
-                    String fechatxt3 = request.getParameter("ultimaFecha");
-                    DateFormat format3 = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-                    Date date3 = format3.parse(fechatxt3);
-                    usuario.setUltimaFecha(date3);
+                    usuario.setUltimoUsuario(request.getParameter("ultimoUsuario"));  
+                    usuario.setUltimaFecha(new Date());
                     
                     if(accion.equals("agregarUsuarios2")){ //es insertar personas
                         //Se guarda el objeto

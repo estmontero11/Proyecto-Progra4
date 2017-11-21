@@ -1,11 +1,26 @@
-<%-- 
-    Document   : mantVehiculos
-    Created on : 17/10/2017, 02:45:35 AM
-    Author     : esteban
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@page import="java.util.*" session="true" %>
+
+<%
+    HttpSession sesion = request.getSession(true);
+    String tipoUsuario = "";
+    String usuario ="";
+    if(sesion!=null){
+        if (sesion.getAttribute("usuario")  == null) {
+            response.sendRedirect("LoginJSP.jsp");
+        }else{
+            if(sesion.getAttribute("tipo") != "Administrador"){
+                response.sendRedirect("index.jsp");
+            }else{
+                tipoUsuario = (String)sesion.getAttribute("tipo");
+                usuario = (String)sesion.getAttribute("usuario");
+            }
+        }
+    }else{
+        response.sendRedirect("LoginJSP.jsp");
+    }
+%>
+
 <html>
     <head>
         <title>Mantenimiento de Vehículos</title>
@@ -46,7 +61,6 @@
         <!--Script de mapa-->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDomGs0dCkbZbNVwNybUTcmtwAtDcNlm-A&callback=initMap" async defer></script>
 
-
         <!-- Script's de Vehiculos -->
         <script src="funciones/VehiculoJS.js" type="text/javascript"></script>
         
@@ -55,10 +69,19 @@
         
         <!-- CSS Sweetalert -->
         <link href="estilos/sweetalert2.css" rel="stylesheet" type="text/css"/>
+        
     
     </head>
     <header>
-        <%@include file="navbar.jspf" %>
+        <% if(tipoUsuario.equals("Administrador")) { %>
+            <%@include file="navbarAdm.jspf" %>
+        <% } %>
+        <% if(tipoUsuario.equals("Normal")) { %>
+            <%@include file="navbarNorm.jspf" %>
+        <% } %>
+        <% if(tipoUsuario.equals("Invitado")) { %>
+            <%@include file="navbarInv.jspf" %>
+        <% } %>
     </header>
     <body>
         <!-- ********************************************************** -->
@@ -79,7 +102,6 @@
                 </div>
             </div>
         </div>
-        
 
         <!-- ********************************************************** -->
         <!-- ********************************************************** -->
@@ -166,6 +188,7 @@
                                         </select>
                                     </div>
                                 </div>
+                                <input type="hidden" class="form-control" id="ultimoUsuario" value="<%=usuario%>">
                             </div>
                             <div class="row">
                                 <div class="col-md-4"></div>
@@ -189,6 +212,7 @@
                 </div>
             </div>
         </div>
+        
         <!-- ********************************************************** -->
         <!-- ********************************************************** -->
         <!-- ********************************************************** -->

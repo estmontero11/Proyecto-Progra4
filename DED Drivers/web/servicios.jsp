@@ -1,11 +1,26 @@
-<%-- 
-    Document   : newjsp
-    Created on : 02/11/2017, 12:02:10 AM
-    Author     : Daniel
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@page import="java.util.*" session="true" %>
+
+<%
+    HttpSession sesion = request.getSession(true);
+    String tipoUsuario = "";
+    String usuario ="";
+    if(sesion!=null){
+        if (sesion.getAttribute("usuario")  == null) {
+            response.sendRedirect("LoginJSP.jsp");
+        }else{
+            if(sesion.getAttribute("tipo") != "Normal"){
+                response.sendRedirect("index.jsp");
+            }else{
+                tipoUsuario = (String)sesion.getAttribute("tipo");
+                usuario = (String)sesion.getAttribute("usuario");
+            }
+        }
+    }else{
+        response.sendRedirect("LoginJSP.jsp");
+    }
+%>
+
 <html>
     <head>
         <title>Solicitar Servicio</title>
@@ -40,7 +55,15 @@
 
     </head>
     <header>
-        <%@include file="navbar.jspf" %>
+        <% if(tipoUsuario.equals("Administrador")) { %>
+            <%@include file="navbarAdm.jspf" %>
+        <% } %>
+        <% if(tipoUsuario.equals("Normal")) { %>
+            <%@include file="navbarNorm.jspf" %>
+        <% } %>
+        <% if(tipoUsuario.equals("Invitado")) { %>
+            <%@include file="navbarInv.jspf" %>
+        <% } %>
     </header>
 
     <body>

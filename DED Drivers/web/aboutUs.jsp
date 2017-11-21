@@ -1,4 +1,21 @@
-<!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.*" session="true" %>
+
+<%
+
+    HttpSession sesion = request.getSession(true);
+    String tipoUsuario = "";
+    if(sesion!=null){
+        if (sesion.getAttribute("usuario")  == null) {
+            tipoUsuario = "Invitado";
+        }else{
+            tipoUsuario = (String)sesion.getAttribute("tipo");
+        }
+    }else{
+        tipoUsuario = "Invitado";
+    }
+%>
+
 <html>
     <head>
         <title>About Us</title>
@@ -37,7 +54,15 @@
     </head>
     <!--Titulo y Barra de navegacion-->
     <header>
-        <%@include file="navbar.jspf" %>
+        <% if(tipoUsuario.equals("Administrador")) { %>
+            <%@include file="navbarAdm.jspf" %>
+        <% } %>
+        <% if(tipoUsuario.equals("Normal")) { %>
+            <%@include file="navbarNorm.jspf" %>
+        <% } %>
+        <% if(tipoUsuario.equals("Invitado")) { %>
+            <%@include file="navbarInv.jspf" %>
+        <% } %>
     </header>
     <!--Termina titulo y barra de navegacion-->
     <body>
@@ -55,8 +80,8 @@
                         <div class="col-md-5">
                             <div>
                                 <p class="parrafo">Somos jovenes que trabajamos para conectar a los usuarios con 
-                                    vehÌculos con conductor privado. Nuestra misiÛn es moverte por la ciudad de la manera 
-                                    m·s segura, sencilla y agradable. Con deseos de ir mejorando dÌa con dÌa, para ello 
+                                    veh√≠culos con conductor privado. Nuestra misi√≥n es moverte por la ciudad de la manera 
+                                    m√°s segura, sencilla y agradable. Con deseos de ir mejorando d√≠a con d√≠a, para ello 
                                     estamos atentos a sugerencias por parte de nuestros clientes.
                                 </p>  
                             </div>
@@ -66,16 +91,16 @@
                 <div id="accordion">
                     <h3 class="title acordion">Historia</h3>
                     <div>
-                        <p class="parrafoH" >DED Driver naciÛ en 2017, como proyecto del curso Programacion 4, de la Escuela de Informatica de la UNA en Costa Rica a cargo de sus creadores: Esteban Montero, Daniel Zamora y Daniel Gutierrez</p>
-                        <p class="parrafoH">Nuestro sueÒo siempre fue ofrecer una opcion distina, segura y de calidad a todas esas personas que diariamente usan servicios de transporte publico</p>
+                        <p class="parrafoH" >DED Driver naci√≥ en 2017, como proyecto del curso Programacion 4, de la Escuela de Informatica de la UNA en Costa Rica a cargo de sus creadores: Esteban Montero, Daniel Zamora y Daniel Gutierrez</p>
+                        <p class="parrafoH">Nuestro sue√±o siempre fue ofrecer una opcion distina, segura y de calidad a todas esas personas que diariamente usan servicios de transporte publico</p>
 
                     </div>
                     <h3 class="title">Vision</h3>
                     <div>
                         <ul class="list-group">
                             <li class="listas">Lograr que cada uno de nuestros vehiculo llegue a cubrir la mayor parte del pais</li>
-                            <li class="listas">Poder expandir el servicio en otros medios de transporte como el aÈreo</li>
-                            <li class="listas">Generar muchas mas fuentes de empleo a todas esas personas que por una u otra razon, no estan activas en el ambito laboral del paÌs</li>
+                            <li class="listas">Poder expandir el servicio en otros medios de transporte como el a√©reo</li>
+                            <li class="listas">Generar muchas mas fuentes de empleo a todas esas personas que por una u otra razon, no estan activas en el ambito laboral del pa√≠s</li>
                         </ul>
                     </div>
                     <h3 class="title">Valores</h3>

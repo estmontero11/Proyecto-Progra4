@@ -6,9 +6,9 @@
             <nav class="navbar footer">
                 <br>
                 <nav class="nav navbar-nav pull-xs-left">
-                    <a id="amarillo" class="nav-item nav-link" href="index.html">Home / </a>
-                    <a id="amarillo" class="nav-item nav-link" href="aboutUs.html">About Us / </a>
-                    <a id="amarillo" class="nav-item nav-link" href="contact.html">Contact Us</a>
+                    <a id="amarillo" class="nav-item nav-link" href="index.html">Inicio / </a>
+                    <a id="amarillo" class="nav-item nav-link" href="aboutUs.html">Sobre Nosotros / </a>
+                    <a id="amarillo" class="nav-item nav-link" href="contact.html">Contactenos</a>
                 </nav>
             </nav>
         </div>

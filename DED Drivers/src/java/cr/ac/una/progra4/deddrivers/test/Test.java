@@ -24,10 +24,9 @@ import cr.ac.una.progra4.deddrivers.bl.UsuarioBL;
 import cr.ac.una.progra4.deddrivers.bl.VehiculoBL;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  *
@@ -37,18 +36,18 @@ public class Test {
     public static void main(String arg[]){
 ////////////////////////////// Inicializar //////////////////////////////
     Date date = new Date();
-    Set vehiculos = new HashSet(0);
-    Set servicios = new HashSet(0);
+    List vehiculos = new ArrayList(0);
+    List servicios = new ArrayList(0);
     Byte b0 = 0;
     Byte b1 = 1;
     
     Chofer c = new Chofer(123, "Daniel", "Gutierrez", date, date, "A3", b1, b0, "daniel", date, vehiculos); 
-    Usuario u = new Usuario("User123", "123", "Daniel", "Gutierrez", "prueba@gmail.com", date, "Barva", "8123-4567","daniel", date, servicios);
+    Usuario u = new Usuario("123", "123", 1, "Daniel", "Gutierrez", "prueba@gmail.com", date, "Barva", "8123-4567","daniel", date, servicios);
     Vehiculo v = new Vehiculo(123, 123, 2017, "Toyota Yaris", "ABC-123", "azul", 5, b1, "Lagunilla", "daniel", date, servicios);
-//    Servicio s = new Servicio(123, u, v, null, null, date, date, 5, 2000.0f, 1, date, 5, "buen servicio", "daniel", date);
+    Servicio s = new Servicio(123, u, v, null, null, date, date, 5, 2000.0f, 1, date, 5, "buen servicio", "daniel", date);
 
-    vehiculos.add(v);
-//    servicios.add(s);
+   vehiculos.add(v);
+    servicios.add(s);
     
     c.setVehiculos(vehiculos);
     u.setServicios(servicios);
@@ -119,10 +118,10 @@ public class Test {
 //    sbl.merge(s);
 
 ////////////////////////////// Delete BLs//////////////////////////////
-//    vbl.delete(v);
-//    sbl.delete(s);
-//    cbl.delete(c);
-//    ubl.delete(u);
+    sbl.delete(s);    
+    vbl.delete(v);
+    ubl.delete(u);
+    cbl.delete(c);
 
 ////////////////////////////// FindById BLs //////////////////////////////
 //    Vehiculo vid = vbl.findById(123);

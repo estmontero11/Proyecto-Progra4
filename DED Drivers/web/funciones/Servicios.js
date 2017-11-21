@@ -264,7 +264,115 @@ function validar() {
         validacion = false;
     }
 
-
     return validacion;
 }
 
+function consultarVehiculoById(idVehiculo) {
+    mostrarModal("myModal", "Espere por favor..", "Consultando la persona seleccionada");
+    //Se envia la información por ajax
+    $.ajax({
+        url: 'VehiculoServlet',
+        data: {
+            accion: "consultarVehiculoById",
+            idVehiculo: idVehiculo
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            ocultarModal("myModal");
+            swal('Error','Se presento un error, contactar al administrador','error');
+            cambiarMensajeModal("myModal","Resultado acción","Se presento un error, contactar al administrador");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            // se oculta el mensaje de espera
+            ocultarModal("myModal");
+            limpiarForm();
+            //se muestra el formulario
+            $("#myModalFormulario").modal();
+            
+            //************************************************************************
+            //carga información de la persona en el formulario
+            //************************************************************************
+            //se indicar que la cédula es solo readOnly
+            $("#idVehiculo").attr('readonly', 'readonly');
+            
+            //se modificar el hidden que indicar el tipo de accion que se esta realizando
+            $("#vehiculoAction").val("modificarVehiculo"); 
+            
+            //se carga la información en el formulario
+            $("#idVehiculo").val(data.idVehiculo);
+            $("#anno").val(data.anno);
+            $("#modelo").val(data.modelo);
+            $("#placa").val(data.placa);
+            $("#color").val(data.color);
+            $("#puntuacion").val(data.puntuacion);
+            $("#estado").val(data.estado);
+            $("#ubicacionActual").val(data.ubicacionActual);
+            consultarChoferById(data.idChofer); 
+           
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+
+function consultarChoferes() {
+    mostrarModal("myModal", "Espere por favor..", "Consultando la información de los choferes en la base de datos");
+    //Se envia la información por ajax
+    $.ajax({
+        url: 'ChoferServlet',
+        data: {
+            accion: "consultarChoferes"
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            swal('Error', 'Se presento un error a la hora de cargar la información de los choferes en la base de datos', 'error');
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            ocultarModal("myModal");
+            info = data;
+            var chofer = document.getElementById("chofer");
+            for (value in info) {
+                var option = document.createElement("option");
+                option.text = info[value].nombre+" "+info[value].apellidos+" "+info[value].idChofer;
+                chofer.add(option);
+            }
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+
+function obtenerCedula(){
+    var espacios = 0;
+    var chofer = $( "#chofer option:selected" ).text();
+    var cedula = "";
+    for (var i=0; i<chofer.length; i++){
+        if(espacios === 2){
+            cedula = cedula + chofer.substr(i,1) ;
+        }
+        if(chofer.substr(i,1)===" "){
+            espacios++;
+        }    
+    }
+    return cedula;
+};
+
+function consultarChoferById(idChofer) {
+    //Se envia la información por ajax
+    $.ajax({
+        url: 'ChoferServlet',
+        data: {
+            accion: "consultarChoferById",
+            idChofer: idChofer
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            ocultarModal("myModal");
+            swal('Error','Se presento un error, contactar al administrador','error');
+            cambiarMensajeModal("myModal","Resultado acción","Se presento un error, contactar al administrador");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data            
+            //se carga la información en el formulario
+            $("#chofer").val(data.nombre+" "+data.apellidos+" "+data.idChofer);
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}

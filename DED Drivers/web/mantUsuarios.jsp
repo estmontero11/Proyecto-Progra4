@@ -1,11 +1,26 @@
-<%-- 
-    Document   : mantUsuarios
-    Created on : 26/10/2017, 04:38:09 PM
-    Author     : Daniel
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@page import="java.util.*" session="true" %>
+
+<%
+    HttpSession sesion = request.getSession(true);
+    String tipoUsuario = "";
+    String usuario ="";
+    if(sesion!=null){
+        if (sesion.getAttribute("usuario")  == null) {
+            response.sendRedirect("LoginJSP.jsp");
+        }else{
+            if(sesion.getAttribute("tipo") != "Administrador"){
+                response.sendRedirect("index.jsp");
+            }else{
+                tipoUsuario = (String)sesion.getAttribute("tipo");
+                usuario = (String)sesion.getAttribute("usuario");
+            }
+        }
+    }else{
+        response.sendRedirect("LoginJSP.jsp");
+    }
+%>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -49,15 +64,23 @@
         <script src="funciones/UsuariosJS.js" type="text/javascript"></script>
         
         <!-- JS Sweetalert -->
-        <script src="funciones/sweetalert2.js" type="text/javascript"></script>
-       
+        <script src="funciones/sweetalert2.js" type="text/javascript"></script>  
         
         <!-- CSS Sweetalert -->
         <link href="estilos/sweetalert2.css" rel="stylesheet" type="text/css"/>
-        
+               
     </head>
+    
     <header>
-        <%@include file="navbar.jspf" %>
+        <% if(tipoUsuario.equals("Administrador")) { %>
+            <%@include file="navbarAdm.jspf" %>
+        <% } %>
+        <% if(tipoUsuario.equals("Normal")) { %>
+            <%@include file="navbarNorm.jspf" %>
+        <% } %>
+        <% if(tipoUsuario.equals("Invitado")) { %>
+            <%@include file="navbarInv.jspf" %>
+        <% } %>
     </header>
     <body>
         <!-- ********************************************************** -->
@@ -78,7 +101,10 @@
                 </div>
             </div>
         </div>
-        
+        <!-- ********************************************************** -->
+        <!-- ********************************************************** -->
+        <!-- ********************************************************** -->
+
         <!-- ********************************************************** -->
         <!-- ********************************************************** -->
         <!-- Modal del BootsTrap para mostrar el formulario de insertar -->
@@ -162,7 +188,7 @@
                                         <div class="input-group">
                                             <input type="text" class="form-control" id="idUsuario">
                                             <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-user"></span>
+                                                <span class="glyphicon glyphicon-usuario"></span>
                                             </span>
                                         </div>
                                     </div>
@@ -171,7 +197,7 @@
                                     <div class="form-group" id="groupContrasena">
                                         <label for="contrasena">Contraseña:</label>
                                         <div class="input-group">
-                                            <input  type="password" class="form-control" id="contrasena">
+                                            <input  type="text" class="form-control" id="contrasena">
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-qrcode"></span>
                                             </span>
@@ -179,31 +205,17 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group" id="groupUltUsuario">
-                                        <label for="ultimoUsuario">Último usuario en modificar:</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" id="idUltUsuario">
-                                            <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-user"></span>
-                                            </span>
-                                        </div>
+                                    <div class="form-group" id="groupTipoUsuario">
+                                        <label for="tipoUsuario">Tipo de usuario:</label>
+                                        <select class="form-control" id="tipoUsuario">
+                                            <option value="0" >Administrador</option>
+                                            <option value="1" >Usuario</option>
+                                        </select>
                                     </div>
                                 </div>
+                                <input type="hidden" class="form-control" id="ultimoUsuario" value="<%=usuario%>">
                             </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group" id="groupUltFechModif">
-                                        <label for="ultFechaModif">Última fecha de modificación:</label>
-                                        <div id="ultFechModif" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
-                                            <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="ultFechModifTxt">
-                                            <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-calendar"></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>  
-                            <div class="row">
+                            <div class="row"> 
                                 <div class="col-md-4"></div>
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -225,6 +237,7 @@
                 </div>
             </div>
         </div>
+        
         <!-- ********************************************************** -->
         <!-- ********************************************************** -->
         <!-- ********************************************************** -->

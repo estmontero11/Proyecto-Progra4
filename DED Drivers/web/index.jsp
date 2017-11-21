@@ -1,3 +1,21 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.*" session="true" %>
+
+<%
+
+    HttpSession sesion = request.getSession(true);
+    String tipoUsuario = "";
+    if(sesion!=null){
+        if (sesion.getAttribute("usuario")  == null) {
+            tipoUsuario = "Invitado";
+        }else{
+            tipoUsuario = (String) sesion.getAttribute("tipo");
+        }
+    }else{
+        tipoUsuario = "Invitado";
+    }
+%>
+
 <html>
     <head>
         <title>DED Drivers</title>
@@ -29,7 +47,15 @@
     </head>
     <!--Titulo y Barra de navegacion-->
     <header>
-        <%@include file="navbar.jspf" %>
+        <% if(tipoUsuario.equals("Administrador")) { %>
+            <%@include file="navbarAdm.jspf" %>
+        <% } %>
+        <% if(tipoUsuario.equals("Normal")) { %>
+            <%@include file="navbarNorm.jspf" %>
+        <% } %>
+        <% if(tipoUsuario.equals("Invitado")) { %>
+            <%@include file="navbarInv.jspf" %>
+        <% } %>
     </header>
     <!--Termina titulo y barra de navegacion-->
     <body>
@@ -53,7 +79,7 @@
                         <div class="hero">
                             <hgroup>
                                 <h1>VIAJE CON NOSOTROS</h1>        
-                                <h3>Somos su mejor opción para trasladarse.</h3>
+                                <h3>Somos su mejor opciÃ³n para trasladarse.</h3>
                             </hgroup>
                             
                         </div>
@@ -73,7 +99,7 @@
                         <div class="hero">        
                             <hgroup>
                                 <h1>SOMOS MODERNOS.</h1>        
-                                <h3>Contamos con una aplicación con lo último en tecnología.</h3>
+                                <h3>Contamos con una aplicaciÃ³n con lo Ãºltimo en tecnologÃ­a.</h3>
                             </hgroup>
                             
                         </div>
