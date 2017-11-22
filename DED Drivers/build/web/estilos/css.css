@@ -385,3 +385,11 @@ table td{
     font-family: 'Orbitron', sans-serif;
     
 }
+
+#retro{
+    display: none;
+}
+
+#tituloRetro{
+    font-family: 'Orbitron', sans-serif;
+}

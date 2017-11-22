@@ -19,7 +19,7 @@ $(function () {
     });
 
     $(document).on("click",function (e){
-         if ($(e.target).is("#enviar")) {
+         if ($(e.target).is("#mostrarRetro")) {
              $("#retro").show();
              
          }
@@ -443,13 +443,24 @@ function consultarVehiculoLibre() {
 }
 
 function enviar() {
-
+        var input = document.getElementById("count");
+        var puntuacion=input.innerHTML;
         //Se envia la información por ajax
         $.ajax({
             url: 'ServiciosServlet',
             
             data: {
-                accion: $("#agregarRetro").val()
+                accion: $("#accion").val(),
+                salida: $("#txtSource").val(),
+                llegada: $("#txtDestination").val(),
+                duracion: obtenerDuracion(),
+                horaSalida: obtenerHoraSalida(),
+                horaLlegada: obtenerHoraLlegada(),
+                fechaRealizado: $("#fechaRealizado").val(),
+                precio: $("#precio").val(),
+                puntuacion: puntuacion,
+                comentario: $("#comentario").val(),
+                ultimoUsuario: $("#ultimoUsuario").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 swal('Error', 'Se genero un error, contacte al administrador (Error del ajax)', 'error');
@@ -468,8 +479,43 @@ function enviar() {
                 }
 
             },
-            type: 'POST'
+            type: 'POST',
+            dataType: "text"
         });
-    
-    
 }
+
+function obtenerHoraSalida(){
+    var horaSalida = $("#salida").val();
+    var textoSalida = "";
+    for (var i=0; i<horaSalida.length; i++){
+        if(horaSalida.substr(i,1)===" "){
+            return textoSalida;
+        }else{
+            textoSalida = textoSalida + horaSalida.substr(i,1) ;
+        }
+    }
+};
+
+function obtenerHoraLlegada(){
+    var horaLlegada = $("#llegada").val();
+    var textoLlegada = "";
+    for (var i=0; i<horaLlegada.length; i++){
+        if(horaLlegada.substr(i,1)===" "){
+            return textoLlegada;
+        }else{
+            textoLlegada = textoLlegada + horaLlegada.substr(i,1) ;
+        }
+    }
+};
+
+function obtenerDuracion(){
+    var duracion = $("#duracion").val();
+    var textoDuracion = "";
+    for (var i=0; i<duracion.length; i++){
+        if(duracion.substr(i,1)===" "){
+            return textoDuracion;
+        }else{
+            textoDuracion = textoDuracion + duracion.substr(i,1) ;
+        }
+    }
+};

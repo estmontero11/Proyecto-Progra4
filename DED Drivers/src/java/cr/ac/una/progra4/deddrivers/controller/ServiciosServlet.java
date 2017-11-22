@@ -15,9 +15,12 @@ import cr.ac.una.progra4.deddrivers.domain.Vehiculo;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -46,25 +49,8 @@ public class ServiciosServlet extends HttpServlet {
         try {
  
             String json;
-            
-            Date date= new Date();
-            List vehiculos = new ArrayList(0);
-            List servicios = new ArrayList(0);
-            Byte b0 = 0;
-            Byte b1 = 1;
-            //Usuario u = new Usuario("123", "123", 1, "Daniel", "Gutierrez", "prueba@gmail.com", date, "Barva", "8123-4567","daniel", date, servicios);
-            Vehiculo v = new Vehiculo(123, 123, 2017, "Toyota Yaris", "ABC-123", "azul", 5, b1, "Lagunilla", "daniel", date, servicios);
-            Serializable s1 = null;
-            Serializable s2= null;
-            Date h1= new Date();
-            Date h2= new Date();
-            int duracion=1;
-            float costo=1;
-            Date fecha= new Date();
-            Usuario u2= new Usuario();
-            int idServicio=1;
 
-            Servicio s= new Servicio();
+            Servicio s = new Servicio();
             ServicioBL sBL= new ServicioBL();
             VehiculoBL vBL = new VehiculoBL();
             HttpSession session = request.getSession();
@@ -72,39 +58,38 @@ public class ServiciosServlet extends HttpServlet {
             String paginaDestino = "";
             //String opcion = req.getParameter("opcion");
             switch (accion) {
-                case "agregarRetro":
-                    s.setIdServicio(idServicio);
-//                    s.setUsuario(u);
-                    s.setVehiculo(v);
-  //                  s.setPuntoLlegada(s1);
-    //                s.setPuntoSalida(s2);
-                    s.setHoraLlegada(h1);
-                    s.setHoraSalida(h2);
-                    s.setDuracion(duracion);
-                    s.setCosto(costo);
-      //              s.setIdRetroalimentacion(Integer.parseInt(request.getParameter("idRetro")));
-                    s.setPuntuacion(Integer.parseInt(request.getParameter("puntuacion")));
-                    s.setComentario(request.getParameter("comentario"));
-                    s.setUltimoUsuario("amigo");
-                    s.setUltimaFecha(fecha);
+                case "guardarServicio":
+                    s.setPuntoSalida(request.getParameter("salida"));
+                    s.setPuntoLlegada(request.getParameter("llegada"));
                     
-                    if (accion.equals("agregarRetro")) {
-                        sBL.save(s);
-
-                        out.print("C~La retroalimentación fue ingresada correctamente");
-                    }
-
-
+                    String horaSalida = request.getParameter("horaSalida");
+                    DateFormat formatoSalida = new SimpleDateFormat("HH:mm", Locale.ENGLISH);
+                    Date dateSalida = formatoSalida.parse(horaSalida);
+                    s.setHoraSalida(dateSalida);
+                    
+                    String horaLlegada = request.getParameter("horaLlegada");
+                    DateFormat formatoLlegada = new SimpleDateFormat("HH:mm", Locale.ENGLISH);
+                    Date dateLlegada = formatoLlegada.parse(horaLlegada);
+                    s.setHoraSalida(dateLlegada);
+                    
+                    s.setDuracion(Integer.parseInt(request.getParameter("duracion")));
+                    
+                    String fecha = request.getParameter("fechaRealizado");
+                    DateFormat formatFecha = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+                    Date dateFecha = formatFecha.parse(fecha);
+                    s.setFechaRealizado(dateFecha);
+                    
+                    s.setPuntuacion(Integer.parseInt(request.getParameter("puntuacion")));
+                    s.setCosto(Float.parseFloat(request.getParameter("precio")));
+                    s.setComentario(request.getParameter("comentario"));
+                    s.setUltimoUsuario(request.getParameter("ultimoUsuario"));
+                    s.setUltimaFecha(new Date());
+                    sBL.save(s);
+                    
                     break;
                 case "consultarVehiculoLibre":
                     json = new Gson().toJson(vBL.findActivos());
                     out.print(json);
-                   
-                    break;
-                case "redireccionar":
-                    String modelo = request.getParameter("modelo");
-                    paginaDestino = "http://localhost:44695/DED_Drivers/retroalimentacion.jsp";
-                    response.sendRedirect(paginaDestino);
                     break;
                 default:
                     out.print("E~No se indico la acción que se desea realizare");

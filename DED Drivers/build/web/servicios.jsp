@@ -56,8 +56,12 @@
         <!--JS de Servicios-->
         <script src="funciones/Servicios.js" type="text/javascript"></script>
         
+        <!-- JS Sweetalert -->
+        <script src="funciones/sweetalert2.js" type="text/javascript"></script>  
+        
+        <!-- CSS Sweetalert -->
         <link href="estilos/sweetalert2.css" rel="stylesheet" type="text/css"/>
-
+        
     </head>
     <header>
         <%@include file="navbarNorm.jspf" %>
@@ -171,23 +175,51 @@
                                     <input type="text" class="form-control" id="ubicacion" readonly>
                                 </div>
                             </div>
+                            <input type="hidden" value="<%=usuario%>" id="ultimoUsuario"/>
                             <input type="hidden" value="agregarServicio" id="servicioAction"/>
                             <div class="col-md-5">
-                                <button type="submit" class="btn btn-success" id="enviar">Aceptar servicio</button>
+                                <button type="submit" class="btn btn-success" id="mostrarRetro">Aceptar servicio</button>
                                 <button type="reset" class="btn btn-danger" id="cancelar">Cancelar servicio</button>
                             </div>
                           
                         </td>
-                        <!--
-                        <td>
-                            <div id="dvPanel" style="width: 400px; height: 400px"></div>
-                        </td>
-                        -->
                     </tr>
                 </table>
             </div>
         </form>
-        <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+        <hr>
+       <div id="retro" class="row" style="width: 1350px; padding-left: 10px;">           
+            <div class="col-md-6">
+                <h1 id="tituloRetro">Retroalimentación del viaje.</h1>
+                <br>
+                <form class="form-group" id="formularioRetro" onsubmit="return false;" >
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="form-group" id="groupPuntuacion">
+                                <label for="puntuacion">Puntuación del viaje es de <span id="count">0</span> estrella(s)</label>
+                                <div id="hearts" class="starrr" style="color: #ee8b2d; font-size: 25px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="form-group" id="groupComentario">
+                                <label for="comentario">Comentario.</label>
+                                <textarea id="comentario" class="form-control" placeholder="Ingrese su comentario"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <input type="hidden" value="guardarServicio" id="accion"/>
+                                <button type="submit" class=" btn btn-success" id="enviar">Guardar Retroalimentación</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+           <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 
                 <input type="hidden" name="cmd" value="_ext-enter" />
                 <input type="hidden" name="redirect_cmd" value="_xclick" />
@@ -217,41 +249,8 @@
                     <input type="image" src="http://www.paypal.com/es_XC/i/btn/x-click-but01.gif"
                            name="submit"
                            alt="Make payments with PayPal - it's fast, free and secure!">
-                </div>
-            </form>
-        <hr>
-       <div id="contenido1" class="row" style="width: 1350px; padding-left: 10px;">           
-            <div class="col-md-6">
-                <h1 id="tituloRegistro">Retroalimentación del viaje.</h1>
-                <br>
-                <form class="form-group" id="formularioRetro" onsubmit="return false;" >
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div class="form-group" id="groupPuntuacion">
-                                <label for="puntuacion">Puntuación del viaje es de <span id="count">0</span> estrella(s)</label>
-                                <div id="hearts" class="starrr" style="color: #ee8b2d; font-size: 25px;"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div class="form-group" id="groupComentario">
-                                <label for="comentario">Comentario.</label>
-                                <textarea id="comentario" class="form-control" placeholder="Ingrese su comentario"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-10">
-                            <div class="form-group">
-                                <input type="hidden" value="agregarRetro" id="retro"/>
-                                <button type="submit" class=" btn btn-success" id="enviar">Guardar Retroalimentación</button>
-                                <button type="reset" class="btn btn-danger" id="cancelar">Cancelar Retroalimentación</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
             </div>
+        </form>
         </div>
         
     </body>

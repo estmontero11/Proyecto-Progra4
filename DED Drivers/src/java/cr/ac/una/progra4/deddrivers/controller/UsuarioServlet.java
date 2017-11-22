@@ -126,7 +126,6 @@ public class UsuarioServlet extends HttpServlet {
                     String fechatxt2 = request.getParameter("fechaNacimiento");
                     DateFormat format2 = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
                     Date date2 = format2.parse(fechatxt2);
-                    
                     usuario.setFechaNacimiento(date2);
                     usuario.setDireccion(request.getParameter("direccion"));
                     usuario.setTelefonoTrabajo(request.getParameter("telefono"));
