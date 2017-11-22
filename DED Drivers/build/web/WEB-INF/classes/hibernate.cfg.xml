@@ -46,8 +46,8 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/basetransporte</property>
     <property name="hibernate.connection.username">root</property>
     <mapping resource="cr/ac/una/progra4/deddrivers/domain/Chofer.hbm.xml"/>
-    <mapping resource="cr/ac/una/progra4/deddrivers/domain/Vehiculo.hbm.xml"/>
     <mapping resource="cr/ac/una/progra4/deddrivers/domain/Usuario.hbm.xml"/>
     <mapping resource="cr/ac/una/progra4/deddrivers/domain/Servicio.hbm.xml"/>
+    <mapping resource="cr/ac/una/progra4/deddrivers/domain/Vehiculo.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

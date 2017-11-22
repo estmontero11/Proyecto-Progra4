@@ -23,6 +23,10 @@ and open the template in the editor.
 }
 
 
+#height200{
+    height: 100px;
+}
+
 #todoNegro{
     background: rgba(13,12,13,1);
     background: -moz-linear-gradient(left, rgba(13,12,13,1) 0%, rgba(28,28,31,1) 10%, rgba(43,43,43,1) 27%, rgba(17,17,17,1) 39%, rgba(0,0,0,1) 51%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 65%, rgba(43,43,43,1) 77%, rgba(28,28,28,1) 94%, rgba(19,19,19,1) 100%);
