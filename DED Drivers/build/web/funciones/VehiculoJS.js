@@ -19,7 +19,7 @@ $(function () {
     row.append($("<th><b>COLOR</b></th>"));
     row.append($("<th><b>PUNTUACION</b></th>"));
     row.append($("<th><b>ESTADO</b></th>"));
-    row.append($("<th><b>UBICACION ACTUAL</b></th>"));
+    row.append($("<th><b>UBICACION</b></th>"));
     row.append($("<th><b>CÉDULA CHOFER</b></th>"));
     row.append($("<th><b>ULT.USU.MODIF</b></th>"));
     row.append($("<th><b>ULT.FEC.MODIF</b></th>"));
@@ -170,6 +170,8 @@ function dibujarFila(page, rowData) {
             row.append($("<td>Activo</td>"));
         }
     }
+    row.append($("<td>" + rowData.ubicacionActual + "</td>"));
+    row.append($("<td>" + rowData.idChofer + "</td>"));
     if(rowData.ultimoUsuario===undefined){
         row.append($("<td>No asignado</td>"));
     }
@@ -183,8 +185,8 @@ function dibujarFila(page, rowData) {
     else{
         row.append($("<td>" + rowData.ultimaFecha + "</td>"));
     }
-    row.append($("<td>" + rowData.ubicacionActual + "</td>"));
-    row.append($("<td>" + rowData.idChofer + "</td>"));
+    
+    
     row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="consultarVehiculoById('+rowData.idVehiculo+');">'+
                         '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'+
                     '</button>'+

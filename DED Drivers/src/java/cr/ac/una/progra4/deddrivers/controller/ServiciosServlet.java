@@ -5,7 +5,10 @@
  */
 package cr.ac.una.progra4.deddrivers.controller;
 
+import com.google.gson.Gson;
 import cr.ac.una.progra4.deddrivers.bl.ServicioBL;
+import cr.ac.una.progra4.deddrivers.bl.VehiculoBL;
+import cr.ac.una.progra4.deddrivers.domain.Chofer;
 import cr.ac.una.progra4.deddrivers.domain.Servicio;
 import cr.ac.una.progra4.deddrivers.domain.Usuario;
 import cr.ac.una.progra4.deddrivers.domain.Vehiculo;
@@ -49,7 +52,7 @@ public class ServiciosServlet extends HttpServlet {
             List servicios = new ArrayList(0);
             Byte b0 = 0;
             Byte b1 = 1;
-            Usuario u = new Usuario("123", "123", 1, "Daniel", "Gutierrez", "prueba@gmail.com", date, "Barva", "8123-4567","daniel", date, servicios);
+            //Usuario u = new Usuario("123", "123", 1, "Daniel", "Gutierrez", "prueba@gmail.com", date, "Barva", "8123-4567","daniel", date, servicios);
             Vehiculo v = new Vehiculo(123, 123, 2017, "Toyota Yaris", "ABC-123", "azul", 5, b1, "Lagunilla", "daniel", date, servicios);
             Serializable s1 = null;
             Serializable s2= null;
@@ -63,22 +66,23 @@ public class ServiciosServlet extends HttpServlet {
 
             Servicio s= new Servicio();
             ServicioBL sBL= new ServicioBL();
-            
+            VehiculoBL vBL = new VehiculoBL();
             HttpSession session = request.getSession();
             String accion = request.getParameter("accion");
-            
+            String paginaDestino = "";
+            //String opcion = req.getParameter("opcion");
             switch (accion) {
                 case "agregarRetro":
                     s.setIdServicio(idServicio);
-                    s.setUsuario(u);
+//                    s.setUsuario(u);
                     s.setVehiculo(v);
-                    s.setPuntoLlegada(s1);
-                    s.setPuntoSalida(s2);
+  //                  s.setPuntoLlegada(s1);
+    //                s.setPuntoSalida(s2);
                     s.setHoraLlegada(h1);
                     s.setHoraSalida(h2);
                     s.setDuracion(duracion);
                     s.setCosto(costo);
-                    s.setIdRetroalimentacion(Integer.parseInt(request.getParameter("idRetro")));
+      //              s.setIdRetroalimentacion(Integer.parseInt(request.getParameter("idRetro")));
                     s.setPuntuacion(Integer.parseInt(request.getParameter("puntuacion")));
                     s.setComentario(request.getParameter("comentario"));
                     s.setUltimoUsuario("amigo");
@@ -91,6 +95,16 @@ public class ServiciosServlet extends HttpServlet {
                     }
 
 
+                    break;
+                case "consultarVehiculoLibre":
+                    json = new Gson().toJson(vBL.findActivos());
+                    out.print(json);
+                   
+                    break;
+                case "redireccionar":
+                    String modelo = request.getParameter("modelo");
+                    paginaDestino = "http://localhost:44695/DED_Drivers/retroalimentacion.jsp";
+                    response.sendRedirect(paginaDestino);
                     break;
                 default:
                     out.print("E~No se indico la acción que se desea realizare");

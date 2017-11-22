@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Nov 20, 2017 2:57:06 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 22/11/2017 12:09:15 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="cr.ac.una.progra4.deddrivers.domain.Servicio" table="servicio" catalog="basetransporte" optimistic-lock="version">
-        <id name="idServicio" type="int">
+        <id name="idServicio" type="java.lang.Integer">
             <column name="idServicio" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <many-to-one name="usuario" class="cr.ac.una.progra4.deddrivers.domain.Usuario" fetch="select">
             <column name="idUsuario" length="45" not-null="true" />
@@ -14,11 +14,11 @@
         <many-to-one name="vehiculo" class="cr.ac.una.progra4.deddrivers.domain.Vehiculo" fetch="select">
             <column name="idVehiculo" not-null="true" />
         </many-to-one>
-        <property name="puntoLlegada" type="serializable">
-            <column name="puntoLlegada" />
+        <property name="puntoLlegada" type="string">
+            <column name="puntoLlegada" length="100" />
         </property>
-        <property name="puntoSalida" type="serializable">
-            <column name="puntoSalida" />
+        <property name="puntoSalida" type="string">
+            <column name="puntoSalida" length="100" />
         </property>
         <property name="horaLlegada" type="timestamp">
             <column name="horaLlegada" length="19" />
@@ -31,9 +31,6 @@
         </property>
         <property name="costo" type="java.lang.Float">
             <column name="costo" precision="12" scale="0" />
-        </property>
-        <property name="idRetroalimentacion" type="int">
-            <column name="idRetroalimentacion" not-null="true" />
         </property>
         <property name="fechaRealizado" type="date">
             <column name="fechaRealizado" length="10" />

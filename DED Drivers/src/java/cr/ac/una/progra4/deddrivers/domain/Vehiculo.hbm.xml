@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Nov 20, 2017 2:57:06 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 22/11/2017 12:09:15 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="cr.ac.una.progra4.deddrivers.domain.Vehiculo" table="vehiculo" catalog="basetransporte" optimistic-lock="version">
         <id name="idVehiculo" type="int">
@@ -30,7 +30,7 @@
             <column name="estado" />
         </property>
         <property name="ubicacionActual" type="string">
-            <column name="ubicacionActual" length="45" />
+            <column name="ubicacionActual" length="100" />
         </property>
         <property name="ultimoUsuario" type="string">
             <column name="ultimoUsuario" length="45" />

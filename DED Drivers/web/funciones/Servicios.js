@@ -13,7 +13,18 @@ $(function () {
         if ($(e.target).is("#verRuta")) {
             $("#contenido1").show();
             GetRoute();
+            consultarVehiculoLibre();
         }
+    });
+
+//    $(document).on("click",function (e){
+//         if ($(e.target).is("#enviar")) {
+//             $("#retro").show();
+//             
+//         }
+//    });
+    $("#enviar").click(function () {
+        enviar();
     });
 });
 
@@ -88,16 +99,16 @@ function calcularHoraMin() {
     var dd = today.getDate();
     var mm = today.getMonth() + 1;
     var yyyy = today.getFullYear();
-    
+
     if (dd < 10) {
         dd = '0' + dd;
     }
 
     if (mm < 10) {
         mm = '0' + mm;
-    } 
-    
-    document.getElementById("fechaRealizado").value= dd + "/" + mm + "/" + yyyy;
+    }
+
+    document.getElementById("fechaRealizado").value = dd + "/" + mm + "/" + yyyy;
     //min =2
     //hora=1
     var num;
@@ -108,23 +119,23 @@ function calcularHoraMin() {
     var d = new Date();
     var h = addZero(d.getHours());
     var m = addZero(d.getMinutes());
-    
+
     var x = document.getElementById("salida");
     x.value = h + ":" + m + " " + "am/pm";
 
     var duracion = $("#duracion").val();
-    
-    
+
+
     var llegada = document.getElementById("llegada");
 
     if (duracion.charAt(2) === 'm') {
         num = duracion.charAt(0);
         num2 = parseInt(num);
-        precio= 180*num2;
-        document.getElementById("precio").value= precio;
+        precio = 180 * num2;
+        document.getElementById("precio").value = precio;
         num3 = parseInt(m);
         suma = num3 + num2;
-        
+
         if (suma >= 60) {
             num = parseInt(h);
             num2 = num + 1;
@@ -147,8 +158,8 @@ function calcularHoraMin() {
         if (duracion.charAt(3) === 'm') {
             num = duracion.substr(0, 2);
             num2 = parseInt(num);
-            precio= 180*num2;
-            document.getElementById("precio").value= precio;
+            precio = 180 * num2;
+            document.getElementById("precio").value = precio;
             num3 = parseInt(m);
             suma = num3 + num2;
             if (suma >= 60) {
@@ -168,8 +179,8 @@ function calcularHoraMin() {
             if (duracion.charAt(1) === 'h') {
                 num = duracion.charAt(0);
                 num2 = parseInt(num);
-                precio= 4000*num2;
-                document.getElementById("precio").value= precio;
+                precio = 4000 * num2;
+                document.getElementById("precio").value = precio;
                 num3 = parseInt(h);
                 suma = num3 + num2;
                 if (suma > 24) {
@@ -193,13 +204,13 @@ function validar() {
     //Elimina estilo de error en los css
     //notese que es sobre el grupo que contienen el input
 
-    
+
     $("#groupSalida").removeClass("has-error");
     $("#groupLlegada").removeClass("has-error");
     $("#groupDistancia").removeClass("has-error");
     $("#groupHoraSalida").removeClass("has-error");
     $("#groupHoraLlegada").removeClass("has-error");
-    $("#groupFechaRealizado").removeClass("has-error"); 
+    $("#groupFechaRealizado").removeClass("has-error");
     $("#groupPrecio").removeClass("has-error");
     $("#groupNombreChofer").removeClass("has-error");
     $("#groupModelo").removeClass("has-error");
@@ -207,10 +218,15 @@ function validar() {
     $("#groupColor").removeClass("has-error");
     $("#groupUbicacion").removeClass("has-error");
 
+//    $("#groupIdRetro").removeClass("has-error");
+//    $("#groupPuntuacion").removeClass("has-error");
+//    $("#groupComentario").removeClass("has-error");
+
+
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitados
-    
-    
+
+
     if ($("#txtSource").val() === "") {
         $("#groupSalida").addClass("has-error");
         validacion = false;
@@ -219,7 +235,7 @@ function validar() {
         $("#groupLlegada").addClass("has-error");
         validacion = false;
     }
-    if ($("#distancia").val()=== "") {
+    if ($("#distancia").val() === "") {
         $("#groupDistancia").addClass("has-error");
         validacion = false;
     }
@@ -263,6 +279,18 @@ function validar() {
         $("#groupUbicacion").addClass("has-error");
         validacion = false;
     }
+//    if ($("#idRetro").val() === "") {
+//        $("#groupIdRetro").addClass("has-error");
+//        validacion = false;
+//    }
+//    if ($("#count").text() === "") {
+//        $("#groupPuntuacion").addClass("has-error");
+//        validacion = false;
+//    }
+//    if ($("#comentario").val() === "") {
+//        $("#groupComentario").addClass("has-error");
+//        validacion = false;
+//    }
 
     return validacion;
 }
@@ -278,8 +306,8 @@ function consultarVehiculoById(idVehiculo) {
         },
         error: function () { //si existe un error en la respuesta del ajax
             ocultarModal("myModal");
-            swal('Error','Se presento un error, contactar al administrador','error');
-            cambiarMensajeModal("myModal","Resultado acción","Se presento un error, contactar al administrador");
+            swal('Error', 'Se presento un error, contactar al administrador', 'error');
+            cambiarMensajeModal("myModal", "Resultado acción", "Se presento un error, contactar al administrador");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             // se oculta el mensaje de espera
@@ -287,16 +315,16 @@ function consultarVehiculoById(idVehiculo) {
             limpiarForm();
             //se muestra el formulario
             $("#myModalFormulario").modal();
-            
+
             //************************************************************************
             //carga información de la persona en el formulario
             //************************************************************************
             //se indicar que la cédula es solo readOnly
             $("#idVehiculo").attr('readonly', 'readonly');
-            
+
             //se modificar el hidden que indicar el tipo de accion que se esta realizando
-            $("#vehiculoAction").val("modificarVehiculo"); 
-            
+            $("#vehiculoAction").val("modificarVehiculo");
+
             //se carga la información en el formulario
             $("#idVehiculo").val(data.idVehiculo);
             $("#anno").val(data.anno);
@@ -306,8 +334,8 @@ function consultarVehiculoById(idVehiculo) {
             $("#puntuacion").val(data.puntuacion);
             $("#estado").val(data.estado);
             $("#ubicacionActual").val(data.ubicacionActual);
-            consultarChoferById(data.idChofer); 
-           
+            consultarChoferById(data.idChofer);
+
         },
         type: 'POST',
         dataType: "json"
@@ -331,7 +359,7 @@ function consultarChoferes() {
             var chofer = document.getElementById("chofer");
             for (value in info) {
                 var option = document.createElement("option");
-                option.text = info[value].nombre+" "+info[value].apellidos+" "+info[value].idChofer;
+                option.text = info[value].nombre + " " + info[value].apellidos + " " + info[value].idChofer;
                 chofer.add(option);
             }
         },
@@ -339,21 +367,6 @@ function consultarChoferes() {
         dataType: "json"
     });
 }
-
-function obtenerCedula(){
-    var espacios = 0;
-    var chofer = $( "#chofer option:selected" ).text();
-    var cedula = "";
-    for (var i=0; i<chofer.length; i++){
-        if(espacios === 2){
-            cedula = cedula + chofer.substr(i,1) ;
-        }
-        if(chofer.substr(i,1)===" "){
-            espacios++;
-        }    
-    }
-    return cedula;
-};
 
 function consultarChoferById(idChofer) {
     //Se envia la información por ajax
@@ -365,14 +378,97 @@ function consultarChoferById(idChofer) {
         },
         error: function () { //si existe un error en la respuesta del ajax
             ocultarModal("myModal");
-            swal('Error','Se presento un error, contactar al administrador','error');
-            cambiarMensajeModal("myModal","Resultado acción","Se presento un error, contactar al administrador");
+            swal('Error', 'Se presento un error, contactar al administrador', 'error');
+            cambiarMensajeModal("myModal", "Resultado acción", "Se presento un error, contactar al administrador");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data            
             //se carga la información en el formulario
-            $("#chofer").val(data.nombre+" "+data.apellidos+" "+data.idChofer);
+            $("#chofer").val(data.nombre);
         },
         type: 'POST',
         dataType: "json"
     });
+}
+
+function consultarChoferById(idChofer) {
+    //Se envia la información por ajax
+    $.ajax({
+        url: 'ChoferServlet',
+        data: {
+            accion: "consultarChoferById",
+            idChofer: idChofer
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            ocultarModal("myModal");
+            swal('Error', 'Se presento un error, contactar al administrador', 'error');
+            cambiarMensajeModal("myModal", "Resultado acción", "Se presento un error, contactar al administrador");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data            
+            //se carga la información en el formulario
+            $("#nombreChofer").val(data.nombre);
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+
+
+function consultarVehiculoLibre() {
+    //Se envia la información por ajax
+    var data1;
+    $.ajax({
+        url: 'ServiciosServlet',
+        data: {
+            accion: "consultarVehiculoLibre"
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            swal('Error', 'Se presento un error, contactar al administrador', 'error');
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            data1 = data[0];
+            //$("nombreChofer").val(data.nameChofer);
+            $("#modelo").val(data1.modelo);
+            $("#placa").val(data1.placa);
+            $("#color").val(data1.color);
+
+
+            $("#ubicacion").val(data1.ubicacionActual);
+            consultarChoferById(data1.idChofer);
+
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+
+function enviar() {
+
+        //Se envia la información por ajax
+        $.ajax({
+            url: 'ServiciosServlet',
+            data: {
+                accion: $("#red").val(),
+                modelo: $("#modelo").val()
+            },
+            error: function () { //si existe un error en la respuesta del ajax
+                swal('Error', 'Se genero un error, contacte al administrador (Error del ajax)', 'error');
+            },
+            success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+                var respuestaTxt = data.substring(2);
+                var tipoRespuesta = data.substring(0, 2);
+                if (tipoRespuesta === "C~") { //correcto
+                    swal('Correcto', respuestaTxt, 'success');
+                } else {
+                    if (tipoRespuesta === "E~") { //error
+                        swal('Error', respuestaTxt, 'error');
+                    } else {
+                        swal('Error', 'Se genero un error, contacte al administrador', 'error');
+                    }
+                }
+
+            },
+            type: 'POST'
+        });
+    
+    
 }

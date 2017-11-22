@@ -50,8 +50,13 @@
         <!--JS del mapa-->
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDomGs0dCkbZbNVwNybUTcmtwAtDcNlm-A&sensor=false&libraries=places"></script>
 
+        <!--JS de retro-->
+        <script src="funciones/RetroJS.js" type="text/javascript"></script>
+        
         <!--JS de Servicios-->
         <script src="funciones/Servicios.js" type="text/javascript"></script>
+        
+        <link href="estilos/sweetalert2.css" rel="stylesheet" type="text/css"/>
 
     </head>
     <header>
@@ -166,20 +171,13 @@
                                     <input type="text" class="form-control" id="ubicacion" readonly>
                                 </div>
                             </div>
-
+                            <input type="hidden" value="redireccionar" id="red"/>
                             <input type="hidden" value="agregarServicio" id="servicioAction"/>
                             <div class="col-md-5">
                                 <button type="submit" class="btn btn-success" id="enviar">Aceptar servicio</button>
                                 <button type="reset" class="btn btn-danger" id="cancelar">Cancelar servicio</button>
                             </div>
-                            <div >
-                                <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                    <input type="hidden" name="cmd" value="_s-xclick">
-                                    <input type="hidden" name="hosted_button_id" value="2BG3JMHD789SN">
-                                    <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynow_LG.gif" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                                    <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                                </form>
-                            </div>
+                          
                         </td>
                         <!--
                         <td>
@@ -190,6 +188,40 @@
                 </table>
             </div>
         </form>
+        <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+
+                <input type="hidden" name="cmd" value="_ext-enter" />
+                <input type="hidden" name="redirect_cmd" value="_xclick" />
+                <input type="hidden" name="business" value="estmontero11-facilitator@hotmail.com" />
+                <!–   Aquí pondriamos el email de usuario de la cuenta de vendedor de Paypal o el nº de usuario de Paypal  –>
+
+                <input type="hidden" name="item_name" value="Viaje en DED" />
+                <!–   Aquí debemos de poner el nombre del producto para poder identificarlo –>
+
+
+                <input type="hidden" name="quantity" value="1" />
+                <!–   Cantidad de producto a cobrar. En este ejemplo he puesto dos, es decir, multiplicara por 2 la catidad que viene aquí debajo –>
+
+                <input type="hidden" name="amount" id="amount" />
+                <!–   Precio de cada producto –>
+
+                <input type="hidden" name="currency_code" value="USD" />
+                <!–   Tipo de moneda en la que se va a cobrar al cliente o pagador –>
+
+                <input type="hidden" name="return" value="http://localhost:44695/DED_Drivers/servicios.jsp" />                
+                <!–   URL o dirección a la cual nos redirigirá Paypal despues de terminar la compra satisfactoriamente –>
+
+                <input type="hidden" name="cancel_return" value="http://localhost:44695/DED_Drivers/index.jsp" />
+                <!–   URL o dirección a la cual nos redirigirá Paypal si se produce un error en el pago o el cliente lo cancela –>
+
+                <div align="center">
+                    <input type="image" src="http://www.paypal.com/es_XC/i/btn/x-click-but01.gif"
+                           name="submit"
+                           alt="Make payments with PayPal - it's fast, free and secure!">
+                </div>
+            </form>
+        <hr>
+        
     </body>
     <div id="height200"></div>
     <footer id="footerNuevo">

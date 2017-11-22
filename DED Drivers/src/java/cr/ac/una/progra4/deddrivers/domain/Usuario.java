@@ -1,5 +1,5 @@
 package cr.ac.una.progra4.deddrivers.domain;
-// Generated Nov 20, 2017 2:57:04 AM by Hibernate Tools 4.3.1
+// Generated 22/11/2017 12:09:06 AM by Hibernate Tools 4.3.1
 
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class Usuario  implements java.io.Serializable {
      private String ultimoUsuario;
      private Date ultimaFecha;
      private List servicios = new ArrayList();
-
+      
     public Usuario() {
     }
 
@@ -124,7 +124,7 @@ public class Usuario  implements java.io.Serializable {
     public void setUltimaFecha(Date ultimaFecha) {
         this.ultimaFecha = ultimaFecha;
     }
-    public List getServicios() {
+     public List getServicios() {
         return this.servicios;
     }
     
@@ -132,5 +132,10 @@ public class Usuario  implements java.io.Serializable {
         this.servicios = servicios;
     }
 
+
+
+
+
 }
+
 

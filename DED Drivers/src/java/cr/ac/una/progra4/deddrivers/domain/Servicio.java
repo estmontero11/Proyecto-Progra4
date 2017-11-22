@@ -1,8 +1,7 @@
 package cr.ac.una.progra4.deddrivers.domain;
-// Generated Nov 20, 2017 2:57:04 AM by Hibernate Tools 4.3.1
+// Generated 22/11/2017 12:09:06 AM by Hibernate Tools 4.3.1
 
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -11,16 +10,15 @@ import java.util.Date;
 public class Servicio  implements java.io.Serializable {
 
 
-     private int idServicio;
+     private Integer idServicio;
      private Usuario usuario;
      private Vehiculo vehiculo;
-     private Serializable puntoLlegada;
-     private Serializable puntoSalida;
+     private String puntoLlegada;
+     private String puntoSalida;
      private Date horaLlegada;
      private Date horaSalida;
      private int duracion;
      private Float costo;
-     private int idRetroalimentacion;
      private Date fechaRealizado;
      private Integer puntuacion;
      private String comentario;
@@ -29,16 +27,14 @@ public class Servicio  implements java.io.Serializable {
 
     public Servicio() {
     }
+
 	
-    public Servicio(int idServicio, Usuario usuario, Vehiculo vehiculo, int duracion, int idRetroalimentacion) {
-        this.idServicio = idServicio;
+    public Servicio(Usuario usuario, Vehiculo vehiculo, int duracion) {
         this.usuario = usuario;
         this.vehiculo = vehiculo;
         this.duracion = duracion;
-        this.idRetroalimentacion = idRetroalimentacion;
     }
-    public Servicio(int idServicio, Usuario usuario, Vehiculo vehiculo, Serializable puntoLlegada, Serializable puntoSalida, Date horaLlegada, Date horaSalida, int duracion, Float costo, int idRetroalimentacion, Date fechaRealizado, Integer puntuacion, String comentario, String ultimoUsuario, Date ultimaFecha) {
-       this.idServicio = idServicio;
+    public Servicio(Usuario usuario, Vehiculo vehiculo, String puntoLlegada, String puntoSalida, Date horaLlegada, Date horaSalida, int duracion, Float costo, Date fechaRealizado, Integer puntuacion, String comentario, String ultimoUsuario, Date ultimaFecha) {
        this.usuario = usuario;
        this.vehiculo = vehiculo;
        this.puntoLlegada = puntoLlegada;
@@ -47,7 +43,6 @@ public class Servicio  implements java.io.Serializable {
        this.horaSalida = horaSalida;
        this.duracion = duracion;
        this.costo = costo;
-       this.idRetroalimentacion = idRetroalimentacion;
        this.fechaRealizado = fechaRealizado;
        this.puntuacion = puntuacion;
        this.comentario = comentario;
@@ -55,11 +50,11 @@ public class Servicio  implements java.io.Serializable {
        this.ultimaFecha = ultimaFecha;
     }
    
-    public int getIdServicio() {
+    public Integer getIdServicio() {
         return this.idServicio;
     }
     
-    public void setIdServicio(int idServicio) {
+    public void setIdServicio(Integer idServicio) {
         this.idServicio = idServicio;
     }
     public Usuario getUsuario() {
@@ -76,18 +71,18 @@ public class Servicio  implements java.io.Serializable {
     public void setVehiculo(Vehiculo vehiculo) {
         this.vehiculo = vehiculo;
     }
-    public Serializable getPuntoLlegada() {
+    public String getPuntoLlegada() {
         return this.puntoLlegada;
     }
     
-    public void setPuntoLlegada(Serializable puntoLlegada) {
+    public void setPuntoLlegada(String puntoLlegada) {
         this.puntoLlegada = puntoLlegada;
     }
-    public Serializable getPuntoSalida() {
+    public String getPuntoSalida() {
         return this.puntoSalida;
     }
     
-    public void setPuntoSalida(Serializable puntoSalida) {
+    public void setPuntoSalida(String puntoSalida) {
         this.puntoSalida = puntoSalida;
     }
     public Date getHoraLlegada() {
@@ -117,13 +112,6 @@ public class Servicio  implements java.io.Serializable {
     
     public void setCosto(Float costo) {
         this.costo = costo;
-    }
-    public int getIdRetroalimentacion() {
-        return this.idRetroalimentacion;
-    }
-    
-    public void setIdRetroalimentacion(int idRetroalimentacion) {
-        this.idRetroalimentacion = idRetroalimentacion;
     }
     public Date getFechaRealizado() {
         return this.fechaRealizado;

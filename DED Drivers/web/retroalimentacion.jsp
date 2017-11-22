@@ -5,19 +5,19 @@
 <%
     HttpSession sesion = request.getSession(true);
     String tipoUsuario = "";
-    String usuario = "";
-    if (sesion != null) {
-        if (sesion.getAttribute("usuario") == null) {
+    String usuario ="";
+    if(sesion!=null){
+        if (sesion.getAttribute("usuario")  == null) {
             response.sendRedirect("LoginJSP.jsp");
-        } else {
-            if (sesion.getAttribute("tipo") != "Normal") {
+        }else{
+            if(sesion.getAttribute("tipo") != "Normal"){
                 response.sendRedirect("index.jsp");
-            } else {
-                tipoUsuario = (String) sesion.getAttribute("tipo");
-                usuario = (String) sesion.getAttribute("usuario");
+            }else{
+                tipoUsuario = (String)sesion.getAttribute("tipo");
+                usuario = (String)sesion.getAttribute("usuario");
             }
         }
-    } else {
+    }else{
         response.sendRedirect("LoginJSP.jsp");
     }
 %>
@@ -53,7 +53,7 @@
         <script src="funciones/utils.js" type="text/javascript"></script>
 
         <script src="funciones/RetroJS.js" type="text/javascript"></script>
-        
+
         <!-- JS Sweetalert -->
         <script src="funciones/sweetalert2.js" type="text/javascript"></script>
 
@@ -65,15 +65,7 @@
     </head>
 
     <header>
-        <% if (tipoUsuario.equals("Administrador")) { %>
-        <%@include file="navbarAdm.jspf" %>
-        <% } %>
-        <% if (tipoUsuario.equals("Normal")) { %>
         <%@include file="navbarNorm.jspf" %>
-        <% } %>
-        <% if (tipoUsuario.equals("Invitado")) { %>
-        <%@include file="navbarInv.jspf" %>
-        <% }%>
     </header>
 
     <body>
@@ -92,25 +84,11 @@
             </div>
         </div>
         <br>
-        <div class="row" style="width: 1350px; padding-left: 10px;">
-            <div class="col-md-5">
-                <h1 id="tituloRegistro">Información del viaje.</h1>
-                <div class="container-fluid table-responsive" style="overflow-x: auto;">
-                    <table border="1" class="table table-hover table-condensed" id="tablaRetro"></table>
-                </div>
-            </div>
+        <div  class="row" style="width: 1350px; padding-left: 10px;">           
             <div class="col-md-6">
                 <h1 id="tituloRegistro">Retroalimentación del viaje.</h1>
                 <br>
                 <form class="form-group" id="formularioRetro" onsubmit="return false;" >
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group" id="groupIdRetro">
-                                <label for="idRetro">N° retroalimentación.</label>
-                                <input type="number" min="0" class="form-control" id="idRetro" placeholder="Ingresar número de retroalimentación">
-                            </div>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col-md-7">
                             <div class="form-group" id="groupPuntuacion">
@@ -136,7 +114,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <input type="text" value="<%(String) session.getAttribute("modelo");%>" />
                 </form>
             </div>
         </div>
