@@ -70,15 +70,7 @@
     </head>
     <!--Titulo y Barra de navegacion-->
     <header>
-        <% if(tipoUsuario.equals("Administrador")) { %>
-            <%@include file="navbarAdm.jspf" %>
-        <% } %>
-        <% if(tipoUsuario.equals("Normal")) { %>
-            <%@include file="navbarNorm.jspf" %>
-        <% } %>
-        <% if(tipoUsuario.equals("Invitado")) { %>
-            <%@include file="navbarInv.jspf" %>
-        <% } %>
+        <%@include file="navbarAdm.jspf" %>
     </header>
     <!--Termina titulo y barra de navegacion-->
     <body>
@@ -121,7 +113,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group" id="groupId">
                                         <label for="cedula">Cédula del chofer:</label>
-                                        <input type="text" class="form-control" id="id" autofocus="true" placeholder="Ingrese aquí la cédula del chofer">
+                                        <input type="text" class="form-control" id="idChofer" autofocus="true" placeholder="Ingrese aquí la cédula del chofer">
                                     </div>
                                 </div>
 

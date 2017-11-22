@@ -416,7 +416,6 @@ function consultarUsuarioById(idUsuario) {
             //se carga la información en el formulario
             $("#nombre").val(data.nombre);
             $("#apellidos").val(data.apellidos);
-            
        
             //carga de fecha
             var fechaNac = new Date(data.fechaNacimiento);

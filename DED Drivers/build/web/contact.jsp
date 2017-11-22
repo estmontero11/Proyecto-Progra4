@@ -56,6 +56,9 @@
         <% if(tipoUsuario.equals("Invitado")) { %>
             <%@include file="navbarInv.jspf" %>
         <% } %>
+        <% if(tipoUsuario.equals("Transportista")) { %>
+            <%@include file="navbarTransp.jspf" %>
+        <% } %>
     </header>
     <!--Termina titulo y barra de navegacion-->
     <body>

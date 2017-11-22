@@ -220,7 +220,7 @@ function enviar() {
             url: 'ChoferServlet',
             data: {
                 accion: $("#choferAction").val(),
-                id: $("#id").val(),
+                idChofer: $("#idChofer").val(),
                 nombre: $("#nombre").val(),
                 apellidos: $("#apellidos").val(),
                 fechaNacimiento: $("#dpFechaNacimiento").data('date'),

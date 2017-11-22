@@ -20,10 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author chgari
- */
 public class ChoferServlet extends HttpServlet {
 
     /**
@@ -76,8 +72,9 @@ public class ChoferServlet extends HttpServlet {
                     break;
                     
                 case "consultarChoferById":
+                    Integer id = Integer.parseInt(request.getParameter("idChofer"));
                     //se consulta la persona por ID
-                    c = cBL.findById(Integer.parseInt(request.getParameter("idChofer")));
+                    c = cBL.findById(id);
                     
                     //se pasa la informacion del objeto a formato JSON
                     json = new Gson().toJson(c);
@@ -91,9 +88,9 @@ public class ChoferServlet extends HttpServlet {
                     break;
                     
                 case "agregarChofer": case "modificarChofer":
-
+                    id = Integer.parseInt(request.getParameter("idChofer"));
                     //Se llena el objeto con los datos enviados por AJAX por el metodo post
-                    c.setIdChofer(Integer.parseInt(request.getParameter("id")));
+                    c.setIdChofer(id);
                     c.setNombre(request.getParameter("nombre"));
                     c.setApellidos(request.getParameter("apellidos"));
 
@@ -110,7 +107,7 @@ public class ChoferServlet extends HttpServlet {
                     
                     c.setTipoLicencia(request.getParameter("tipoLicencia"));
                     c.setEstado(Byte.parseByte(request.getParameter("estado")));
-                    c.setEsClienteTransportista(Byte.parseByte(request.getParameter("estado")));
+                    c.setEsClienteTransportista(Byte.parseByte(request.getParameter("esClienteTransportista")));
                     
                     c.setUltimoUsuario(request.getParameter("ultimoUsuario"));  
                     c.setUltimaFecha(new Date());
@@ -130,6 +127,7 @@ public class ChoferServlet extends HttpServlet {
                         out.print("C~El chofer fue modificado correctamente");
                     }                 
                     break;
+                    
                 default:
                     out.print("E~No se indico la acción que se desea realizare");
                     break;

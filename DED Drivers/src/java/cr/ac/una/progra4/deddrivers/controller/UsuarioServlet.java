@@ -146,6 +146,7 @@ public class UsuarioServlet extends HttpServlet {
                         
                         out.print("C~El usuario fue modificado correctamente");
                     }
+                    break;
                 default:
                     out.print("E~No se indico la acción que se desea realizare");
                     break;

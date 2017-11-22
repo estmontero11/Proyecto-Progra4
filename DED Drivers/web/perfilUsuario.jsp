@@ -5,21 +5,27 @@
 
     HttpSession sesion = request.getSession(true);
     String tipoUsuario = "";
+    String usuario ="";
     if(sesion!=null){
         if (sesion.getAttribute("usuario")  == null) {
-            tipoUsuario = "Invitado";
+            response.sendRedirect("LoginJSP.jsp");
         }else{
-            tipoUsuario = (String)sesion.getAttribute("tipo");
+            if(sesion.getAttribute("tipo") != "Normal"){
+                response.sendRedirect("index.jsp");
+            }else{
+                tipoUsuario = (String)sesion.getAttribute("tipo");
+                usuario = (String)sesion.getAttribute("usuario");
+            }
         }
     }else{
-        tipoUsuario = "Invitado";
+        response.sendRedirect("LoginJSP.jsp");
     }
 %>
 
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registrese</title>
+        <title>Perfil</title>
         
         <!--CSS LOCAL-->
         <link href="estilos/css.css" rel="stylesheet" type="text/css"/>
@@ -51,8 +57,8 @@
         
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDomGs0dCkbZbNVwNybUTcmtwAtDcNlm-A&callback=initMap" async defer></script>
 
-        <!-- Script's de Usuarios -->
-        <script src="funciones/UsuarioJS.js" type="text/javascript"></script>
+        <!-- Script's de Perfil -->
+        <script src="funciones/PerfilUsuario.js" type="text/javascript"></script>
  
         <!-- JS Sweetalert -->
         <script src="funciones/sweetalert2.js" type="text/javascript"></script>
@@ -63,18 +69,7 @@
     </head> 
      <!--Titulo y Barra de navegacion-->
     <header>
-        <% if(tipoUsuario.equals("Administrador")) { %>
-            <%@include file="navbarAdm.jspf" %>
-        <% } %>
-        <% if(tipoUsuario.equals("Normal")) { %>
-            <%@include file="navbarNorm.jspf" %>
-        <% } %>
-        <% if(tipoUsuario.equals("Invitado")) { %>
-            <%@include file="navbarInv.jspf" %>
-        <% } %>
-        <% if(tipoUsuario.equals("Transportista")) { %>
-            <%@include file="navbarTransp.jspf" %>
-        <% } %>
+        <%@include file="navbarNorm.jspf" %>
     </header>
     <!--Termina titulo y barra de navegacion-->
     <body>
@@ -100,11 +95,11 @@
          <!-- ********************************************************** -->
         <!-- ********************************************************** -->
         
-        <h1 id="tituloRegistro" align="center">Ingrese sus datos.</h1>
+        <h1 id="tituloRegistro" align="center">Perfil Usuario</h1>
         <br>
         <div class="container center_div" id="contenedorRegistro">
         <div class="row">      
-            <form id="formUsuario" class="form-group" onsubmit="return false;">
+            <form id="formUsuario" class="form-group" onsubmit="return false;">               
                 <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4" id="groupNombre">
                     <label for="nombre">Nombre</label>
                     <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
@@ -155,7 +150,7 @@
                 <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4" id="groupIdUsuario">
                     <label for="idUsuario">Usuario</label>
                     <div class="input-group">
-                    <input type="text" class="form-control" id="idUsuario">
+                    <input type="text" class="form-control" id="idUsuario" value="<%=usuario%>">
                     <span class="input-group-addon">
                          <span class="glyphicon glyphicon-user"></span>
                     </span>
@@ -171,10 +166,11 @@
                     </div>
                 </div>
                 <div class="clearfix"></div>
-                <input type="hidden" value="agregarUsuarios" id="usuarioAction"/>
+                <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4"></div>
+                <input type="hidden" value="modificarUsuario" id="action"/>
+                <input type="hidden" id="tipoUsuario"/>
                 <div class="col-xs-10 col-sm-4 col-md-4 col-lg-4">
-                    <button type="submit" class="btn btn-success" id="enviar">Agregar usuario</button>
-                    <button type="reset" class="btn btn-danger" id="cancelar">Cancelar información</button>
+                    <button type="submit" class="btn btn-success" id="enviar">Actualizar información</button>
                 </div>
                 <br>
                 <div class="form-group height25" >

@@ -62,7 +62,11 @@ public class LoginServlet extends HttpServlet {
                             if (usuario.getTipoUsuario() == 0) {
                                 session.setAttribute("tipo", "Administrador"); 
                             }else{
-                                session.setAttribute("tipo", "Normal"); 
+                                if(usuario.getTipoUsuario() == 2){
+                                    session.setAttribute("tipo", "Transportista");
+                                }else{
+                                    session.setAttribute("tipo", "Normal");
+                                }
                             }
                             out.print("C~Validación correcta... espere esta siendo redireccionado");
                         }else{
