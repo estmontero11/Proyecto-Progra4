@@ -464,9 +464,30 @@ function consultarVehiculoByName(nameVehiculo) {
             swal('Error', 'Se presento un error a la hora de cargar la información de los vehiculos en la base de datos', 'error');
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            dibujarTabla(data);
-            // se oculta el modal esta funcion se encuentra en el utils.js
             ocultarModal("myModal");
+            info = data;
+            $('#mio').html("<ul class='pagination' id='pagination'></ul>");
+            $('#pagination').twbsPagination({
+                totalPages: calcularTamaño(),
+                visiblePages: 5,
+                onPageClick: function (event, page) {
+                    max = page * 10;
+                    min = max - 10;
+                    inicio = 1;
+                    for (var i = 1; i < 11; i++) {
+                        $('.page' + inicio).html("");
+                        inicio++;
+                    }
+                    inicio = 1;
+                    for (var j = min; j < max; j++) {
+                        if (info[j] == null) {
+                            break;
+                        }
+                        dibujarFila('.page' + inicio, info[j]);
+                        inicio++;
+                    }
+                }
+            });
         },
         type: 'POST',
         dataType: "json"
