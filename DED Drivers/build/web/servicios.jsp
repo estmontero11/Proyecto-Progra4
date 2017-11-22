@@ -171,7 +171,6 @@
                                     <input type="text" class="form-control" id="ubicacion" readonly>
                                 </div>
                             </div>
-                            <input type="hidden" value="redireccionar" id="red"/>
                             <input type="hidden" value="agregarServicio" id="servicioAction"/>
                             <div class="col-md-5">
                                 <button type="submit" class="btn btn-success" id="enviar">Aceptar servicio</button>
@@ -221,6 +220,39 @@
                 </div>
             </form>
         <hr>
+       <div  class="row" style="width: 1350px; padding-left: 10px;">           
+            <div class="col-md-6">
+                <h1 id="tituloRegistro">Retroalimentación del viaje.</h1>
+                <br>
+                <form class="form-group" id="formularioRetro" onsubmit="return false;" >
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="form-group" id="groupPuntuacion">
+                                <label for="puntuacion">Puntuación del viaje es de <span id="count">0</span> estrella(s)</label>
+                                <div id="hearts" class="starrr" style="color: #ee8b2d; font-size: 25px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="form-group" id="groupComentario">
+                                <label for="comentario">Comentario.</label>
+                                <textarea id="comentario" class="form-control" placeholder="Ingrese su comentario"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <input type="hidden" value="agregarRetro" id="retro"/>
+                                <button type="submit" class=" btn btn-success" id="enviar">Guardar Retroalimentación</button>
+                                <button type="reset" class="btn btn-danger" id="cancelar">Cancelar Retroalimentación</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
         
     </body>
     <div id="height200"></div>

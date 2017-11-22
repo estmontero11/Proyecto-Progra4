@@ -17,12 +17,12 @@ $(function () {
         }
     });
 
-//    $(document).on("click",function (e){
-//         if ($(e.target).is("#enviar")) {
-//             $("#retro").show();
-//             
-//         }
-//    });
+    $(document).on("click",function (e){
+         if ($(e.target).is("#enviar")) {
+             $("#retro").show();
+             
+         }
+    });
     $("#enviar").click(function () {
         enviar();
     });
@@ -218,9 +218,9 @@ function validar() {
     $("#groupColor").removeClass("has-error");
     $("#groupUbicacion").removeClass("has-error");
 
-//    $("#groupIdRetro").removeClass("has-error");
-//    $("#groupPuntuacion").removeClass("has-error");
-//    $("#groupComentario").removeClass("has-error");
+    $("#groupIdRetro").removeClass("has-error");
+    $("#groupPuntuacion").removeClass("has-error");
+    $("#groupComentario").removeClass("has-error");
 
 
     //valida cada uno de los campos del formulario
@@ -279,18 +279,18 @@ function validar() {
         $("#groupUbicacion").addClass("has-error");
         validacion = false;
     }
-//    if ($("#idRetro").val() === "") {
-//        $("#groupIdRetro").addClass("has-error");
-//        validacion = false;
-//    }
-//    if ($("#count").text() === "") {
-//        $("#groupPuntuacion").addClass("has-error");
-//        validacion = false;
-//    }
-//    if ($("#comentario").val() === "") {
-//        $("#groupComentario").addClass("has-error");
-//        validacion = false;
-//    }
+    if ($("#idRetro").val() === "") {
+        $("#groupIdRetro").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#count").text() === "") {
+        $("#groupPuntuacion").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#comentario").val() === "") {
+        $("#groupComentario").addClass("has-error");
+        validacion = false;
+    }
 
     return validacion;
 }

@@ -125,13 +125,13 @@
                                         <input type="text" class="form-control" id="apellidos" placeholder="Ingrese sus apellidos" >
                                     </div>
                                 </div>
-                                <div class="col-md-4"> 
-                                    <div class="form-group" id="groupFechaNacimiento">
-                                        <label for="fechaNacimiento">Fecha Nacimiento:</label>
-                                        <div id="fechaNacimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
-                                            <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="fechaNacimientoTxt">
+                                <div class="col-md-4">
+                                    <div class="form-group" id="groupCorreo">
+                                        <label for="correo">Correo electrónico:</label>
+                                        <div class="input-group">
+                                            <input type="email" class="form-control" id="correo" placeholder="ejemplo@hotmail.com">
                                             <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-calendar"></span>
+                                                <span class="glyphicon glyphicon-envelope"></span>
                                             </span>
                                         </div>
                                     </div>
@@ -161,17 +161,18 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group" id="groupCorreo">
-                                        <label for="correo">Correo electrónico:</label>
-                                        <div class="input-group">
-                                            <input type="email" class="form-control" id="correo" placeholder="ejemplo@hotmail.com">
+                                <div class="col-md-4"> 
+                                    <div class="form-group" id="groupFechaNacimiento">
+                                        <label for="fechaNacimiento">Fecha Nacimiento:</label>
+                                        <div id="fechaNacimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
+                                            <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="fechaNacimientoTxt">
                                             <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-envelope"></span>
+                                                <span class="glyphicon glyphicon-calendar"></span>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
+                                
                             </div>
                             <div class="row">
                                 <div class="col-md-4">

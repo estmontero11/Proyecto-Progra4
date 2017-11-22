@@ -20,7 +20,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="index.jsp"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
                 <li><a href="aboutUs.jsp"><span class="glyphicon glyphicon-info-sign"></span> Sobre Nosotros</a></li>
-                <li><a href="contact.jsp"><span class="glyphicon glyphicon-envelope"></span> Contactenos</a></li>
+                <li><a href="contact.jsp"><span class="glyphicon glyphicon-envelope"></span> Contáctenos</a></li>
                 <li><a href="servicios.jsp"><span class="glyphicon glyphicon-road"></span> Servicio</a></li>
                 <li><a href="perfilUsuario.jsp"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
                 <li><a href="LoginJSP.jsp"><span class="glyphicon glyphicon-log-out"></span> Cerrar Sesión</a></li>
