@@ -220,7 +220,7 @@
                 </div>
             </form>
         <hr>
-       <div  class="row" style="width: 1350px; padding-left: 10px;">           
+       <div id="contenido1" class="row" style="width: 1350px; padding-left: 10px;">           
             <div class="col-md-6">
                 <h1 id="tituloRegistro">Retroalimentación del viaje.</h1>
                 <br>

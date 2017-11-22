@@ -14,6 +14,7 @@ $(function () {
             $("#contenido1").show();
             GetRoute();
             consultarVehiculoLibre();
+            
         }
     });
 
@@ -446,9 +447,9 @@ function enviar() {
         //Se envia la información por ajax
         $.ajax({
             url: 'ServiciosServlet',
+            
             data: {
-                accion: $("#red").val(),
-                modelo: $("#modelo").val()
+                accion: $("#agregarRetro").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 swal('Error', 'Se genero un error, contacte al administrador (Error del ajax)', 'error');
